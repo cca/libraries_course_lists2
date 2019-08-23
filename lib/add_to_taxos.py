@@ -47,135 +47,106 @@ We have some special logic in here for non-standard taxonomies, such as Archt
 (which has one division-level set of lists for 3 programs) and Syllabus course
 lists.
 """
-import json
-
-import config
-from .utilities import *
+from .course import Course
+from .taxonomy import Term
 
 
 def get_depts(course):
     arch_div = ['BARCH', 'INTER', 'MARCH' ]
     # find out what departmental taxos a course needs to be added to
     # everything will at least be added to Syllabus Collection taxos
-    depts = set(['SYLLABUS'])
-    for au in course['academic_units']:
-        # multiple Academic Units can offer a course but only one is owner
-        if au["course_owner"]:
-            dept = strip_prefix(au["refid"])
-            if dept in arch_div:
-                depts.add('ARCH DIV')
-            elif dept == 'CCA':
-                # international exchange, skip this course
-                return None
-            elif dept == 'FA':
-                # file Interdisciplinary Critique under UDIST
-                # ignore Fine Arts internship courses
-                if course['subject'] == 'CRITI':
-                    depts.add('UDIST')
-                elif course['subject'] == 'FNART':
-                    return None
-            else:
-                depts.add(dept)
+    # depts = set(['SYLLABUS'])
+    depts = set()
+    if course.owner in arch_div:
+        depts.add('ARCH DIV')
+    elif course.owner  == 'CCA':
+        # international exchange, skip this course
+        return None
+    elif course.owner  == 'FA':
+        # file Interdisciplinary Critique under UDIST
+        if course.subject == 'CRITI':
+            depts.add('UDIST')
+        # ignore Fine Arts internship courses
+        elif course.subject == 'FNART':
+            return None
+    else:
+        depts.add(course.owner)
     return depts
 
 
-def eq_flat_term(term, taxo):
-    # https://vault.cca.edu/apidocs.do#!/taxonomy/createTaxonomyTerm_post_11
-    s = request_wrapper()
-    # this will 406 when we try to create terms that already exist but we don't
-    # care, also no need to record flat terms in memory
-    s.post(config.api_root + '/taxonomy/{}/term'.format(taxo["uuid"]),
-        data=json.dumps({ "term": term })
-    )
-    print('added {} to {}'.format(term, taxo["name"]))
-
-# note that "term" arg can be either: a course dict, a string, or a final child
-# node dict with "term" and "data" properties
-def eq_course_list_term(term, taxo, parentUuid=None, children=None, dept_layer=False):
-    if not parentUuid and not children:
-        # no parent & no child -> term must be the initial course object
-        # & we need to create the root (semester-level) taxonomy term
+def course_list_term(term, taxo, dept_layer=False):
+    if type(term) == Course:
+        # term is actually a course object
         course = term
-        # course list taxonomies start with semester
-        term = strip_prefix(course['term']).replace('_', ' ')
-        children = []
+        # we need to create the root (semester-level) taxonomy term
+        term = Term({ "term": course.semester })
+        parents = [term]
+
         if dept_layer:
-            children.append(get_course_owner(course))
-        children += [
-            course["section_title"],
-            format_instructors(course["instructors"]),
-            # final child contains additional data nodes
-            # @TODO what other data do we want to store here?
-            {
-                "term": course["section_code"],
-                "data": {
-                    "CrsName": course["course_code"],
-                    "facultyID": ', '.join([i['username'] for i in course["instructors"]]),
-                }
-            }
-        ]
-    # do we already have the term in the taxonomy?
-    for t in taxo["terms"]:
-        if t["term"] == term:
-            # we will have children to create
-            # final child (section code) always is unique for a given semester
-            term = children.pop(0)
-            return eq_course_list_term(term, taxo, parentUuid=t["uuid"], children=children)
+            dept = Term({
+                "term": course.owner,
+                "parents": [p.term for p in parents],
+            })
+            term.children.append(dept)
+            parents.append(dept)
 
-    # construct the body to be sent to VAULT
-    body = {}
-    if parentUuid:
-        body["parentUuid"] = parentUuid
-    # final child term which may have data components
-    if parentUuid and len(children) == 0:
-        body["data"] = term["data"]
-        term = term["term"]
+        title = Term({
+            "term": course.section_title,
+            "parents": [p.term for p in parents],
+        })
+        term.children.append(title)
+        parents.append(title)
 
-    body["term"] = term
-    data = json.dumps(body)
+        instructors = Term({
+            "term": course.instructor_names,
+            "parents": [p.term for p in parents],
+        })
+        term.children.append(instructors)
+        parents.append(instructors)
 
-    # https://vault.cca.edu/apidocs.do#!/taxonomy/createTaxonomyTerm_post_11
-    s = request_wrapper()
-    r = s.post(config.api_root + '/taxonomy/{}/term'.format(taxo["uuid"]), data=data)
-    r.raise_for_status()
-    print('added {} to {}'.format(term, taxo["name"]))
+        # final child contains additional data nodes
+        # @TODO is there other data we want to store here? also this doesn't work
+        section = Term({
+            "data": {
+                "CrsName": course.course_code,
+                "facultyID": course.instructor_usernames,
+            },
+            "parents": [p.term for p in parents],
+            "term": course.section_code,
+        })
+        term.children.append(section)
 
-    # EQUELLA has the UUID of the created term in the response's Location header
-    # "Location": "https://vault.cca.edu/api/taxonomy/7ef.../term/bc35..."
-    uuid = r.headers['Location'].split('/term/')[1]
-    # record the term we created in memory
-    taxo["terms"].append({ "uuid": uuid, "term": term })
+    uuid = taxo.add(term)
 
     # if we have child terms to add, recursively call this function
-    if len(children) > 0:
-        term = children.pop(0)
-        eq_course_list_term(term, taxo, parentUuid=uuid, children=children)
+    if len(term.children) > 0:
+        next_term = term.children.pop(0)
+        next_term.children = term.children
+        next_term.parentUuid = uuid
+        course_list_term(next_term, taxo)
 
-# term can be a course dict or string
+# term can be either a Course object or a string
 def create_term(term, taxo_name, taxos):
     # find the appropriate named taxonomy, do a check in case we don't find one
-    taxo = next((t for t in taxos if t["name"].lower() == taxo_name.lower()), None)
+    taxo = next((t for t in taxos if t.name.lower() == taxo_name.lower()), None)
     if not taxo:
         print('Unable to find {} taxonomy.'.format(taxo_name))
         return
 
-    # initialize the (in memory) terms list if it doesn't exist yet
-    if not taxo.get("terms"):
-        taxo["terms"] = []
-
     if type(term) == str:
-        return eq_flat_term(term, taxo)
+        return taxo.add(Term({ "term": term }))
 
-    # object so it's course list term
+    # term is an object so it's a course list term
     # 2 course lists have an additional layer in hierarchy for department
     has_dept_layer = 'SYLLABUS' in taxo_name or 'ARCH DIV' in taxo_name
-    return eq_course_list_term(term, taxo, dept_layer=has_dept_layer)
+    return course_list_term(term, taxo, dept_layer=has_dept_layer)
 
 
-def add_to_taxos(course, taxos):
+def add_to_taxos(course, taxos, only_course_lists=False):
     for dept in get_depts(course):
-        create_term(course["section_code"], dept + ' - course sections', taxos)
-        create_term(course["course_refid"], dept + ' - course names', taxos)
-        create_term(course["section_title"], dept + ' - course titles', taxos)
-        create_term(format_instructors(course["instructors"]), dept + ' - faculty', taxos)
         create_term(course, dept + ' - COURSE LIST', taxos)
+        if not only_course_lists:
+            create_term(course.section_code, dept + ' - course sections', taxos)
+            create_term(course.course_refid, dept + ' - course names', taxos)
+            create_term(course.section_title, dept + ' - course titles', taxos)
+            create_term(course.instructor_names, dept + ' - faculty', taxos)

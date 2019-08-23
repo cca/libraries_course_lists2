@@ -19,14 +19,6 @@ def request_wrapper():
     return s
 
 
-def format_instructors(instructors):
-    # take list of faculty objects & convert into comma-separated string of names
-    names = []
-    for person in instructors:
-        names.append('{} {}'.format(person["first_name"], person["last_name"]))
-    return ', '.join(names)
-
-
 def strip_prefix(string):
     """
     A lot of Workday names, which we are unfortunately forced to use as identifiers,
@@ -37,19 +29,12 @@ def strip_prefix(string):
     return re.sub(r'^A[A-Z]_', '', string)
 
 
-def get_course_owner(course):
-    for au in course["academic_units"]:
-        if au["course_owner"]:
-            return strip_prefix(au["refid"])
-
-
 def course_sort(course):
-    # we sort a course object by sorting its properties in this order:
-    # department, title, instructors, section
+    # we sort a course object by sorting its properties in this order
     s = (
-        get_course_owner(course),
-        course["section_title"],
-        format_instructors(course["instructors"]),
-        course["section_code"],
+        course.owner,
+        course.section_title,
+        course.instructor_names,
+        course.section_code,
     )
     return s

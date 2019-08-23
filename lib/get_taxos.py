@@ -6,6 +6,7 @@ import json
 import os
 
 from .utilities import request_wrapper
+from .taxonomy import Taxonomy
 import config
 
 taxos_file = os.path.join('data', 'taxonomies.json')
@@ -20,13 +21,14 @@ def download_taxos():
     with open(taxos_file, 'w') as fh:
         json.dump(data, fh)
 
-    return data["results"]
+    taxos = [Taxonomy(t) for t in data["results"]]
+    return taxos
 
 
 def get_taxos():
     if os.path.exists(taxos_file):
         data = json.load(open(taxos_file, 'r'))
-        taxos = data["results"]
+        taxos = [Taxonomy(t) for t in data["results"]]
     else:
         # get data from API, this fn also writes to file
         taxos = download_taxos()

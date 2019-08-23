@@ -11,31 +11,30 @@ from lib import *
 
 parser = argparse.ArgumentParser(description='Create VAULT taxonomies from JSON course data.')
 parser.add_argument('-c', '--clear', action='store_true', default=False, help='only clear the given semester taxonomy term, do not create new terms')
+parser.add_argument('--course-lists', action='store_true', default=False, help='only create terms in course list taxonomies, ignore others')
 parser.add_argument('-d', '--downloadtaxos', action='store_true', default=False, help='download fresh taxonomies from VAULT (do not use JSON list in /data dir)')
 parser.add_argument('file', nargs=1, help='course list JSON file')
-# @TODO --make-lists only make taxo lists
 
 args = parser.parse_args()
 
 with open(args.file[0], 'r') as file:
-    courses = json.load(file)
-
-# get current term from the first course we have on hand
-semester = strip_prefix(courses[0]['term']).replace('_', ' ')
+    data = json.load(file)
+    courses = [Course(**c) for c in data]
 
 if args.downloadtaxos:
     taxos = download_taxos()
 else:
     taxos = get_taxos()
 
-course_lists = [t for t in taxos if 'course list' in t["name"].lower()]
+course_lists = [t for t in taxos if 'course list' in t.name.lower()]
 
 for taxo in course_lists:
-    clear_semester(taxo, semester)
+    # semester is the same for all courses so we just grab it from first one
+    clear_semester(taxo, courses[0].semester)
 
-# we're done if we were only clearing semester terms
+# we're done if we were only clearing semester terms from course lists
 if args.clear:
     exit(0)
 
 for course in sorted(courses, key=course_sort):
-    add_to_taxos(course, taxos)
+    add_to_taxos(course, taxos, only_course_lists=args.course_lists)
