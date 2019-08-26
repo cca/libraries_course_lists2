@@ -7,6 +7,19 @@ from .utilities import strip_prefix
 
 class Course(SimpleNamespace):
 
+
+    def find_colocated_sections(self, courses):
+        # courses is a list of Course objects
+        sections = []
+        if self.colocated_sections:
+            for colo in self.colocated_sections:
+                for course in courses:
+                    if colo == course.section_def_refid:
+                        sections.append(course.section_code)
+                        break
+
+        return sections
+
     @property
     def instructor_names(self):
         # print list of instructors as a comma-separated string of names
