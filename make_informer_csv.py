@@ -39,7 +39,8 @@ def make_course_row(course):
         semester,
         dept,
         course.section_title,
-        course.instructor_names,
+        # cannot allow an empty instructor names field
+        course.instructor_names if course.instructor_names else 'Staff',
         course.section_code,
         course.course_code,
         ', '.join(course.find_colocated_sections(courses)),
