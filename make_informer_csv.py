@@ -13,10 +13,17 @@ original libraries_course_lists project
 import csv
 import json
 import sys
+import unicodedata
 
 from lib import Course
 
 semester = sys.argv[2] if len(sys.argv) >= 3 else '2019FA'
+
+
+def asciize(s):
+    # convert unicode string into ascii
+    # we have to do this bc uptaxo script chokes on non-ascii chars
+    return unicodedata.normalize('NFKD', s).encode('ascii', 'ignore').decode()
 
 
 def make_course_row(course):
@@ -41,13 +48,13 @@ def make_course_row(course):
     row = [
         semester,
         dept,
-        course.section_title,
+        asciize(course.section_title),
         # cannot allow an empty instructor names field
-        course.instructor_names if course.instructor_names else 'Staff',
+        asciize(course.instructor_names if course.instructor_names else 'Staff'),
         course.section_code,
         course.course_code,
         ', '.join(course.find_colocated_sections(courses)),
-        course.instructor_usernames,
+        asciize(course.instructor_usernames),
     ]
     return row
 
