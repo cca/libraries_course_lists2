@@ -24,7 +24,7 @@ def make_course_row(course):
         returns: list of data properties we're interested in
     """
     # skip standy courses
-    if 'STANDY' in course.section_title:
+    if 'STANDBY' in course.section_title:
         return None
     global courses
     dept = course.owner

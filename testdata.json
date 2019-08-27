@@ -1,0 +1,336 @@
+[
+{
+    "section_def_refid": "DEF_UDIST-300-01_2019FA",
+    "course_def_refid": "DEF_UDIST-300",
+    "section_refid": "UDIST-300-01_2019FA",
+    "course_refid": "UDIST-3000",
+    "section_calc_id": "UDIST-3000-1_AP_Fall_2019",
+    "section_code": "UDIST-3000-1",
+    "section_title": "Legacy Starts Here: Oakland Campus",
+    "course_number": "3000",
+    "section_number": "1",
+    "term": "AP_Fall_2019",
+    "status": "Closed",
+    "hidden": "0",
+    "course_code": "UDIST-3000",
+    "acad_level": "Undergraduate",
+    "course_title": "Upper Division Interdisciplinary Studio",
+    "course_desc": "&lt;p&gt;Upper Division Interdisciplinary Studios extend a student's cross-school experience from Core Studio up into their upper division years. 3 units of Interdisciplinary Studio are required of all majors and must be completed in the junior or senior year. This advanced level studio is thematic in nature. Technical demonstrations are paired with thoughtful readings, seminar discussions and ambitious projects. Collaboration, experimentation and presentation skills are developed in concert with critical thinking.&lt;/p&gt;",
+    "colocated_parent": "",
+    "colocated_sections": "",
+    "subject": "UDIST",
+    "subject_name": "Upper Level Interdisciplinary Studio",
+    "min_unit": "3",
+    "max_unit": "3",
+    "start_date": "2019-09-03-07:00",
+    "end_date": "2019-12-13-08:00",
+    "instructional_format": "Workshop",
+    "delivery_mode": "In-Person",
+    "grading_basic": "Graded",
+    "section_desc": "Description&lt;br /&gt;Interdisciplinary Studios extend a student&amp;#39;s cross-school experience from Core Studio up into his or her upper division years. 3 units of Interdisciplinary Studio are required of all majors and must be completed in the junior or senior year. This advanced level studio is thematic in nature. Technical demonstrations are paired with thoughtful readings, seminar discussions and ambitious projects. Collaboration, experimentation and presentation skills are developed in concert with critical thinking.&lt;br /&gt;&lt;br /&gt;Section Description&lt;br /&gt;Legacy Starts Here is a generative history of the Oakland Campus told through monument, archive and memory. The course explores the rich history of California College of the Arts&amp;#39; Oakland Campus&amp;#39; grounds, faculty, contemporary contributions and move forward. Students are asked to respond and contribute to the rich oral, visual, tactile and intellectual histories through contemporary drawing, painting, illustration, animation, sculpture, textile, social and fashion design practices.",
+    "capacity": "16",
+    "wait_list": "0",
+    "enrollment": "0",
+    "academic_units": [
+            {
+
+            "refid": "AU_UDIST",
+            "name": "Upper Division Interdisciplinary Studio",
+            "offering_percent": "100",
+            "course_owner": true
+            }
+    ],
+    "meetings": [
+        {
+            "refid": "Mon_09:00AM_03:00PM",
+            "start_time": "09:00:00",
+            "end_time": "15:00:00",
+            "meeting_day": "Mon",
+            "start_date": "",
+            "end_date": "",
+            "location": {
+                "refid": "MART_206_MART_6",
+                "room": "Oakland - Martinez - 6",
+                "building": "Martinez",
+                "building_id": "Martinez",
+                "campus": "Oakland",
+                "type": "Classroom - Academic - Specialty"
+            }
+        }
+    ],
+    "instructors": [
+        {
+            "employee_id": "002323",
+            "uid": "1218439",
+            "first_name": "Victoria",
+            "last_name": "Wagner",
+            "username": "vwagner"
+        }
+    ]
+},
+{
+
+
+
+    "section_def_refid": "DEF_UDIST-300-07_2019FA",
+    "course_def_refid": "DEF_UDIST-300",
+    "section_refid": "UDIST-300-07_2019FA",
+    "course_refid": "UDIST-3000",
+    "section_calc_id": "UDIST-3000-7_AP_Fall_2019",
+    "section_code": "UDIST-3000-7",
+    "section_title": "Interface",
+    "course_number": "3000",
+    "section_number": "7",
+    "term": "AP_Fall_2019",
+    "status": "Open",
+    "hidden": "0",
+
+    "course_code": "UDIST-3000",
+
+    "acad_level": "Undergraduate",
+"course_title": "Upper Division Interdisciplinary Studio",
+"course_desc": "&lt;p&gt;Upper Division Interdisciplinary Studios extend a student's cross-school experience from Core Studio up into their upper division years. 3 units of Interdisciplinary Studio are required of all majors and must be completed in the junior or senior year. This advanced level studio is thematic in nature. Technical demonstrations are paired with thoughtful readings, seminar discussions and ambitious projects. Collaboration, experimentation and presentation skills are developed in concert with critical thinking.&lt;/p&gt;",
+
+     "colocated_parent": "",
+     "colocated_sections": "",
+        "subject": "UDIST",
+"subject_name": "Upper Level Interdisciplinary Studio",
+
+    "min_unit": "3",
+    "max_unit": "3",
+    "start_date": "2019-09-03-07:00",
+    "end_date": "2019-12-13-08:00",
+    "instructional_format": "Workshop",
+    "delivery_mode": "In-Person",
+    "grading_basic": "Graded",
+
+    "section_desc": "Description&lt;br&gt;Interdisciplinary Studios extend a student's cross-school experience from Core Studio up into his or her upper division years. 3 units of Interdisciplinary Studio are required of all majors and must be completed in the junior or senior year. This advanced level studio is thematic in nature. Technical demonstrations are paired with thoughtful readings, seminar discussions and ambitious projects. Collaboration, experimentation and presentation skills are developed in concert with critical thinking.&lt;br&gt;&lt;br&gt;Section Description&lt;br&gt;In this class we will focus on designing and fabricating interactive and kinetic artwork. Students will learn how to design and implement hybrid art systems that can use computers or circuits to interface with sensors, motors, video, sound, pneumatics and lights. Basic skills include: electronics, mechanical engineering, metal fabrication, fabrication and design strategies, computer programming (with object-based applications) and control of media. Field trips to military/industrial salvage yards and artist studios and visits from artists will augment technical instruction, lab time and theoretical discourse. Topics include: the nature of interfaces, narration in random access environments, the poetic potential in electromechanical devices, interactivity and isolation, and integrating time-based mediums such as video and audio into sculptural environments and objects.",
+
+    "capacity": "15",
+    "wait_list": "0",
+    "enrollment": "0",
+    "academic_units": [
+
+            {
+
+            "refid": "AU_UDIST",
+            "name": "Upper Division Interdisciplinary Studio",
+            "offering_percent": "100",
+            "course_owner": true
+            }
+    ],
+
+    "meetings": [
+
+        {
+            "refid": "Tue/Thu_04:00PM_07:00PM",
+            "start_time": "16:00:00",
+            "end_time": "19:00:00",
+            "meeting_day": "Tue/Thu",
+                "start_date": "",
+                "end_date": "",
+
+        "location": {
+            "refid": "FOUN_304_Hybrid_Lab",
+"room": "Oakland - Founders - 304: Hybrid Lab",
+"building": "Founders",
+"building_id": "Founders",
+"campus": "Oakland",
+"type": "Classroom - Academic - Computer"
+        }
+        }
+    ],
+    "instructors": [
+    {
+    "employee_id": "000414",
+    "uid": "1219134",
+    "first_name": "Barney",
+    "last_name": "Haynes",
+    "username": "bhaynes"
+}
+,{
+    "employee_id": "504066",
+    "uid": "1452798",
+    "first_name": "Sudhu",
+    "last_name": "Tewari",
+    "username": "stewari"
+}
+
+
+
+    ]
+
+},
+{
+
+
+
+    "section_def_refid": "COURSE_SECTION_DEFINITION-3-25709",
+    "course_def_refid": "DEF_EXGRP-1504",
+    "section_refid": "COURSE_SECTION-3-25710",
+    "course_refid": "EXGRP-1504",
+    "section_calc_id": "EXGRP-1504-1_AP_Fall_2019",
+    "section_code": "EXGRP-1504-1",
+    "section_title": "Ideation Sketching and Visual Notation",
+    "course_number": "1504",
+    "section_number": "1",
+    "term": "AP_Fall_2019",
+    "status": "Open",
+    "hidden": "0",
+
+    "course_code": "EXGRP-1504",
+
+    "acad_level": "Extension",
+"course_title": "Ideation Sketching and Visual Notation",
+"course_desc": "Prerequisite: one previous drawing class or equivalent experience. Whether you are a designer, artist, or filmmaker, what inspires you to create art and design are the pre-visual concepts that arise in your mind. These pre-visualized concepts may potentially become the foundation of a great painting, product, movie, or advertisement. In this course, students learn how to form and evolve ideas through the use of images, as well as to communicate them clearly and effectively with clients, art directors, or in meetings, using sketch techniques. Class time will be divided between demos, short lectures, and in class studio time. Students should expect to have at least a few hours of homework each week. Students begin by learning the fundamentals of translating 3D space and objects onto 2D drawn space. Topics covered include using 1, 2, and 3 point perspective, laying out your ideas, using backgrounds, and finding your style. Various types of notation (arrows, typography) will be explored to help clarify your drawn ideas. *Bring to first class: 14\" x 17' pad of layout paper, pad of tracing paper, a variety of drawing pencils (2H, HB, 2B), fine-point ballpoint pen or sharpie.*",
+
+     "colocated_parent": "",
+     "colocated_sections": "",
+        "subject": "EXGRP",
+"subject_name": "Extension - Graphic Design",
+
+    "min_unit": "0",
+    "max_unit": "0",
+    "start_date": "2019-10-05-07:00",
+    "end_date": "2019-12-07-08:00",
+    "instructional_format": "Studio",
+    "delivery_mode": "In-Person",
+    "grading_basic": "Audit",
+
+    "section_desc": "&lt;div&gt;&lt;div&gt;&lt;div&gt;&lt;span&gt;&lt;span&gt;Whether you are a designer, artist, or filmmaker, what inspires you to create art and design are the pre-visual concepts that arise in your mind. These previsualized concepts may potentially become the foundation of a great painting, product, movie, or advertisement.&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;span&gt;&lt;span&gt;In this class, students learn how to form and evolve ideas that arise from their imagination through the use of various drawing techniques. These methods allow students to create accurate images directly from their imagination without the need to have a model or photo for reference. Students then use these images to communicate their ideas with clients, art directors, or in meetings, using sketch techniques. Class time is divided among demos, short lectures, and in-class studio time.&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;span&gt;&lt;span&gt;This class instructs students to learn the fundamentals of translating 3D space and objects onto 2D-drawn space. Topics covered include using 1, 2, and 3 point perspective, laying out your ideas, using backgrounds, and finding your style. Various types of notation (arrows, typography) are explored to help clarify your drawn ideas. Weekly homework assignments assist in practicing in class topics.&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;i&gt;&lt;span&gt;Bring to first class: A 14&amp;#34; x 17&amp;#34; pad of layout paper and a pad of tracing paper, a variety of drawing pencils (2H, HB, 2B), a ballpoint pen or sharpie.&lt;/span&gt;&lt;/i&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;",
+
+    "capacity": "16",
+    "wait_list": "0",
+    "enrollment": "0",
+    "academic_units": [
+
+            {
+
+            "refid": "AU_EXTED",
+            "name": "Extension",
+            "offering_percent": "100",
+            "course_owner": true
+            }
+    ],
+
+    "meetings": [
+
+        {
+            "refid": "Sat_01:00PM_04:00PM",
+            "start_time": "13:00:00",
+            "end_time": "16:00:00",
+            "meeting_day": "Sat",
+                "start_date": "",
+                "end_date": "",
+
+        "location": {
+            "refid": "SANF_N19",
+"room": "San Francisco - Main Building - N19",
+"building": "Montgomery Campus",
+"building_id": "Montgomery_Campus",
+"campus": "San Francisco",
+"type": "Classroom - Academic - Multi use"
+        }
+        }
+    ],
+    "instructors": [
+    {
+    "employee_id": "005257",
+    "uid": "1279040",
+    "first_name": "Lewis",
+    "last_name": "Bangham",
+    "username": "lbangham2"
+}
+
+
+
+    ]
+
+},
+{
+
+
+
+    "section_def_refid": "DEF_IXDGR-630-01_2019FA",
+    "course_def_refid": "DEF_IXDGR-630",
+    "section_refid": "IXDGR-630-01_2019FA",
+    "course_refid": "IXDGR-6300",
+    "section_calc_id": "IXDGR-6300-1_AP_Fall_2019",
+    "section_code": "IXDGR-6300-1",
+    "section_title": "IxD Studio: Prototyping",
+    "course_number": "6300",
+    "section_number": "1",
+    "term": "AP_Fall_2019",
+    "status": "Open",
+    "hidden": "0",
+
+    "course_code": "IXDGR-6300",
+
+    "acad_level": "Graduate",
+"course_title": "IxD Studio: Prototyping",
+"course_desc": "This course will introduce and explore all aspects of prototyping as it relates to interaction design. Prototyping tools will be introduced from low fidelity to high, from sketching to digital to interactive. The act of prototyping is as much a process of the mind as of the hands, and therefore this course will intorduce both the mindset and the methods of the dynamic prototyping process. Students will also be introduced to meta-learning, a capacity that is critical to the designer's ability to keep up and evolve as tools and processes do. Finally students will learn basic techniques to evaluate design effectiveness in the real world and to evolve their designs through iteration.",
+
+     "colocated_parent": "",
+     "colocated_sections": "",
+        "subject": "IXDGR",
+"subject_name": "Graduate Interaction Design",
+
+    "min_unit": "3",
+    "max_unit": "3",
+    "start_date": "2019-09-03-07:00",
+    "end_date": "2019-12-13-08:00",
+    "instructional_format": "Studio",
+    "delivery_mode": "In-Person",
+    "grading_basic": "Graded",
+
+    "section_desc": "This course will introduce and explore all aspects of prototyping as it relates to interaction design. Prototyping tools will be introduced from low fidelity to high, from sketching to digital to interactive. The act of prototyping is as much a process of the mind as of the hands, and therefore this course will intorduce both the mindset and the methods of the dynamic prototyping process. Students will also be introduced to meta-learning, a capacity that is critical to the designer's ability to keep up and evolve as tools and processes do. Finally students will learn basic techniques to evaluate design effectiveness in the real world and to evolve their designs through iteration.",
+
+    "capacity": "15",
+    "wait_list": "0",
+    "enrollment": "0",
+    "academic_units": [
+
+            {
+
+            "refid": "AU_IXDGR",
+            "name": "Graduate Interaction Design",
+            "offering_percent": "100",
+            "course_owner": true
+            }
+    ],
+
+    "meetings": [
+
+        {
+            "refid": "Tue_04:00PM_07:00PM",
+            "start_time": "16:00:00",
+            "end_time": "19:00:00",
+            "meeting_day": "Tue",
+                "start_date": "",
+                "end_date": "",
+
+        "location": {
+            "refid": "SANF_W5",
+"room": "San Francisco - Main Building - W5",
+"building": "Montgomery Campus",
+"building_id": "Montgomery_Campus",
+"campus": "San Francisco",
+"type": "Studio - Group - Dedicated"
+        }
+        }
+    ],
+    "instructors": [
+    {
+    "employee_id": "502823",
+    "uid": "1380926",
+    "first_name": "Alexander",
+    "last_name": "Baumgardt",
+    "username": "abaumgardt"
+}
+
+
+
+    ]
+
+}
+]
