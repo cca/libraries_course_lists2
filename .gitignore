@@ -1,3 +1,5 @@
 config.py
-data/
-logs/
+data/*
+logs/*
+!data/.gitkeep
+!logs/.gitkeep
