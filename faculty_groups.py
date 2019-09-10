@@ -15,10 +15,10 @@ with open(sys.argv[1], 'r') as file:
     data = json.load(file)
     courses = [Course(**d) for d in data]
 
-# mapping of dept code to list of faculty usernames e.g. "LIBRA": ["ephetteplace"]
+# dict of dept code to list of faculty usernames e.g. "LIBRA": ["ephetteplace"]
 teaching = {}
 for course in courses:
-    # initialize department list if it doesn't exist yet
+    # initialize department set if it doesn't exist yet
     if teaching.get(course.owner) == None:
         teaching[course.owner] = set([i["username"] for i in course.instructors])
     else:
@@ -26,5 +26,7 @@ for course in courses:
 
 # write LDAP text files
 for dept, instructors in teaching.items():
-    with open('data/{}.txt'.format(map[dept]["ldap"]), 'w') as file:
-        file.write('\n'.join(list(instructors)))
+    ldap = map[dept]["ldap"]
+    if ldap is not None:
+        with open('data/{}.txt'.format(ldap), 'w') as file:
+            file.write('\n'.join(list(instructors)))
