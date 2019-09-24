@@ -3,3 +3,5 @@ data/*
 logs/*
 !data/.gitkeep
 !logs/.gitkeep
+_informer.csv
+
