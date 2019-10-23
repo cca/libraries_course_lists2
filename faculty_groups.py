@@ -28,5 +28,5 @@ for course in courses:
 for dept, instructors in teaching.items():
     ldap = map[dept]["ldap"]
     if ldap is not None:
-        with open('data/{}.txt'.format(ldap), 'w') as file:
+        with open('data/{}.txt'.format(ldap), 'a') as file:
             file.write('\n'.join(list(instructors)))

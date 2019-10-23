@@ -33,6 +33,7 @@ map = {
     "INTER": {"group": "Architecture Division Faculty", "ldap": "fac_ar"},
     "IXDGR": {"group": "Interaction Design (MDes) Faculty", "ldap": "fac_ixd"},
     "IXDSN": {"group": "Interaction Design Faculty", "ldap": "fac_ixd"},
+    "MAAD": {"group": "Architecture Division Faculty", "ldap": "fac_ar"},
     "MARCH": {"group": "Architecture Division Faculty", "ldap": "fac_ar"},
     "METAL": {"group": "Jewelry Metal Arts Faculty", "ldap": "fac_jma"},
     "PHOTO": {"group": "Photography Faculty", "ldap": "fac_ph"},
@@ -116,8 +117,9 @@ class Group:
         r = s.get(config.api_root + '/usermanagement/local/group/{}/user'.format(self.uuid))
         r.raise_for_status()
         """
-        results is actually a list of hashes like "{
-          "id": "ephettpelace",
+        results is actually a list of hashes like
+        {
+          "id": "ephetteplace",
           "links": {
             "self": "https://vault.cca.edu/api/usermanagement/local/user/4bba0672-071e-4dbe-9acd-655a1ed0ef91"
           }
@@ -131,5 +133,5 @@ class Group:
 
 
     def write_ldap_file(self):
-        with open('data/{}.txt'.format(self.ldap), 'w') as file:
+        with open('data/{}.txt'.format(self.ldap), 'a') as file:
             file.write('\n'.join(self.users))
