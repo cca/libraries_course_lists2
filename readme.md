@@ -6,14 +6,15 @@ NOTE: this project is blocked by openequella/openEQUELLA#1192 since we cannot cr
 
 ## Setup
 
+1. Set up a python virtual environment & install dependencies (requests)
+
 ```sh
-> # make a python3 virtualenv & install dependencies
-> virtualenv -p python3 .
-> pip install -r requirements.txt
-> # I use virtualfish though, so it's actually more like this
-> vf new cl2
-> pip install -r requirements.txt
+> pipenv --three
+> pipenv shell
+> pipenv install
 ```
+
+1. Obtain access to CCA Integrations data in Google Cloud (contact Integration Engineer). There should be JSON files present for employees, students, and courses for the following term.
 
 ## Usage
 
