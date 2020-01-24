@@ -37,7 +37,7 @@ class Term:
 class Taxonomy:
     def __init__(self, taxo):
         self.name = taxo["name"]
-        # initial as empty set, populated by add() method
+        # initialize as empty set, populated by add() method
         self.terms = set()
         # unlike with terms we will always know the taxonomy UUID upfront
         self.uuid = taxo["uuid"]
@@ -119,15 +119,20 @@ class Taxonomy:
                 nothing
         """
         s = request_wrapper()
-        if type(term) == 'str':
+        if type(term) == str:
             # NOTE: you can get a term with /tax/{uuid}/term?path={string}
             # but it always seems to return the children of string e.g. for
             # Fall 2019\Course Name it'll return all the instructor names
             # But requesting /tax/uuid/term gets the root of the taxonomy which
             # is where all semester terms will be
             r = s.get(config.api_root + '/taxonomy/{}/term'.format(self.uuid))
+            r.raise_for_status()
             # convert to a term object
             term = Term([t for t in r.json() if t["term"] == term][0])
 
         print('deleting {} from {}'.format(term, self))
-        r.delete(config.api_root + '/taxonomy/{}/term/{}'.format(self.uuid, term.uuid))
+        r = s.delete(config.api_root + '/taxonomy/{}/term/{}'.format(self.uuid, term.uuid))
+        # will through a 500 error if the taxonomy is locked by another user
+        # r.json() = {'code': 500, 'error': 'Internal Server Error',
+        # 'error_description': 'Taxonomy is locked by another user: {username}'}
+        r.raise_for_status()
