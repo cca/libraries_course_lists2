@@ -14,7 +14,9 @@ taxos_file = os.path.join('data', 'taxonomies.json')
 
 def download_taxos():
     s = request_wrapper()
-    response = s.get(config.api_root + '/taxonomy')
+    # with 2019.2 API defaults to length=10 if you don't specify it, we want
+    # _all_ the taxonomies so just make this a very high number
+    response = s.get(config.api_root + '/taxonomy?length=5000')
     response.raise_for_status()
     data = response.json()
     # create file
