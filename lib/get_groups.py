@@ -15,7 +15,7 @@ groups_file = os.path.join('data', 'groups.json')
 
 def download_groups():
     s = request_wrapper()
-    response = s.get(config.api_root + '/usermanagement/local/group')
+    response = s.get(config.api_root + '/usermanagement/local/group?allParents=true')
     response.raise_for_status()
     data = response.json()
     # create file
