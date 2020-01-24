@@ -27,10 +27,11 @@ else:
     taxos = get_taxos()
 
 course_lists = [t for t in taxos if 'course list' in t.name.lower()]
+# semester is the same for all courses so we just grab it from first one
+current_semester = courses[0].semester
 
 for taxo in course_lists:
-    # semester is the same for all courses so we just grab it from first one
-    clear_semester(taxo, courses[0].semester)
+    taxo.remove(current_semester)
 
 # we're done if we were only clearing semester terms from course lists
 if args.clear:

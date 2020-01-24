@@ -75,7 +75,6 @@ class Taxonomy:
     def addData(self, term):
         """ add a taxonomy term's data nodes to itself
         NOTE: this API route seems broken & this doesn't work yet """
-        return
         print(term, term.data, term.uuid)
         if not term.uuid:
             raise Exception("""
@@ -108,3 +107,27 @@ class Taxonomy:
             if getattr(t, attr) == getattr(term, attr):
                 return term
         return None
+
+
+    def remove(self, term):
+        """
+            Remove a term from a taxonomy (primarily used to remove semester
+            terms from course lists). ONLY REMOVES ROOT-LEVEL TERMS RIGHT NOW.
+            args:
+                term: either a string ("Fall 2019") or Term object
+            returns:
+                nothing
+        """
+        s = request_wrapper()
+        if type(term) == 'str':
+            # NOTE: you can get a term with /tax/{uuid}/term?path={string}
+            # but it always seems to return the children of string e.g. for
+            # Fall 2019\Course Name it'll return all the instructor names
+            # But requesting /tax/uuid/term gets the root of the taxonomy which
+            # is where all semester terms will be
+            r = s.get(config.api_root + '/taxonomy/{}/term'.format(self.uuid))
+            # convert to a term object
+            term = Term([t for t in r.json() if t["term"] == term][0])
+
+        print('deleting {} from {}'.format(term, self))
+        r.delete(config.api_root + '/taxonomy/{}/term/{}'.format(self.uuid, term.uuid))
