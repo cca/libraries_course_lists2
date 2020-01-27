@@ -14,20 +14,20 @@ For instance, CERAM-101-01 might look like:
 taxos = [
     {
         "uuid": "0dc4bdac-1215-44f1-945d-3e67ed4c36ff",
-        "name": "CERM - COURSE LIST",
+        "name": "CERAM - COURSE LIST",
         "terms": [ { "term": "Summer 2019", "uuid": "1" },
         { "term": "Intro to Ceramics", "uuid": "5" },
         ... ]
     },
     {
         "uuid": "0dc4bdac-1215-44f1-945d-3e67ed4c36ff",
-        "name": "CERM - course sections",
+        "name": "CERAM - course sections",
         "terms": [ { "term": 'CERAM-101-01', "uuid": "2" },
         { "term": 'CERAM-301-07', "uuid": "7" } ]
     },
     {
         "uuid": "0dc4bdac-1215-44f1-945d-3e67ed4c36ff",
-        "name": "CERM - course names",
+        "name": "CERAM - course names",
         "terms": [ { "term": 'CERAM-101', "uuid": "3" } ]
     },
     (a few more of these)...
@@ -52,6 +52,15 @@ from .taxonomy import Term
 
 
 def get_depts(course):
+    """
+        Determine what departments a course should be filed under
+
+        args:
+            course (Course)
+        returns:
+            departments (list): list of department code strings e.g.
+            ["SYLLABUS", "ANIMA"]
+    """
     arch_div = ['BARCH', 'INTER', 'MARCH' ]
     # find out what departmental taxos a course needs to be added to
     # everything will at least be added to Syllabus Collection taxos
@@ -75,6 +84,25 @@ def get_depts(course):
 
 
 def course_list_term(term, taxo, dept_layer=False):
+    """
+        Add all the terms from a course to a taxonomy. This function is recursive,
+        passing a nested Term object which knows its parent/child Terms to itself
+        over and over until it finishes.
+
+        args:
+            term (Term|Course): the term to be added to the taxonomy, if it's a
+            Course object then it will be split into nested Term objects
+
+            taxo (Taxonomy): course list taxonomy to add the course terms to
+
+            dept_layer (bool): whether or not to include a term for the academic
+            department e.g.
+            with dept_layer: Spring 2020\\ANIMA\\Animation 1\\John Doe\\ANIMA-1000-1
+            without dept_layer: Spring 2020\\Animation 1\\John Doe\\ANIMA-1000-1
+
+        returns:
+            nothing
+    """
     if type(term) == Course:
         # term is actually a course object
         course = term
@@ -105,7 +133,7 @@ def course_list_term(term, taxo, dept_layer=False):
         parents.append(instructors)
 
         # final child contains additional data nodes
-        # @TODO is there other data we want to store here? also this doesn't work
+        # @TODO is there other data we want to store here?
         section = Term({
             "data": {
                 "CrsName": course.course_code,
@@ -127,6 +155,29 @@ def course_list_term(term, taxo, dept_layer=False):
 
 # term can be either a Course object or a string
 def create_term(term, taxo_name, taxos):
+    """
+        Adds a Term to a Taxonomy while handling Course terms which require
+        multiple operations due to the way they are represented by multiple,
+        hierarchical terms.
+
+        args:
+            term (str|Course): text of the term to be added at the root of the
+            taxonomy or a Course object to be converted into a nested set of
+            terms
+
+            taxo_name (str): name of the Taxonomy to add the Term to
+
+            taxos (list): the set of all taxonomies which we will find `taxo_name`
+            in
+
+        returns:
+            essentially nothing, do not use the output of this function
+
+            result (str|None): for a string term, returns the (also string) UUID
+            of the created taxonomy term, while for a Course returns nothing due
+            to the way nested terms are created (it wouldn't make much sense to
+            return the final term's UUID)
+    """
     # find the appropriate named taxonomy, do a check in case we don't find one
     taxo = next((t for t in taxos if t.name.lower() == taxo_name.lower()), None)
     if not taxo:
@@ -138,11 +189,27 @@ def create_term(term, taxo_name, taxos):
 
     # term is an object so it's a course list term
     # 2 course lists have an additional layer in hierarchy for department
-    has_dept_layer = 'SYLLABUS' in taxo_name or 'ARCH DIV' in taxo_name
+    has_dept_layer = 'TESTS' in taxo_name or 'SYLLABUS' in taxo_name or 'ARCH DIV' in taxo_name
     return course_list_term(term, taxo, dept_layer=has_dept_layer)
 
 
 def add_to_taxos(course, taxos, only_course_lists=False):
+    """
+        Create all the related taxonomy terms for a given course.
+
+        args:
+            course (Course)
+
+            taxos (list): list of _all_ VAULT taxonomies
+
+            only_course_lists (bool): whether to only add terms to course lists
+            as opposed to all taxonomies (e.g. course sections, faculty names).
+            The initial data population should be all taxonomies but repeat runs
+            can be with `only_course_lists=True`
+
+        returns:
+            nothing
+    """
     for dept in get_depts(course):
         create_term(course, dept + ' - COURSE LIST', taxos)
         if not only_course_lists:
