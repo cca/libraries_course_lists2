@@ -37,5 +37,7 @@ for taxo in course_lists:
 if args.clear:
     exit(0)
 
+# filter out hidden courses
+courses = [course for course in courses if course.hidden == '0']
 for course in sorted(courses, key=course_sort):
-    add_to_taxos(course, taxos, only_course_lists=args.course_lists)
+    add_to_taxos(course, taxos, args.course_lists)
