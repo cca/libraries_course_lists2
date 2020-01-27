@@ -30,8 +30,15 @@ class Term:
 
     def asJSON(self):
         # used to serialize Terms for POSTing to EQUELLA API
-        # NOTE: is it really this easy? always nervous about __ methods
-        return json.dumps(self.__dict__)
+        # Basically, include everything EXCEPT UUID because we use this method
+        # when creating a term in openEQUELLA
+        return json.dumps({
+            "term": self.term,
+            "data": self.data,
+            "parentUuid": self.parentUuid,
+            "index": self.index,
+            "readonly": self.readonly,
+        })
 
 
 class Taxonomy:
