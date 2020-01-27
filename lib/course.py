@@ -8,6 +8,10 @@ from .utilities import strip_prefix
 class Course(SimpleNamespace):
 
 
+    def __repr__(self):
+        return "{} {}".format(self.semester, self.section_code)
+
+
     def find_colocated_sections(self, courses):
         # courses is a list of Course objects
         sections = []
