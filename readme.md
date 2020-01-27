@@ -14,17 +14,13 @@ NOTE: this project is blocked by openequella/openEQUELLA#1192 since we cannot cr
 > pipenv install
 ```
 
+1. Obtain a VAULT OAuth token for API use, copy example.config.py to config.py, then add the token to it.
+
 1. Obtain access to CCA Integrations data in Google Cloud (contact Integration Engineer). There should be JSON files present for employees, students, and courses for the following term.
 
 ## Usage
 
-`python faculty_groups.py data/data.json` will create many text file lists of faculty usernames in the "data" directory. Each file is named after the LDAP group that the people belong to.
-
-`python make_informer_csv.py data/data.json 2019FA` will create an "\_informer.csv" spreadsheet of course information, where data.json is the Workday JSON course information and 2019FA is the current semester's short code.
-
-----
-
-This is the main app, which isn't working yet due to the openEQUELLA bug.
+The main app should work now that a bug in the openEQUELLA Taxonomy API has been fixed. I have only ran tests with it so far.
 
 ```
 usage: app.py [-h] [-c] [--course-lists] [-d] file
@@ -45,6 +41,10 @@ optional arguments:
 ```
 
 The taxonomies JSON is stored in data/taxonomies.json. If you create a new taxonomy related to course lists or course information, you'll need to rerun `python app.py --downloadtaxos` to refresh the JSON.
+
+`python faculty_groups.py data/data.json` will create many text file lists of faculty usernames in the "data" directory. Each file is named after the LDAP group that the people belong to.
+
+`python make_informer_csv.py data/data.json 2019FA` will create an "\_informer.csv" spreadsheet of course information, where data.json is the Workday JSON course information and 2019FA is the current semester's short code. We can deprecate this script once the main app is tested and in use.
 
 ## LICENSE
 
