@@ -63,7 +63,7 @@ class Taxonomy:
                 uuid (str): identifier of the created taxonomy term
         """
         # don't add a term we already have
-        existing_term = self.get(term)
+        existing_term = self.getTerm(term)
         if existing_term is not None:
             return existing_term.uuid
 
@@ -109,16 +109,16 @@ class Taxonomy:
         print('added data to {} term in {} taxonomy'.format(term, self))
 
 
-    def getTerm(self, term, attr="fullTerm"):
+    def getTerm(self, search_term, attr="fullTerm"):
         """
             args:
-                term: Term object
+                search_term: Term object
                 attr: attribute of Term object to match with
             returns:
                 matched Term object or None if term isn't in the Taxonomy
         """
-        for t in self.terms:
-            if getattr(t, attr) == getattr(term, attr):
+        for term in self.terms:
+            if getattr(term, attr) == getattr(search_term, attr):
                 return term
         return None
 
