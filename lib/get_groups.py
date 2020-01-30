@@ -28,8 +28,9 @@ def download_groups():
 
 def get_groups():
     if os.path.exists(groups_file):
-        data = json.load(open(groups_file, 'r'))
-        groups = [Group(g) for g in data["results"]]
+        with open(groups_file, 'r') as fh:
+            data = json.load(fh)
+            groups = [Group(g) for g in data["results"]]
     else:
         # get data from API, this fn also writes to file
         groups = download_groups()
