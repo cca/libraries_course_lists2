@@ -48,7 +48,10 @@ The taxonomies JSON is stored in data/taxonomies.json. If you create a new taxon
 
 ## Testing
 
-`python -m unittest discover -v`
+```sh
+> coverage run -m unittest discover -v # run tests
+> coverage report --include=lib/\\*.py # coverage report
+```
 
 Add tests to the "test" folder and name them like "test_FILENAME" where FILENAME is roughly the name of the module that's being tested. This ensures unittest can discover them and makes it easier to see what tests still need to be written. You may need to create fixtures in both VAULT and the local filesystem to write some tests. Prefer using a fake, created datum to testing against production data that naturally changes.
 
