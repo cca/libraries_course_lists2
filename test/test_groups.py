@@ -1,3 +1,4 @@
+import os
 import unittest
 
 from lib import *
@@ -5,21 +6,27 @@ from lib import *
 
 class TestGroupData(unittest.TestCase):
 
-
-    def test_get_groups(self):
-        groups = get_groups()
+    # helper function
+    def verify_groups(self, groups):
         self.assertTrue(type(groups) == list)
         self.assertTrue(len(groups) > 0)
         for group in groups:
             self.assertTrue(type(group) == Group)
+
+
+    def test_get_groups(self):
+        # delete groups file to test get_groups -> download
+        os.remove(groups_file)
+        groups = get_groups()
+        self.verify_groups(groups)
+        # second use case, we already have the file
+        groups = get_groups()
+        self.verify_groups(groups)
 
 
     def test_download_groups(self):
         groups = download_groups()
-        self.assertTrue(type(groups) == list)
-        self.assertTrue(len(groups) > 0)
-        for group in groups:
-            self.assertTrue(type(group) == Group)
+        self.verify_groups(groups)
 
 
 class TestGroupClass(unittest.TestCase):
