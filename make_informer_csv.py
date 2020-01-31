@@ -30,8 +30,8 @@ def make_course_row(course):
     """ args: course object from Workday json
         returns: list of data properties we're interested in
     """
-    # skip standy courses
-    if 'STANDBY' in course.section_title:
+    # skip hidden/standby courses
+    if course.hidden == "1":
         return None
     global courses
     dept = course.owner
@@ -53,7 +53,7 @@ def make_course_row(course):
         asciize(course.instructor_names if course.instructor_names else 'Staff'),
         course.section_code,
         course.course_code,
-        ', '.join(course.find_colocated_sections(courses)),
+        ', '.join([c.section_code for c in course.find_colocated_sections(courses)]),
         asciize(course.instructor_usernames),
     ]
     return row
