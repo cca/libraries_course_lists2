@@ -13,13 +13,25 @@ class Course(SimpleNamespace):
 
 
     def find_colocated_sections(self, courses):
-        # courses is a list of Course objects
+        """ Return colocated/cross-listed sections
+
+        Parameters
+        ----------
+        courses : list of courses
+            Set of courses to check for colocated ones
+
+        Returns
+        -------
+        list of courses
+            All colocated sections.
+
+        """
         sections = []
         if self.colocated_sections:
             for colo in self.colocated_sections:
                 for course in courses:
                     if colo == course.section_def_refid:
-                        sections.append(course.section_code)
+                        sections.append(course)
                         break
 
         return sections

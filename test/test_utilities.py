@@ -28,7 +28,8 @@ class TestCourseSort(unittest.TestCase):
     def test_course_sort(self):
         c = self.courses # just to save typing below
         sorted_courses = sorted(c, key=course_sort)
-        correct_sort = [c[10], c[9], c[7], c[3], c[2], c[8], c[5], c[0], c[6], c[4], c[1],]
+        # c[10] -> c[12], c[11] & c[10] are new
+        correct_sort = [c[12], c[9], c[10], c[11], c[7], c[3], c[2], c[8], c[5], c[0], c[6], c[4], c[1],]
         self.assertEqual(correct_sort, sorted_courses)
 
 
