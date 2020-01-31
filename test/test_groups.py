@@ -34,17 +34,28 @@ class TestGroupClass(unittest.TestCase):
         # Group.au, Group.ldap
         # Manually test that a couple of these work out
         ANIMA = next(g for g in self.groups if g.name == 'Animation Faculty')
+        PRINT = next(g for g in self.groups if g.name == 'Printmedia Faculty')
         self.assertEqual(ANIMA.au, 'ANIMA')
         self.assertEqual(ANIMA.ldap, 'fac_an')
-        PRINT = next(g for g in self.groups if g.name == 'Printmedia Faculty')
         self.assertEqual(PRINT.au, 'PRINT')
         self.assertEqual(PRINT.ldap, 'fac_pm')
 
 
     def testGroupMethods(self):
-        pass
         # get_users
+        testgroup = next(g for g in self.groups if g.name == 'API TEST GROUP')
+        self.assertFalse(testgroup.have_gotten_users)
+        self.assertTrue(len(testgroup.users) == 0)
+        testgroup.get_users()
+        self.assertTrue(testgroup.have_gotten_users)
+        self.assertTrue(len(testgroup.users) > 0)
         # add_users
+        libusers = len(testgroup.users)
+        # "teststaff" user
+        testgroup.add_users(['d792560a-4155-35f7-515b-a7f662cdcddb'])
+        self.assertTrue(len(testgroup.users) == libusers + 1)
+        self.assertTrue('d792560a-4155-35f7-515b-a7f662cdcddb' in testgroup.users)
+        # remove_users? if we're going to add people almost have to add this method
         # write_ldap_file (use a fixture)
 
 

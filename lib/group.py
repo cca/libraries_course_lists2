@@ -55,7 +55,9 @@ class Group:
         self.uuid = group["id"]
         self.parentUuid = group.get("parentId", None)
         self.name = group["name"]
-        self.users = self.get_users()
+        # initial as empty to save time, can add later with self.get_users()
+        self.users = []
+        self.have_gotten_users = False
         # calculate these on init so repeat calls don't cost anything
         self.au = next((key for key, val in map.items() if val["group"] == self.name), None)
         self.academic_unit = self.au
@@ -75,16 +77,19 @@ class Group:
             returns: group (self)
             throws: HTTP errors from requests
         """
+        if not self.have_gotten_users:
+            self.get_users()
         # deduplicate by casting to a set then back to a list
-        all_users = list(set(self.users + users))
+        all_users = list(set(self.users + new_users))
         data = {
             "id": self.uuid,
             "name": self.name,
+            "parentId": self.parentUuid,
             "users": all_users,
         }
 
         s = request_wrapper()
-        r = s.post(config.api_root + '/usermanagement/local/group/{}'.format(self.uuid), data=data)
+        r = s.put(config.api_root + '/usermanagement/local/group/{}'.format(self.uuid), json=data)
         r.raise_for_status()
 
         print('added {} to {} group'.format(', '.join(new_users), self))
@@ -112,6 +117,8 @@ class Group:
         UUIDs (for internal users)
         """
         users = [p["id"] for p in r.json()["results"]]
+        self.users = users
+        self.have_gotten_users = True
         return users
 
 
