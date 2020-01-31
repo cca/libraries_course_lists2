@@ -56,32 +56,15 @@ class Group:
         self.parentUuid = group.get("parentId", None)
         self.name = group["name"]
         self.users = self.get_users()
+        # calculate these on init so repeat calls don't cost anything
+        self.au = next((key for key, val in map.items() if val["group"] == self.name), None)
+        self.academic_unit = self.au
+        self.ldap = next((val["ldap"] for val in map.values() if val["group"] == self.name), None)
+        self.ldap_name = self.ldap
 
 
     def __repr__(self):
         return self.name
-
-
-    @property
-    def au(self):
-        au = [key for key, value in map.items() if value["group"] == self.name][0]
-        return au
-
-    # just an alias for the above
-    @property
-    def academic_unit(self):
-        return self.au
-
-
-    @property
-    def ldap(self):
-        ldap = [key for key, value in map.items() if value["ldap"] == self.name][0]
-        return ldap
-
-    # just an alias for the above
-    @property
-    def ldap_name(self):
-        return self.ldap
 
 
     def add_users(self, new_users):
