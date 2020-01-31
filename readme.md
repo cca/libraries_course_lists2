@@ -46,6 +46,12 @@ The taxonomies JSON is stored in data/taxonomies.json. If you create a new taxon
 
 `python make_informer_csv.py data/data.json 2019FA` will create an "\_informer.csv" spreadsheet of course information, where data.json is the Workday JSON course information and 2019FA is the current semester's short code. We can deprecate this script once the main app is tested and in use.
 
+## Testing
+
+`python -m unittest discover -v`
+
+Add tests to the "test" folder and name them like "test_FILENAME" where FILENAME is roughly the name of the module that's being tested. This ensures unittest can discover them and makes it easier to see what tests still need to be written. You may need to create fixtures in both VAULT and the local filesystem to write some tests. Prefer using a fake, created datum to testing against production data that naturally changes.
+
 ## LICENSE
 
 [ECL Version 2.0](https://opensource.org/licenses/ECL-2.0)
