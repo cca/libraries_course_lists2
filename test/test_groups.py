@@ -49,13 +49,18 @@ class TestGroupClass(unittest.TestCase):
         testgroup.get_users()
         self.assertTrue(testgroup.have_gotten_users)
         self.assertTrue(len(testgroup.users) > 0)
+
         # add_users
         libusers = len(testgroup.users)
-        # "teststaff" user
-        testgroup.add_users(['d792560a-4155-35f7-515b-a7f662cdcddb'])
+        teststaff = 'd792560a-4155-35f7-515b-a7f662cdcddb'
+        testgroup.add_users(teststaff)
         self.assertTrue(len(testgroup.users) == libusers + 1)
-        self.assertTrue('d792560a-4155-35f7-515b-a7f662cdcddb' in testgroup.users)
-        # remove_users? if we're going to add people almost have to add this method
+        self.assertTrue(teststaff in testgroup.users)
+        # remove_users
+        testgroup.remove_users(teststaff)
+        self.assertTrue(len(testgroup.users) == libusers)
+        self.assertTrue(teststaff not in testgroup.users)
+
         # write_ldap_file (use a fixture)
 
 

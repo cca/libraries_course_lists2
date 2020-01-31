@@ -73,10 +73,13 @@ class Group:
         """
             add list of users to Group
 
-            args: users is a list of usernames (strings)
-            returns: group (self)
+            args: new_users is a single username string or list of username strings
+            returns: Group (self)
             throws: HTTP errors from requests
         """
+        # support group.add_users(username) usage
+        if type(new_users) == str:
+            new_users = [new_users]
         if not self.have_gotten_users:
             self.get_users()
         # deduplicate by casting to a set then back to a list
@@ -87,7 +90,6 @@ class Group:
             "parentId": self.parentUuid,
             "users": all_users,
         }
-
         s = request_wrapper()
         r = s.put(config.api_root + '/usermanagement/local/group/{}'.format(self.uuid), json=data)
         r.raise_for_status()
@@ -120,6 +122,38 @@ class Group:
         self.users = users
         self.have_gotten_users = True
         return users
+
+
+    def remove_users(self, banlist):
+        """ remove list of users from Group
+
+        args: banlist is a single username string or list of username strings
+        returns: Group (self)
+        throws: HTTP errors from requests
+        """
+        # support group.remove_users(username) usage
+        if type(banlist) == str:
+            banlist = [banlist]
+        if not self.have_gotten_users:
+            self.get_users()
+        new_users = [u for u in self.users if u not in banlist]
+        # nothing to do, return
+        if len(new_users) == len(self.users):
+            return self
+
+        data = {
+            "id": self.uuid,
+            "name": self.name,
+            "parentId": self.parentUuid,
+            "users": new_users,
+        }
+        s = request_wrapper()
+        r = s.put(config.api_root + '/usermanagement/local/group/{}'.format(self.uuid), json=data)
+        r.raise_for_status()
+
+        print('removed {} from {} group'.format(', '.join(banlist), self))
+        self.users = new_users
+        return self
 
 
     def write_ldap_file(self):
