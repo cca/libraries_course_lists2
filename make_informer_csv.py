@@ -31,7 +31,7 @@ def make_course_row(course):
         returns: list of data properties we're interested in
     """
     # skip hidden/standby courses
-    if course.hidden == "1":
+    if course.hidden == "1" and course.status != "Preliminary":
         return None
     global courses
     dept = course.owner
