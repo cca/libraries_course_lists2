@@ -22,17 +22,16 @@ def download_groups():
     with open(groups_file, 'w') as fh:
         json.dump(data, fh)
 
-    groups = [Group(g) for g in data["results"]]
-    return groups
+    config.logger.info('Downloaded group JSON data from API.')
+    return [Group(g) for g in data["results"]]
 
 
 def get_groups():
+    config.logger.info('Getting group JSON data.')
     if os.path.exists(groups_file):
         with open(groups_file, 'r') as fh:
             data = json.load(fh)
-            groups = [Group(g) for g in data["results"]]
+            return [Group(g) for g in data["results"]]
     else:
         # get data from API, this fn also writes to file
-        groups = download_groups()
-
-    return groups
+        return download_groups()

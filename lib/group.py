@@ -94,7 +94,7 @@ class Group:
         r = s.put(config.api_root + '/usermanagement/local/group/{}'.format(self.uuid), json=data)
         r.raise_for_status()
 
-        print('added {} to {} group'.format(', '.join(new_users), self))
+        config.logger.info('added {} to {} group'.format(', '.join(new_users), self))
         self.users = all_users
         return self
 
@@ -121,6 +121,7 @@ class Group:
         users = [p["id"] for p in r.json()["results"]]
         self.users = users
         self.have_gotten_users = True
+        config.logger.debug('Downloaded user list from API for group {}'.format(self))
         return users
 
 
@@ -151,11 +152,16 @@ class Group:
         r = s.put(config.api_root + '/usermanagement/local/group/{}'.format(self.uuid), json=data)
         r.raise_for_status()
 
-        print('removed {} from {} group'.format(', '.join(banlist), self))
+        config.logger.info('removed {} from {} group'.format(', '.join(banlist), self))
         self.users = new_users
         return self
 
 
-    def write_ldap_file(self):
-        with open('data/{}.txt'.format(self.ldap), 'a') as file:
+    def write_ldap_file(self, path=None):
+        if not path:
+            path = 'data/{}.txt'.format(self.ldap)
+        with open(path, 'w') as file:
+            if not self.have_gotten_users:
+                self.get_users()
             file.write('\n'.join(self.users))
+            config.logger.info('Wrote LDAP text file {} for group {}'.format(self.ldap, self))

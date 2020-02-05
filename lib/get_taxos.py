@@ -23,10 +23,12 @@ def download_taxos():
     with open(taxos_file, 'w') as fh:
         json.dump(data, fh)
 
+    config.logger.info('Downloaded taxonomy JSON data from API.')
     return [Taxonomy(t) for t in data["results"]]
 
 
 def get_taxos():
+    config.logger.info('Getting taxonomy JSON data.')
     if os.path.exists(taxos_file):
         with open(taxos_file, 'r') as fh:
             data = json.load(fh)

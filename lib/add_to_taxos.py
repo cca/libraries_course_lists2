@@ -49,7 +49,7 @@ lists.
 """
 from .course import Course
 from .taxonomy import Term
-
+from config import logger
 
 def get_depts(course):
     """
@@ -104,6 +104,7 @@ def course_list_term(term, taxo, dept_layer=False):
             nothing
     """
     if type(term) == Course:
+        config.loggerdebug('Course {} passed as taxonomy term, breaking it into nested terms.'.format(term))
         # term is actually a course object
         course = term
         # we need to create the root (semester-level) taxonomy term
@@ -181,7 +182,7 @@ def create_term(term, taxo_name, taxos):
     # find the appropriate named taxonomy, do a check in case we don't find one
     taxo = next((t for t in taxos if t.name.lower() == taxo_name.lower()), None)
     if not taxo:
-        print('Unable to find {} taxonomy.'.format(taxo_name))
+        config.loggererror('Unable to find {} in list of taxonomies.'.format(taxo_name))
         return
 
     if type(term) == str:
@@ -210,6 +211,7 @@ def add_to_taxos(course, taxos, only_course_lists=False):
         returns:
             nothing
     """
+    config.loggerdebug('Processing taxonomies for course {}'.format(course))
     for dept in get_depts(course):
         create_term(course, dept + ' - COURSE LIST', taxos)
         if not only_course_lists:

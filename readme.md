@@ -14,7 +14,7 @@ NOTE: this project is blocked by openequella/openEQUELLA#1192 since we cannot cr
 > pipenv install
 ```
 
-1. Obtain a VAULT OAuth token for API use, copy example.config.py to config.py, then add the token to it.
+1. Obtain a VAULT OAuth token for API use, copy example.config.py to config.py, then add the token to it. You can also change the logging configuration here if you so choose.
 
 1. Obtain access to CCA Integrations data in Google Cloud (contact Integration Engineer). There should be JSON files present for employees, students, and courses for the following term.
 

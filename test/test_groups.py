@@ -1,3 +1,4 @@
+import filecmp
 import os
 import unittest
 
@@ -68,7 +69,11 @@ class TestGroupClass(unittest.TestCase):
         self.assertTrue(len(testgroup.users) == libusers)
         self.assertTrue(teststaff not in testgroup.users)
 
-        # write_ldap_file (use a fixture)
+        # write_ldap_file (uses a fixture)
+        testfile = 'test/test-group-ldap.txt'
+        testgroup.write_ldap_file(testfile)
+        filecmp.cmp('test/api-test-group.txt', testfile)
+        os.remove(testfile)
 
 
 if __name__ == '__main__':

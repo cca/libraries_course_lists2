@@ -25,7 +25,7 @@ class Term:
     @property
     def fullTerm(self):
         # string form of term's path e.g. Fall 2019\ANIMA\Jane Doe...
-        return '\\'.join(self.parents + [self.term])
+        return '\\'.join([p.term for p in self.parents] + [self.term])
 
 
     def asJSON(self):
@@ -70,7 +70,7 @@ class Taxonomy:
         s = request_wrapper()
         r = s.post(config.api_root + '/taxonomy/{}/term'.format(self.uuid), data=term.asJSON())
 
-        print('added {} term to {} taxonomy'.format(term, self))
+        config.logger.info('added {} term to {} taxonomy'.format(term, self))
         # if we successfully created a term, store its UUID
         if r.status_code == 200 or r.status_code == 201:
             # EQUELLA puts the UUID in the response's Location header
@@ -106,7 +106,7 @@ class Taxonomy:
                 value=value
             ))
             r.raise_for_status()
-        print('added data to {} term in {} taxonomy'.format(term, self))
+        config.logger.info('added data to {} term in {} taxonomy'.format(term, self))
 
 
     def getTerm(self, search_term, attr="fullTerm"):
@@ -131,6 +131,7 @@ class Taxonomy:
             returns:
                 root terms (list): list of Term objects
         """
+        config.logger.debug('Getting root-level taxonomy terms for {}'.format(self))
         s = request_wrapper()
         r = s.get(config.api_root + '/taxonomy/{}/term'.format(self.uuid))
         r.raise_for_status()
@@ -160,11 +161,11 @@ class Taxonomy:
 
         # Term objects don't necessarily have UUIDs
         if not term.uuid:
-            print('Cannot delete {} from {}: need to know the UUID of the term.'
+            config.logger.error('Cannot delete {} from {}: need to know the UUID of the term.'
             .format(self, term))
             return False
 
-        print('deleting {} term from {} taxonomy'.format(term, self))
+        config.logger.info('deleting {} term from {} taxonomy'.format(term, self))
         r = s.delete(config.api_root + '/taxonomy/{}/term/{}'.format(self.uuid, term.uuid))
         # will throw a 500 error if the taxonomy is locked by another user
         # r.json() = {'code': 500, 'error': 'Internal Server Error',
@@ -190,6 +191,7 @@ class Taxonomy:
                 "parent\\entry"} note that they lack the Term UUID :( and thus
                 are kinda useless
         """
+        config.logger.debug('Searching taxonomy {} for query {} with options {}'.format(self, query, options))
         s = request_wrapper()
         r = s.get(config.api_root + '/taxonomy/{}/search?q={}&{}'.format(
             self.uuid,
