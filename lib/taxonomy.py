@@ -162,7 +162,7 @@ class Taxonomy:
         # Term objects don't necessarily have UUIDs
         if not term.uuid:
             config.logger.error('Cannot delete {} from {}: need to know the UUID of the term.'
-            .format(self, term))
+            .format(term, self))
             return False
 
         config.logger.info('deleting {} term from {} taxonomy'.format(term, self))

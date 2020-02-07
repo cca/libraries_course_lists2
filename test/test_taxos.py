@@ -87,7 +87,7 @@ class TestTaxoData(unittest.TestCase):
         taxo.add(Term({"term": string}))
         self.assertTrue(taxo.remove(string))
         self.assertTrue(starting_terms_length == len(taxo.getRootTerms()))
-        self.assertFalse(taxo.remove(Term({"term": "this fails, can't remove a term w/o UUID"})))
+        self.assertFalse(taxo.remove(Term({"term": "term without UUID"})))
         self.assertTrue(starting_terms_length == len(taxo.getRootTerms()))
 
 
