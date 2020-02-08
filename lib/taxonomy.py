@@ -10,7 +10,7 @@ class Term:
         # children is a list of other Term objects
         self.children = term.get('children', [])
         self.data = term.get('data', {})
-        # parents is a list of _strings_ not Term objects
+        # parents is a list of Term objects
         self.parents = term.get('parents', [])
         self.parentUuid = term.get('parentUuid', None)
         self.term = term['term']
@@ -112,11 +112,17 @@ class Taxonomy:
     def getTerm(self, search_term, attr="fullTerm"):
         """
             args:
-                search_term: Term object
-                attr: attribute of Term object to match with
+                search_term: str|Term item to search for, strings will be cast
+                to Terms like Term({"attr": "search_term"})
+                attr: attribute of Term object to match with, e.g. term, fullTerm,
+                UUID
             returns:
                 matched Term object or None if term isn't in the Taxonomy
         """
+        if type(search_term) == str:
+            d = {}
+            d[attr] = search_term
+            search_term = Term(d)
         for term in self.terms:
             if getattr(term, attr) == getattr(search_term, attr):
                 return term

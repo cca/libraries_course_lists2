@@ -104,7 +104,7 @@ def course_list_term(term, taxo, dept_layer=False):
             nothing
     """
     if type(term) == Course:
-        config.loggerdebug('Course {} passed as taxonomy term, breaking it into nested terms.'.format(term))
+        logger.debug('Course {} passed as taxonomy term, breaking it into nested terms.'.format(term))
         # term is actually a course object
         course = term
         # we need to create the root (semester-level) taxonomy term
@@ -114,21 +114,21 @@ def course_list_term(term, taxo, dept_layer=False):
         if dept_layer:
             dept = Term({
                 "term": course.owner,
-                "parents": [p.term for p in parents],
+                "parents": parents,
             })
             term.children.append(dept)
             parents.append(dept)
 
         title = Term({
             "term": course.section_title,
-            "parents": [p.term for p in parents],
+            "parents": parents,
         })
         term.children.append(title)
         parents.append(title)
 
         instructors = Term({
             "term": course.instructor_names,
-            "parents": [p.term for p in parents],
+            "parents": parents,
         })
         term.children.append(instructors)
         parents.append(instructors)
@@ -140,7 +140,7 @@ def course_list_term(term, taxo, dept_layer=False):
                 "CrsName": course.course_code,
                 "facultyID": course.instructor_usernames,
             },
-            "parents": [p.term for p in parents],
+            "parents": parents,
             "term": course.section_code,
         })
         term.children.append(section)
@@ -182,8 +182,8 @@ def create_term(term, taxo_name, taxos):
     # find the appropriate named taxonomy, do a check in case we don't find one
     taxo = next((t for t in taxos if t.name.lower() == taxo_name.lower()), None)
     if not taxo:
-        config.loggererror('Unable to find {} in list of taxonomies.'.format(taxo_name))
-        return
+        logger.error('Unable to find {} in list of taxonomies.'.format(taxo_name))
+        return None
 
     if type(term) == str:
         return taxo.add(Term({ "term": term }))
@@ -211,7 +211,7 @@ def add_to_taxos(course, taxos, only_course_lists=False):
         returns:
             nothing
     """
-    config.loggerdebug('Processing taxonomies for course {}'.format(course))
+    logger.debug('Processing taxonomies for course {}'.format(course))
     for dept in get_depts(course):
         create_term(course, dept + ' - COURSE LIST', taxos)
         if not only_course_lists:
