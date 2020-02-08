@@ -44,8 +44,8 @@
 
         		{
 
-        		"refid": "AU_UDIST",
-        		"name": "Upper Division Interdisciplinary Studio",
+        		"refid": "AU_INTER",
+        		"name": "Interior Design",
         		"offering_percent": "100",
         		"course_owner": true
         		}
@@ -123,9 +123,8 @@
         "academic_units": [
 
         		{
-
-        		"refid": "AU_UDIST",
-        		"name": "Upper Division Interdisciplinary Studio",
+        		"refid": "AU_CCA",
+        		"name": "CCA",
         		"offering_percent": "100",
         		"course_owner": true
         		}
@@ -187,7 +186,7 @@
 
          "colocated_parent": "",
          "colocated_sections": "",
-            "subject": "UDIST",
+            "subject": "CRITI",
 "subject_name": "Upper Level Interdisciplinary Studio",
 
         "min_unit": "3",
@@ -206,9 +205,8 @@
         "academic_units": [
 
         		{
-
-        		"refid": "AU_UDIST",
-        		"name": "Upper Division Interdisciplinary Studio",
+				"refid": "AU_FA",
+        		"name": "Fine Arts",
         		"offering_percent": "100",
         		"course_owner": true
         		}
@@ -272,7 +270,7 @@
 
          "colocated_parent": "",
          "colocated_sections": "",
-            "subject": "UDIST",
+            "subject": "FNART",
 "subject_name": "Upper Level Interdisciplinary Studio",
 
         "min_unit": "3",
@@ -292,8 +290,8 @@
 
         		{
 
-        		"refid": "AU_UDIST",
-        		"name": "Upper Division Interdisciplinary Studio",
+        		"refid": "AU_FA",
+        		"name": "Fine Arts",
         		"offering_percent": "100",
         		"course_owner": true
         		}
@@ -1031,9 +1029,14 @@
 
         		"refid": "AU_CORES",
         		"name": "First Year Core Studio",
-        		"offering_percent": "100",
+        		"offering_percent": "50",
         		"course_owner": true
-        		}
+				}, {
+					"refid": "AU_INDUS",
+	        		"name": "Industrial Design",
+	        		"offering_percent": "50",
+	        		"course_owner": false
+				}
         ],
 
         "meetings": [

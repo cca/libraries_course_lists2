@@ -28,8 +28,7 @@ class TestCourseSort(unittest.TestCase):
     def test_course_sort(self):
         c = self.courses # just to save typing below
         sorted_courses = sorted(c, key=course_sort)
-        # c[10] -> c[12], c[11] & c[10] are new
-        correct_sort = [c[12], c[9], c[10], c[11], c[7], c[3], c[2], c[8], c[5], c[0], c[6], c[4], c[1],]
+        correct_sort = [c[1], c[12], c[9],  c[3], c[2], c[10], c[11], c[0], c[7], c[8], c[5], c[6], c[4],]
         self.assertEqual(correct_sort, sorted_courses)
 
 
@@ -37,12 +36,16 @@ class TestRequestWrapper(unittest.TestCase):
 
 
     def test_request_wrapper(self):
+        global config
         s = request_wrapper()
         r = s.get(config.api_root + '/taxonomy')
         r.raise_for_status()
         taxos = r.json()
         self.assertTrue(taxos["length"] > 1)
         self.assertTrue(len(taxos["results"]))
+        # cannot perform requests without OAuth token
+        del config.token
+        self.assertRaises(Exception, request_wrapper)
 
 
 if __name__ == '__main__':
