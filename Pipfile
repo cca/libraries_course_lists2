@@ -11,3 +11,8 @@ coverage = "~=5.0"
 
 [requires]
 python_version = "3.7"
+
+[scripts]
+cover = 'coverage run -m unittest discover -v'
+report = 'coverage report --include=lib/\*'
+test = 'python -m unittest discover -v'
