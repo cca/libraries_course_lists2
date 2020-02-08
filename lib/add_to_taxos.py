@@ -109,29 +109,32 @@ def course_list_term(term, taxo, dept_layer=False):
         course = term
         # we need to create the root (semester-level) taxonomy term
         term = Term({ "term": course.semester })
-        parents = [term]
+        # We build a tree of nested Terms all inside the current Term's list
+        # of children. Each term being outlined in the sections below (nothing
+        # has been added to the Taxo yet) has a parents list equal to the course
+        # term itself & its children which we are creating along the way, not to
+        # be finished until we reach the final one. We use makeParentsList to
+        # pass _values_ not a reference or every Term.parents => the whole tree.
+        makeParentsList = lambda t: [t] + [c for c in t.children]
 
         if dept_layer:
             dept = Term({
                 "term": course.owner,
-                "parents": parents,
+                "parents": makeParentsList(term),
             })
             term.children.append(dept)
-            parents.append(dept)
 
         title = Term({
             "term": course.section_title,
-            "parents": parents,
+            "parents": makeParentsList(term),
         })
         term.children.append(title)
-        parents.append(title)
 
         instructors = Term({
             "term": course.instructor_names,
-            "parents": parents,
+            "parents": makeParentsList(term),
         })
         term.children.append(instructors)
-        parents.append(instructors)
 
         # final child contains additional data nodes
         # @TODO is there other data we want to store here?
@@ -140,7 +143,7 @@ def course_list_term(term, taxo, dept_layer=False):
                 "CrsName": course.course_code,
                 "facultyID": course.instructor_usernames,
             },
-            "parents": parents,
+            "parents": makeParentsList(term),
             "term": course.section_code,
         })
         term.children.append(section)

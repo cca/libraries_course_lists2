@@ -38,10 +38,12 @@ class TestAddTaxos(unittest.TestCase):
         create_term("term string", 'TESTS', self.taxos)
         self.assertTrue(tests.getTerm(Term({"term": "term string"})))
 
-        # tests course_list_term
+        # tests course_list_term which is called by create_term(course,...)
         semester = self.courses[0].semester
         create_term(self.courses[0], 'TESTS - course list', self.taxos)
         self.assertTrue(courselist.getTerm(Term({"term": semester})))
+        # try to add a term (without dept layer) while semester already exists
+        course_list_term(self.courses[0], courselist, False)
         # @TODO check that the child terms also exist
 
         # delete the terms we just created
