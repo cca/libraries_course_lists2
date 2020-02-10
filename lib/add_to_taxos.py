@@ -193,7 +193,7 @@ def create_term(term, taxo_name, taxos):
 
     # term is an object so it's a course list term
     # 2 course lists have an additional layer in hierarchy for department
-    has_dept_layer = 'TESTS' in taxo_name or 'SYLLABUS' in taxo_name or 'ARCH DIV' in taxo_name
+    has_dept_layer = 'SYLLABUS' in taxo_name or 'ARCH DIV' in taxo_name
     return course_list_term(term, taxo, dept_layer=has_dept_layer)
 
 

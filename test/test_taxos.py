@@ -44,9 +44,6 @@ class TestTaxoData(unittest.TestCase):
         # test adding an already-existing term (should return the UUID)
         self.assertEqual(parent.uuid, taxo.add(parent))
         self.assertTrue(parent in taxo.terms)
-        # should have one more root term now
-        print('Starting length: {}'.format(starting_terms_length))
-        print(taxo.getRootTerms())
         self.assertTrue(starting_terms_length + 1 == len(taxo.getRootTerms()))
         child = Term({
             "term": "Child",
@@ -74,6 +71,7 @@ class TestTaxoData(unittest.TestCase):
         }))
         # Taxonomy::getTerm
         self.assertEqual(child, taxo.getTerm(child))
+        self.assertEqual(child, taxo.getTerm("Child"))
         self.assertEqual(parent, taxo.getTerm(Term({"term": "Parent"})))
         # Taxonomy::search
         no_results = taxo.search('thistermdoesnotexistheeeeyoooo')

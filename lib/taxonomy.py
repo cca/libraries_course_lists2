@@ -63,7 +63,7 @@ class Taxonomy:
                 uuid (str): identifier of the created taxonomy term
         """
         # don't add a term we already have
-        existing_term = self.getTerm(term)
+        existing_term = self.getTerm(term, "fullTerm")
         if existing_term is not None:
             return existing_term.uuid
 
@@ -99,17 +99,26 @@ class Taxonomy:
 
         s = request_wrapper()
         for key, value in term.data.items():
-            r = s.put(config.api_root + '/taxonomy/{uuid}/term/{termUuid}/data/{key}/{value}'.format(
-                uuid=self.uuid,
-                termUuid=term.uuid,
-                key=key,
-                value=value
-            ))
-            r.raise_for_status()
+            if value:
+                r = s.put(config.api_root + '/taxonomy/{uuid}/term/{termUuid}/data/{key}/{value}'.format(
+                    uuid=self.uuid,
+                    termUuid=term.uuid,
+                    key=key,
+                    value=value
+                ))
+                r.raise_for_status()
         config.logger.info('added data to {} term in {} taxonomy'.format(term, self))
 
 
-    def getTerm(self, search_term, attr="fullTerm"):
+    def clear(self):
+        """
+            delete all terms in the taxonomy
+        """
+        for term in self.getRootTerms():
+            self.remove(term)
+
+
+    def getTerm(self, search_term, attr="term"):
         """
             args:
                 search_term: str|Term item to search for, strings will be cast
