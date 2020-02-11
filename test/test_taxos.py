@@ -60,6 +60,11 @@ class TestTaxoData(unittest.TestCase):
         # @TODO this seems clunky, could we possibly detect when a child node
         # is added & automatically add it to its parents list of children?
         parent.children = [child]
+
+        # addData throws an error if you pass it a Term without a UUID
+        with self.assertRaises(Exception):
+            taxo.addData(Term({"term": "a", "data": {"b": "c"}}))
+
         # Term::fullTerm
         self.assertEqual(child.fullTerm, 'Parent\\Child')
         self.assertEqual(child.asJSON(), json.dumps({
@@ -69,15 +74,18 @@ class TestTaxoData(unittest.TestCase):
             "index": child.index,
             "readonly": child.readonly,
         }))
+
         # Taxonomy::getTerm
         self.assertEqual(child, taxo.getTerm(child))
         self.assertEqual(child, taxo.getTerm("Child"))
         self.assertEqual(parent, taxo.getTerm(Term({"term": "Parent"})))
+
         # Taxonomy::search
         no_results = taxo.search('thistermdoesnotexistheeeeyoooo')
         self.assertTrue(len(no_results) == 0)
         one_result = taxo.search('Parent')
         self.assertTrue(len(one_result) == 1)
+
         # Taxonomy::remove (which returns a boolean)
         self.assertTrue(taxo.remove(parent))
         self.assertTrue(starting_terms_length == len(taxo.getRootTerms()))

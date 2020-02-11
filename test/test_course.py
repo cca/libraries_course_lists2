@@ -23,6 +23,7 @@ class TestCourseClass(unittest.TestCase):
         self.assertEqual(two_instructors.instructor_usernames, 'mwerner, echristopherson')
         # test on_portal - one_instructor course is status: Preliminary
         self.assertFalse(one_instructor.on_portal)
+        self.assertTrue(two_instructors.on_portal)
         self.assertFalse(next(c for c in self.courses if c.hidden == '1').on_portal)
         self.assertFalse(self.courses[11].on_portal) # EXTED course
         # test a first year course rather than another UDIST one

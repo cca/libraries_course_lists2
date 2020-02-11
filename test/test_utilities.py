@@ -44,8 +44,9 @@ class TestRequestWrapper(unittest.TestCase):
         self.assertTrue(taxos["length"] > 1)
         self.assertTrue(len(taxos["results"]))
         # cannot perform requests without OAuth token
-        del config.token
-        self.assertRaises(Exception, request_wrapper)
+        with self.assertRaises(Exception):
+            del config.token
+            s = request_wrapper()
 
 
 if __name__ == '__main__':

@@ -50,6 +50,7 @@ class TestGroupClass(unittest.TestCase):
 
 
     def testGroupMethods(self):
+        # @TODO test add_users / remove_users before have_gotten_users = True
         # get_users
         testgroup = next(g for g in self.groups if g.name == 'API TEST GROUP')
         self.assertFalse(testgroup.have_gotten_users)
@@ -68,12 +69,16 @@ class TestGroupClass(unittest.TestCase):
         testgroup.remove_users(teststaff)
         self.assertTrue(len(testgroup.users) == libusers)
         self.assertTrue(teststaff not in testgroup.users)
+        testgroup.remove_users(teststaff) # should do nothing
 
         # write_ldap_file (uses a fixture)
         testfile = 'test/test-group-ldap.txt'
         testgroup.write_ldap_file(testfile)
+        testgroup.write_ldap_file()
         filecmp.cmp('test/api-test-group.txt', testfile)
+        filecmp.cmp('test/api-test-group.txt', 'data/None.txt')
         os.remove(testfile)
+        os.remove('data/None.txt')
 
 
 if __name__ == '__main__':
