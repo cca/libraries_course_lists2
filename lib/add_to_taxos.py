@@ -148,13 +148,13 @@ def course_list_term(term, taxo, dept_layer=False):
         })
         term.children.append(section)
 
-    uuid = taxo.add(term)
+    term.uuid = taxo.add(term)
 
     # if we have child terms to add, recursively call this function
     if len(term.children) > 0:
         next_term = term.children.pop(0)
         next_term.children = term.children
-        next_term.parentUuid = uuid
+        next_term.parentUuid = term.uuid
         course_list_term(next_term, taxo)
 
 # term can be either a Course object or a string

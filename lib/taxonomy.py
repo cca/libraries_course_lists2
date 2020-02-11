@@ -1,7 +1,7 @@
 import json
 from urllib.parse import urlencode
 
-import config
+from config import api_root, logger
 from .utilities import request_wrapper
 
 
@@ -60,7 +60,7 @@ class Taxonomy:
             args:
                 term (Term)
             returns:
-                uuid (str): identifier of the created taxonomy term
+                term (Term): the created taxonomy term
         """
         # don't add a term we already have
         existing_term = self.getTerm(term, "fullTerm")
@@ -68,18 +68,28 @@ class Taxonomy:
             return existing_term.uuid
 
         s = request_wrapper()
-        r = s.post(config.api_root + '/taxonomy/{}/term'.format(self.uuid), data=term.asJSON())
+        r = s.post(api_root + '/taxonomy/{}/term'.format(self.uuid), data=term.asJSON())
 
-        config.logger.info('added {} term to {} taxonomy'.format(term, self))
+        logger.info('added {} term to {} taxonomy'.format(term, self))
         # if we successfully created a term, store its UUID
         if r.status_code == 200 or r.status_code == 201:
             # EQUELLA puts the UUID in the response's Location header
             # "Location": "https://vault.cca.edu/api/taxonomy/7ef.../term/bc35..."
             term.uuid = r.headers['Location'].split('/term/')[1]
+        # https://github.com/openequella/openEQUELLA/issues/1476
+        # if we're trying to add a term that already exists, we'll get a dupe
+        # sibling error & have no way of figuring out the existing term's UUID
+        elif r.status_code == 406 and 'A duplicate sibling term already exists' in r.json()["error_description"]:
+            logger.debug('{} term already exists in {}'.format(term, self))
+            # this is untested...
+            return self.getTerm(term, "fullPath")
+        else:
+            r.raise_for_status()
+
         self.terms.add(term)
         if term.data:
             self.addData(term)
-        return term.uuid
+        return term
 
 
     def addData(self, term):
@@ -100,14 +110,14 @@ class Taxonomy:
         s = request_wrapper()
         for key, value in term.data.items():
             if value:
-                r = s.put(config.api_root + '/taxonomy/{uuid}/term/{termUuid}/data/{key}/{value}'.format(
+                r = s.put(api_root + '/taxonomy/{uuid}/term/{termUuid}/data/{key}/{value}'.format(
                     uuid=self.uuid,
                     termUuid=term.uuid,
                     key=key,
                     value=value
                 ))
                 r.raise_for_status()
-        config.logger.info('added data to {} term in {} taxonomy'.format(term, self))
+        logger.info('added data to {} term in {} taxonomy'.format(term, self))
 
 
     def clear(self):
@@ -146,9 +156,9 @@ class Taxonomy:
             returns:
                 root terms (list): list of Term objects
         """
-        config.logger.debug('Getting root-level taxonomy terms for {}'.format(self))
+        logger.debug('Getting root-level taxonomy terms for {}'.format(self))
         s = request_wrapper()
-        r = s.get(config.api_root + '/taxonomy/{}/term'.format(self.uuid))
+        r = s.get(api_root + '/taxonomy/{}/term'.format(self.uuid))
         r.raise_for_status()
         return [Term(t) for t in r.json()]
 
@@ -169,19 +179,19 @@ class Taxonomy:
             # SEMESTER\COURSE it'll return the instructor names beneath `COURSE`
             # But requesting /tax/uuid/term gets the root of the taxonomy which
             # is where all semester terms will be
-            r = s.get(config.api_root + '/taxonomy/{}/term'.format(self.uuid))
+            r = s.get(api_root + '/taxonomy/{}/term'.format(self.uuid))
             r.raise_for_status()
             # convert to a term object
             term = Term([t for t in r.json() if t["term"] == term][0])
 
         # Term objects don't necessarily have UUIDs
         if not term.uuid:
-            config.logger.error('Cannot delete {} from {}: need to know the UUID of the term.'
+            logger.error('Cannot delete {} from {}: need to know the UUID of the term.'
             .format(term, self))
             return False
 
-        config.logger.info('deleting {} term from {} taxonomy'.format(term, self))
-        r = s.delete(config.api_root + '/taxonomy/{}/term/{}'.format(self.uuid, term.uuid))
+        logger.info('deleting {} term from {} taxonomy'.format(term, self))
+        r = s.delete(api_root + '/taxonomy/{}/term/{}'.format(self.uuid, term.uuid))
         # will throw a 500 error if the taxonomy is locked by another user
         # r.json() = {'code': 500, 'error': 'Internal Server Error',
         # 'error_description': 'Taxonomy is locked by another user: {username}'}
@@ -206,9 +216,9 @@ class Taxonomy:
                 "parent\\entry"} note that they lack the Term UUID :( and thus
                 are kinda useless
         """
-        config.logger.debug('Searching taxonomy {} for query {} with options {}'.format(self, query, options))
+        logger.debug('Searching taxonomy {} for query {} with options {}'.format(self, query, options))
         s = request_wrapper()
-        r = s.get(config.api_root + '/taxonomy/{}/search?q={}&{}'.format(
+        r = s.get(api_root + '/taxonomy/{}/search?q={}&{}'.format(
             self.uuid,
             query,
             urlencode(options),
