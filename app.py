@@ -37,7 +37,6 @@ for taxo in course_lists:
 if args.clear:
     exit(0)
 
-# filter out preliminary and hidden courses
-courses = [c for c in courses if c.hidden == '0' and c.status != 'Preliminary']
 for course in sorted(courses, key=course_sort):
-    add_to_taxos(course, taxos, args.course_lists)
+    if course.on_portal:
+        add_to_taxos(course, taxos, args.course_lists)

@@ -2,7 +2,7 @@
 # let's us construct an object from a dict
 from types import SimpleNamespace
 
-from .utilities import strip_prefix
+from .utilities import strip_prefix, PORTAL_STATUSES
 
 
 class Course(SimpleNamespace):
@@ -48,6 +48,13 @@ class Course(SimpleNamespace):
     def instructor_usernames(self):
         # print list of instructor usernames as comma-separated string
         return ', '.join([i['username'] for i in self.instructors])
+
+    @property
+    def on_portal(self):
+        """ boolean for whether a course is included in Portal course catalog """
+        if self.hidden != "1" and self.status in PORTAL_STATUSES and self.owner != 'EXTED':
+            return True
+        return False
 
     @property
     def owner(self):

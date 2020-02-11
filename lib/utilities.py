@@ -5,6 +5,8 @@ import requests
 import config
 
 
+PORTAL_STATUSES = ('Closed', 'Open', 'Waitlist')
+
 def request_wrapper():
     if not config.token:
         raise Exception('I need an OAuth token in config.py to work.')

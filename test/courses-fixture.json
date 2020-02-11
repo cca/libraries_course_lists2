@@ -13,7 +13,7 @@
         "course_number": "3000",
         "section_number": "3",
         "term": "AP_Spring_2020",
-        "status": "Open",
+        "status": "Preliminary",
         "hidden": "0",
 
         "course_code": "UDIST-3000",
@@ -951,7 +951,7 @@
 
         		{
 
-        		"refid": "AU_INDUS",
+        		"refid": "AU_EXTED",
         		"name": "Industrial Design",
         		"offering_percent": "100",
         		"course_owner": true
