@@ -189,6 +189,9 @@ def create_term(term, taxo_name, taxos):
         return None
 
     if type(term) == str:
+        if len(term) == 0 or term.isspace():
+            logger.debug('No term to be added to {} taxonomy'.format(taxo))
+            return None
         return taxo.add(Term({ "term": term }))
 
     # term is an object so it's a course list term
