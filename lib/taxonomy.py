@@ -28,17 +28,17 @@ class Term:
         return '\\'.join([p.term for p in self.parents] + [self.term])
 
 
-    def asJSON(self):
+    def asPOSTData(self):
         # used to serialize Terms for POSTing to EQUELLA API
         # Basically, include everything EXCEPT UUID because we use this method
         # when creating a term in openEQUELLA
-        return json.dumps({
+        return {
             "term": self.term,
             "data": self.data,
             "parentUuid": self.parentUuid,
             "index": self.index,
             "readonly": self.readonly,
-        })
+        }
 
 
 class Taxonomy:
@@ -60,36 +60,37 @@ class Taxonomy:
             args:
                 term (Term)
             returns:
-                term (Term): the created taxonomy term
+                uuid (str): the UUID of the created taxonomy term or, if the term
+                already existed, the UUID of the existing term
         """
         # don't add a term we already have
         existing_term = self.getTerm(term, "fullTerm")
-        if existing_term is not None:
+        if existing_term:
+            if not existing_term.uuid:
+                logger.error("Added a pre-existing term {} to taxonomy {} but we don't know its name, something strange is going on.".format(term, self))
+                return None
             return existing_term.uuid
 
-        s = request_wrapper()
-        r = s.post(api_root + '/taxonomy/{}/term'.format(self.uuid), data=term.asJSON())
+        if type(term) == str:
+            term = Term({"term": term})
 
-        logger.info('added {} term to {} taxonomy'.format(term, self))
+        s = request_wrapper()
+        r = s.post(api_root + '/taxonomy/{}/term'.format(self.uuid), json=term.asPOSTData())
+
         # if we successfully created a term, store its UUID
         if r.status_code == 200 or r.status_code == 201:
+            logger.info('added {} term to {} taxonomy'.format(term, self))
             # EQUELLA puts the UUID in the response's Location header
             # "Location": "https://vault.cca.edu/api/taxonomy/7ef.../term/bc35..."
             term.uuid = r.headers['Location'].split('/term/')[1]
-        # https://github.com/openequella/openEQUELLA/issues/1476
-        # if we're trying to add a term that already exists, we'll get a dupe
-        # sibling error & have no way of figuring out the existing term's UUID
-        elif r.status_code == 406 and 'A duplicate sibling term already exists' in r.json()["error_description"]:
-            logger.debug('{} term already exists in {}'.format(term, self))
-            # this is untested...
-            return self.getTerm(term, "fullPath")
+            self.terms.add(term)
         else:
+            logger.error(r.json())
             r.raise_for_status()
 
-        self.terms.add(term)
         if term.data:
             self.addData(term)
-        return term
+        return term.uuid
 
 
     def addData(self, term):
@@ -132,16 +133,15 @@ class Taxonomy:
         """
             args:
                 search_term: str|Term item to search for, strings will be cast
-                to Terms like Term({"attr": "search_term"})
+                to Terms like Term({"term": "string"})
                 attr: attribute of Term object to match with, e.g. term, fullTerm,
                 UUID
             returns:
                 matched Term object or None if term isn't in the Taxonomy
         """
         if type(search_term) == str:
-            d = {}
-            d[attr] = search_term
-            search_term = Term(d)
+            search_term = Term({"term": search_term})
+
         for term in self.terms:
             if getattr(term, attr) == getattr(search_term, attr):
                 return term
@@ -160,29 +160,34 @@ class Taxonomy:
         s = request_wrapper()
         r = s.get(api_root + '/taxonomy/{}/term'.format(self.uuid))
         r.raise_for_status()
-        return [Term(t) for t in r.json()]
+        terms = [Term(t) for t in r.json()]
+        for term in terms:
+            self.terms.add(term)
+        return terms
 
 
     def remove(self, term):
         """
             Remove a term from a taxonomy (primarily used to remove semester
-            terms from course lists). ONLY REMOVES ROOT-LEVEL TERMS RIGHT NOW.
+            terms from course lists).
             args:
-                term (Term): either a string ("Fall 2019") or Term object
+                term (str|Term): either a string ("Fall 2019") or Term object
             returns:
                 status (bool): True for successful & False for not
         """
-        s = request_wrapper()
         if type(term) == str:
-            # NOTE: you can get a term with /tax/{uuid}/term?path={string}
-            # but it always seems to return the children of `string` e.g. for
-            # SEMESTER\COURSE it'll return the instructor names beneath `COURSE`
-            # But requesting /tax/uuid/term gets the root of the taxonomy which
-            # is where all semester terms will be
-            r = s.get(api_root + '/taxonomy/{}/term'.format(self.uuid))
-            r.raise_for_status()
-            # convert to a term object
-            term = Term([t for t in r.json() if t["term"] == term][0])
+            found_term = self.getTerm(term, "fullTerm")
+            if found_term:
+                term = found_term
+            else:
+                # We hope the term is in the taxonomy root because otherwise we
+                # have no way of finding it
+                terms = self.getRootTerms()
+                # this does _not_ fail gracefully...
+                term = next((t for t in terms if t.term == term), None)
+                if not term:
+                    logger.error('Cannot find term "{}" in taxonomy {}.'.format(term, self))
+                    return False
 
         # Term objects don't necessarily have UUIDs
         if not term.uuid:
@@ -190,12 +195,18 @@ class Taxonomy:
             .format(term, self))
             return False
 
+        s = request_wrapper()
         logger.info('deleting {} term from {} taxonomy'.format(term, self))
         r = s.delete(api_root + '/taxonomy/{}/term/{}'.format(self.uuid, term.uuid))
+        self.terms.discard(term)
         # will throw a 500 error if the taxonomy is locked by another user
         # r.json() = {'code': 500, 'error': 'Internal Server Error',
         # 'error_description': 'Taxonomy is locked by another user: {username}'}
         r.raise_for_status()
+        # remove term's children (openEQUELLA API does this automatically)
+        if len(term.children) > 0:
+            for child in term.children:
+                self.terms.discard(child)
         return True
 
 

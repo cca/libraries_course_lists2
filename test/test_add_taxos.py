@@ -41,6 +41,9 @@ class TestAddTaxos(unittest.TestCase):
         courselist = next(t for t in self.taxos if t.name == 'TESTS - COURSE LIST')
         unsuccessful = create_term("term", "taxo that doesn't exist", self.taxos)
         self.assertEqual(unsuccessful, None)
+        # empty string means there's no taxo term to create
+        self.assertEqual(create_term("", 'TESTS', self.taxos), None)
+
         test_string = "term string"
         create_term(test_string, 'TESTS', self.taxos)
         self.assertTrue(tests.getTerm(test_string))
@@ -58,6 +61,7 @@ class TestAddTaxos(unittest.TestCase):
 
     def testAddToTaxos(self):
         courselist = next(t for t in self.taxos if t.name == 'TESTS - COURSE LIST')
+        courselist.getRootTerms()
         # set course owners to TESTS so we don't create terms in live taxos
         for c in self.courses:
             for au in c.academic_units:
@@ -91,7 +95,8 @@ class TestAddTaxos(unittest.TestCase):
         self.assertTrue(ctitle.getTerm(self.courses[9].section_title))
         faculty = next(t for t in self.taxos if t.name == 'TESTS - faculty')
         self.assertTrue(faculty.getTerm(self.courses[10].instructor_names))
-        self.assertTrue(faculty.getTerm(self.courses[11].instructor_names))
+        # courses[11] has no instructors, just pick another one
+        self.assertTrue(faculty.getTerm(self.courses[7].instructor_names))
 
 
 if __name__ == '__main__':

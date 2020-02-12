@@ -31,24 +31,25 @@ class TestTaxoData(unittest.TestCase):
         taxos = download_taxos()
         taxo = next(t for t in taxos if t.name == 'TESTS')
         # Taxonomy::getRootTerms
-        root_terms = taxo.getRootTerms()
-        starting_terms_length = len(root_terms)
-        self.assertTrue(starting_terms_length > 0)
+        taxo.getRootTerms()
+        for t in taxo.terms:
+            # ensure "parent" term (and its children) aren't present before we
+            # test, must run this _after_ getRootTerms() or that is called twice
+            if t.term == "Parent":
+                taxo.remove(t)
+                break
+        starting_length = len(taxo.terms)
+        self.assertTrue(starting_length > 0)
         # create a parent and a child term
-        parent = Term({
-            "term": "Parent",
-            "index": 0,
-            "readonly": False,
-        })
-        parent.uuid  = taxo.add(parent)
+        taxo.add("Parent")
+        parent = taxo.getTerm("Parent")
+        self.assertTrue(parent in taxo.terms)
         # test adding an already-existing term (should return the UUID)
         self.assertEqual(parent.uuid, taxo.add(parent))
-        self.assertTrue(parent in taxo.terms)
-        self.assertTrue(starting_terms_length + 1 == len(taxo.getRootTerms()))
+        print(taxo.terms); print(starting_length)
+        self.assertTrue(starting_length + 1 == len(taxo.terms))
         child = Term({
             "term": "Child",
-            "index": 0,
-            "readonly": False,
             "parentUuid": parent.uuid,
             "parents": [parent],
             "data": {
@@ -57,7 +58,9 @@ class TestTaxoData(unittest.TestCase):
         })
         child.uuid = taxo.add(child)
         self.assertTrue(child in taxo.terms)
-        # @TODO this seems clunky, could we possibly detect when a child node
+        # test adding an already-existing child term
+        self.assertEqual(child.uuid, taxo.add(child))
+        # @TODO this is clunky, could we possibly detect when a child node
         # is added & automatically add it to its parents list of children?
         parent.children = [child]
 
@@ -67,18 +70,18 @@ class TestTaxoData(unittest.TestCase):
 
         # Term::fullTerm
         self.assertEqual(child.fullTerm, 'Parent\\Child')
-        self.assertEqual(child.asJSON(), json.dumps({
+        self.assertEqual(child.asPOSTData(), {
             "term": child.term,
             "data": child.data,
             "parentUuid": parent.uuid,
             "index": child.index,
-            "readonly": child.readonly,
-        }))
+            "readonly": child.readonly
+        })
 
         # Taxonomy::getTerm
         self.assertEqual(child, taxo.getTerm(child))
         self.assertEqual(child, taxo.getTerm("Child"))
-        self.assertEqual(parent, taxo.getTerm(Term({"term": "Parent"})))
+        self.assertEqual(parent, taxo.getTerm(parent))
 
         # Taxonomy::search
         no_results = taxo.search('thistermdoesnotexistheeeeyoooo')
@@ -87,14 +90,18 @@ class TestTaxoData(unittest.TestCase):
         self.assertTrue(len(one_result) == 1)
 
         # Taxonomy::remove (which returns a boolean)
+        self.assertFalse(taxo.remove("term that does not exist"))
         self.assertTrue(taxo.remove(parent))
-        self.assertTrue(starting_terms_length == len(taxo.getRootTerms()))
+        self.assertFalse(parent in taxo.terms)
+        # removing a parent removes its children
+        self.assertFalse(child in taxo.terms)
+        self.assertTrue(starting_length == len(taxo.getRootTerms()))
         string = "test text-only remove usage"
         taxo.add(Term({"term": string}))
         self.assertTrue(taxo.remove(string))
-        self.assertTrue(starting_terms_length == len(taxo.getRootTerms()))
+        self.assertTrue(starting_length == len(taxo.getRootTerms()))
         self.assertFalse(taxo.remove(Term({"term": "term without UUID"})))
-        self.assertTrue(starting_terms_length == len(taxo.getRootTerms()))
+        self.assertTrue(starting_length == len(taxo.getRootTerms()))
 
 
 if __name__ == '__main__':
