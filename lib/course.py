@@ -39,6 +39,8 @@ class Course(SimpleNamespace):
     @property
     def instructor_names(self):
         # print list of instructors as a comma-separated string of names
+        if len(self.instructors) == 0:
+            return '[instructors to be determined]'
         names = []
         for person in self.instructors:
             names.append('{} {}'.format(person["first_name"], person["last_name"]))
