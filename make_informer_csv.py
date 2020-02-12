@@ -30,8 +30,8 @@ def make_course_row(course):
     """ args: course object from Workday json
         returns: list of data properties we're interested in
     """
-    # skip hidden/standby courses
-    if course.hidden == "1" and course.status != "Preliminary":
+    # skip courses not in Portal course catalog
+    if not course.on_portal:
         return None
     global courses
     dept = course.owner
