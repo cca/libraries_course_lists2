@@ -57,7 +57,7 @@ class Group:
         self.name = group["name"]
         # initial as empty to save time, can add later with self.get_users()
         self.users = []
-        self.have_gotten_users = False
+        self._have_gotten_users = False
         # calculate these on init so repeat calls don't cost anything
         self.au = next((key for key, val in map.items() if val["group"] == self.name), None)
         self.academic_unit = self.au
@@ -80,7 +80,7 @@ class Group:
         # support group.add_users(username) usage
         if type(new_users) == str:
             new_users = [new_users]
-        if not self.have_gotten_users:
+        if not self._have_gotten_users:
             self.get_users()
         # deduplicate by casting to a set then back to a list
         all_users = list(set(self.users + new_users))
@@ -120,7 +120,7 @@ class Group:
         """
         users = [p["id"] for p in r.json()["results"]]
         self.users = users
-        self.have_gotten_users = True
+        self._have_gotten_users = True
         config.logger.debug('Downloaded user list from API for group {}'.format(self))
         return users
 
@@ -135,7 +135,7 @@ class Group:
         # support group.remove_users(username) usage
         if type(banlist) == str:
             banlist = [banlist]
-        if not self.have_gotten_users:
+        if not self._have_gotten_users:
             self.get_users()
         new_users = [u for u in self.users if u not in banlist]
         # nothing to do, return
@@ -161,7 +161,7 @@ class Group:
         if not path:
             path = 'data/{}.txt'.format(self.ldap)
         with open(path, 'w') as file:
-            if not self.have_gotten_users:
+            if not self._have_gotten_users:
                 self.get_users()
             file.write('\n'.join(self.users))
             config.logger.info('Wrote LDAP text file {} for group {}'.format(self.ldap, self))
