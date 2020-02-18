@@ -101,8 +101,7 @@ class Group:
 
     def get_users(self):
         """ retrieve list of users in group from EQUELLA
-        note that this method is called during the __init__ method
-        and populates the self.users list """
+        this method populates the self.users list """
         s = request_wrapper()
         r = s.get(config.api_root + '/usermanagement/local/group/{}/user'.format(self.uuid))
         r.raise_for_status()
