@@ -3,9 +3,9 @@
 this project is complete and we can cease relying on the old libraries_course_lists
 project entirely.
 
-usage: python make_informer_csv.py data.json [2019FA]
+usage: python make_informer_csv.py data.json 2019FA
 
-semester string is optional, defaults to 2019FA
+where "2019FA" is the current semester
 
 automatically names the output file "_informer.csv" per convention used in the
 original libraries_course_lists project
@@ -17,7 +17,7 @@ import unicodedata
 
 from lib import Course
 
-semester = sys.argv[2] if len(sys.argv) >= 3 else '2019FA'
+semester = sys.argv[2]
 
 
 def asciize(s):
