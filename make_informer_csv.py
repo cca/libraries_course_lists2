@@ -36,7 +36,7 @@ def make_course_row(course):
     global courses
     dept = course.owner
     # skip the weird exceptions
-    if dept == 'CCA':
+    if dept in ['CCA', 'PRECO']:
         # intl exchg, skip
         return None
     elif dept == 'FA':
