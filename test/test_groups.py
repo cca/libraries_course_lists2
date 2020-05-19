@@ -1,11 +1,21 @@
 import filecmp
 import os
 import unittest
+import warnings
 
 from lib import *
 
 
 class TestGroupData(unittest.TestCase):
+
+    def setUp(self):
+        # make "unclosed socket" warnings stop, see this for instance
+        # https://github.com/boto/boto3/issues/454
+        warnings.filterwarnings(
+            "ignore",
+            category=ResourceWarning,
+            message="unclosed.*<socket.socket.*>"
+        )
 
     # helper function
     def verify_groups(self, groups):
@@ -35,6 +45,13 @@ class TestGroupClass(unittest.TestCase):
 
 
     def setUp(self):
+        # make "unclosed socket" warnings stop, see this for instance
+        # https://github.com/boto/boto3/issues/454
+        warnings.filterwarnings(
+            "ignore",
+            category=ResourceWarning,
+            message="unclosed.*<socket.socket.*>"
+        )
         self.groups = get_groups()
 
 
