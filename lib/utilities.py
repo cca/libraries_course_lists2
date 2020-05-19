@@ -24,7 +24,7 @@ def request_wrapper():
 def strip_prefix(string):
     """
     A lot of Workday names, which we are unfortunately forced to use as identifiers,
-    being with a "AX_..." prefix as in "AU_CERAM" (for the Ceramics academic unit)
+    begin with an "AX_..." prefix as in "AU_CERAM" (for the Ceramics academic unit)
     or "AP_Fall_2019" for the Fall academic period. We need these names for
     matching but don't use this prefix.
     """
