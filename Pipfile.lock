@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "a2d8bd14536ea8bbe9c03902f0942a4036c5db1953b6d3a9875f946c51b0cf10"
+            "sha256": "fbae7746f8e768a0391f0a85f810994f0eed3899b4d249e6787dc44eeff30072"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -159,10 +159,10 @@
         },
         "google-apitools": {
             "hashes": [
-                "sha256:922710a514fcd6238bc29450c8c23b2af4e32a976508dc2e6607a027f1c4e808",
-                "sha256:a1b3485928de9a9bc5b9bf74b1f35d656e6783383e318ec5630b181b2eea17bf"
+                "sha256:4af0dd6dd4582810690251f0b57a97c1873dadfda54c5bc195844c8907624170",
+                "sha256:6be92c1c3e93485450420bb0e365d47eb4d8a835d03ebe1963dc6da4d39a7b0e"
             ],
-            "version": "==0.5.30"
+            "version": "==0.5.31"
         },
         "google-reauth": {
             "hashes": [
@@ -180,17 +180,17 @@
         },
         "httplib2": {
             "hashes": [
-                "sha256:39dd15a333f67bfb70798faa9de8a6e99c819da6ad82b77f9a259a5c7b1225a2",
-                "sha256:6d9722decd2deacd486ef10c5dd5e2f120ca3ba8736842b90509afcdc16488b1"
+                "sha256:1e9340ecf0187a621bdcfb407c32e04e8e09fc6ab28b050efa38f20eae0e975f",
+                "sha256:743cff16beadd128511e786474740264aa805fba106d6fc90e3586829ad0298b"
             ],
-            "version": "==0.17.3"
+            "version": "==0.17.4"
         },
         "idna": {
             "hashes": [
-                "sha256:c357b3f628cf53ae2c4c05627ecc484553142ca23264e593d327bcde5e9c3407",
-                "sha256:ea8b7f6188e6fa117537c3df7da9fc686d485087abf6ac197f9c46432f7e4a3c"
+                "sha256:7588d1c14ae4c77d74036e8c22ff447b26d0fde8f007354fd48a7814db15b7cb",
+                "sha256:a068a21ceac8a4d63dbfd964670474107f541babbd2250d61922f029858365fa"
             ],
-            "version": "==2.8"
+            "version": "==2.9"
         },
         "importlib-metadata": {
             "hashes": [
@@ -264,11 +264,11 @@
         },
         "requests": {
             "hashes": [
-                "sha256:11e007a8a2aa0323f5a921e9e6a2d7e4e67d9877e85773fba9ba6419025cbeb4",
-                "sha256:9cf5292fcd0f598c671cfc1e0d7d1a7f13bb8085e9a590f48c010551dc6c4b31"
+                "sha256:43999036bfa82904b6af1d99e4882b560e5e2c68e5c4b0aa03b655f3d7d73fee",
+                "sha256:b3f43d496c6daba4493e7c431722aeb7dbc6288f52a6e04e7b6023b0247817e6"
             ],
             "index": "pypi",
-            "version": "==2.22.0"
+            "version": "==2.23.0"
         },
         "retry-decorator": {
             "hashes": [
