@@ -1,4 +1,5 @@
 import unittest
+import warnings
 
 from lib import *
 
@@ -9,6 +10,13 @@ class TestAddTaxos(unittest.TestCase):
 
 
     def setUp(self):
+        # make "unclosed socket" warnings stop, see this for instance
+        # https://github.com/boto/boto3/issues/454
+        warnings.filterwarnings(
+            "ignore",
+            category=ResourceWarning,
+            message="unclosed.*<socket.socket.*>"
+        )
         # get course data & set all academic units to TESTS
         with open('test/courses-fixture.json', 'r') as file:
             data = json.load(file)
@@ -68,9 +76,8 @@ class TestAddTaxos(unittest.TestCase):
                 au["refid"] = 'AU_TESTS'
 
         # now we test the main add_to_taxos() method
-        for c in self.courses[0:4]:
-            # smaller test for only_course_lists=True
-            add_to_taxos(c, self.taxos, True)
+        for c in sorted(self.courses, key=course_sort):
+            add_to_taxos(c, self.taxos)
 
         # test the top-level and leaf terms
         semester = self.courses[0].semester
@@ -78,22 +85,22 @@ class TestAddTaxos(unittest.TestCase):
         self.assertTrue(courselist.getTerm(self.courses[0].section_code))
         courselist.remove(semester)
 
-        for c in self.courses[4:12]:
+        for c in sorted(self.courses, key=course_sort):
             # now we test adding to _all_ the taxonomies
-            add_to_taxos(c, self.taxos)
+            add_to_taxos(c, self.taxos, True)
 
         # test two terms from each taxonomy, the set of taoxnomies is:
         # section code, course code, course title, and instructor name
         sections = next(t for t in self.taxos if t.name == 'TESTS - course sections')
+        cnames = next(t for t in self.taxos if t.name == 'TESTS - course names')
+        ctitle = next(t for t in self.taxos if t.name == 'TESTS - course titles')
+        faculty = next(t for t in self.taxos if t.name == 'TESTS - faculty')
         self.assertTrue(sections.getTerm(self.courses[4].section_code))
         self.assertTrue(sections.getTerm(self.courses[5].section_code))
-        cnames = next(t for t in self.taxos if t.name == 'TESTS - course names')
         self.assertTrue(cnames.getTerm(self.courses[6].course_refid))
         self.assertTrue(cnames.getTerm(self.courses[7].course_refid))
-        ctitle = next(t for t in self.taxos if t.name == 'TESTS - course titles')
         self.assertTrue(ctitle.getTerm(self.courses[8].section_title))
         self.assertTrue(ctitle.getTerm(self.courses[9].section_title))
-        faculty = next(t for t in self.taxos if t.name == 'TESTS - faculty')
         self.assertTrue(faculty.getTerm(self.courses[10].instructor_names))
         # courses[11] has no instructors, just pick another one
         self.assertTrue(faculty.getTerm(self.courses[7].instructor_names))
