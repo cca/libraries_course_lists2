@@ -12,6 +12,7 @@ from lib import *
 parser = argparse.ArgumentParser(description='Create VAULT taxonomies from JSON course data.')
 parser.add_argument('-c', '--clear', action='store_true', default=False, help='only clear the given semester taxonomy term, do not create new terms')
 parser.add_argument('--course-lists', action='store_true', default=False, help='only create terms in course list taxonomies, ignore others')
+parser.add_argument('-nd, --no-delete', action='store_true', default=False, help='do not delete semester terms (useful for rerunning failed, partial imports)')
 parser.add_argument('-d', '--downloadtaxos', action='store_true', default=False, help='download fresh taxonomies from VAULT (do not use JSON list in /data dir)')
 parser.add_argument('file', nargs=1, help='course list JSON file')
 
@@ -27,11 +28,12 @@ else:
     taxos = get_taxos()
 
 course_lists = [t for t in taxos if 'course list' in t.name.lower()]
-# semester is the same for all courses so we just grab it from first one
-current_semester = courses[0].semester
 
-for taxo in course_lists:
-    taxo.remove(current_semester)
+if not args.no_delete:
+    # semester is the same for all courses so we just grab it from first one
+    current_semester = courses[0].semester
+    for taxo in course_lists:
+        taxo.remove(current_semester)
 
 # we're done if we were only clearing semester terms from course lists
 if args.clear:

@@ -38,6 +38,8 @@ optional arguments:
                        list in /data dir)
 ```
 
+Logging information is sent both to stdout and to a dated log file in the "data" directory.
+
 The taxonomies JSON is stored in data/taxonomies.json (not all their terms, just taxonomy names and identifiers). If you create a new taxonomy related to course lists or course information, e.g. if a new academic program is created, you'll need to rerun `python app.py --downloadtaxos` to refresh the JSON.
 
 `python faculty_groups.py data/data.json` will create many text file lists of faculty usernames in the "data" directory. Each file is named after the LDAP group that the accounts belong to.

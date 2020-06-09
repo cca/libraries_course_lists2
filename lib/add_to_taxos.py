@@ -61,15 +61,14 @@ def get_depts(course):
             departments (list): list of department code strings e.g.
             ["SYLLABUS", "ANIMA"]
     """
-    arch_div = ['BARCH', 'INTER', 'MARCH' ]
+    arch_div = [ 'ARCHT', 'BARCH', 'INTER', 'MARCH' ]
     # find out what departmental taxos a course needs to be added to
     # everything will at least be added to Syllabus Collection taxos
-    # depts = set(['SYLLABUS'])
-    depts = set()
+    depts = set(['SYLLABUS'])
     if course.owner in arch_div:
         depts.add('ARCH DIV')
     elif course.owner  == 'CCA':
-        # international exchange, skip this course
+        # international exchange & other exceptions, skip them
         return None
     elif course.owner  == 'FA':
         # file Interdisciplinary Critique under UDIST
@@ -109,11 +108,11 @@ def course_list_term(term, taxo, dept_layer=False):
         course = term
         # we need to create the root (semester-level) taxonomy term
         term = Term({ "term": course.semester })
-        # We build a tree of nested Terms all inside the current Term's list
-        # of children. Each term being outlined in the sections below (nothing
-        # has been added to the Taxo yet) has a parents list equal to the course
-        # term itself & its children which we are creating along the way, not to
-        # be finished until we reach the final one. We use makeParentsList to
+        # We build a tree of nested Terms inside the current Term's list of
+        # children. Each term outlined in the sections below (nothing has been
+        # added to the Taxo yet) has a parents list equal to the course itself
+        # & its children that we are creating along the way, not to be completed
+        # until we reach the final one (section code). We use makeParentsList to
         # pass _values_ not a reference or every Term.parents => the whole tree.
         makeParentsList = lambda t: [t] + [c for c in t.children]
 
@@ -137,11 +136,16 @@ def course_list_term(term, taxo, dept_layer=False):
         term.children.append(instructors)
 
         # final child contains additional data nodes
-        # @TODO is there other data we want to store here?
         section = Term({
             "data": {
                 "CrsName": course.course_code,
                 "facultyID": course.instructor_usernames,
+                # additional Workday data we may be interested in
+                "acad_level": course.acad_level,
+                "delivery_mode": course.delivery_mode,
+                "instructional_format": course.instructional_format,
+                "section_def_refid": course.section_def_refid, # true identifier
+                "subject_name": course.subject_name,
             },
             "parents": makeParentsList(term),
             "term": course.section_code,
@@ -160,9 +164,9 @@ def course_list_term(term, taxo, dept_layer=False):
 # term can be either a Course object or a string
 def create_term(term, taxo_name, taxos):
     """
-        Adds a Term to a Taxonomy while handling Course terms which require
-        multiple operations due to the way they are represented by multiple,
-        hierarchical terms.
+        Adds a Term to a Taxonomy while handling Course terms—which require
+        multiple operations due to the way they are represented by a hierarchical
+        chain of terms.
 
         args:
             term (str|Course): text of the term to be added at the root of the
@@ -212,7 +216,7 @@ def add_to_taxos(course, taxos, only_course_lists=False):
             only_course_lists (bool): whether to only add terms to course lists
             as opposed to all taxonomies (e.g. course sections, faculty names).
             The initial data population should be all taxonomies but repeat runs
-            can be with `only_course_lists=True`
+            use `only_course_lists=True`
 
         returns:
             nothing
