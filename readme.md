@@ -52,6 +52,7 @@ The taxonomies JSON is stored in data/taxonomies.json (not all their terms, just
 > pipenv run cover # run tests
 > pipenv run report # coverage report
 > coverage html # generate HTML in htmlcov/ that shows which lines aren't tested
+> python -m unittest test.test_course # run a specific test suite
 ```
 
 Add tests to the "test" folder and name them like "test_FILENAME" where FILENAME is roughly the name of the module that's being tested. This ensures `unittest` can discover them and makes it easier to see what tests still need to be written. You may need to create fixtures in both VAULT and the local filesystem to write some tests. Prefer using a fake, created datum to testing against production data that naturally changes.

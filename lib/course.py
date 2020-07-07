@@ -1,3 +1,4 @@
+from html import unescape
 # https://docs.python.org/3/library/types.html#types.SimpleNamespace
 # let's us construct an object from a dict
 from types import SimpleNamespace
@@ -10,6 +11,14 @@ class Course(SimpleNamespace):
 
     def __repr__(self):
         return "{} {}".format(self.semester, self.section_code)
+
+    # some Workday fields have encoded entities (e.g. "&amp;") so we want to
+    # unescape _all_ string attributes before returning them
+    def __getattribute__(self, key):
+        value = SimpleNamespace.__getattribute__(self, key)
+        if type(value) == str:
+            return unescape(value)
+        return value
 
 
     def find_colocated_sections(self, courses):

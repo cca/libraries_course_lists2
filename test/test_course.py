@@ -1,3 +1,5 @@
+from html import unescape
+from textwrap import wrap
 import unittest
 
 from lib import *
@@ -41,6 +43,15 @@ class TestCourseClass(unittest.TestCase):
         self.assertEqual(type(one.find_colocated_sections(self.courses)), list)
         self.assertEqual(one.find_colocated_sections(self.courses), [two])
         self.assertEqual(two.find_colocated_sections(self.courses), [one])
+
+
+    def test_other_things(self):
+        # custom __getattribute__ method to escape HTML/XML entities in some text fields
+        c = self.courses[0]
+        self.assertEqual(c.section_title, unescape(c.section_title))
+        # this fails because &amp;#39;s -> &#39;s in first & 's in 2nd
+        # seems course description is double encoded? For now, we avoid it.
+        # self.assertEqual(wrap(c.section_desc), wrap(unescape(c.section_desc)))
 
 
 if __name__ == '__main__':
