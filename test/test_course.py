@@ -34,7 +34,7 @@ class TestCourseClass(unittest.TestCase):
         self.assertEqual(one_instructor.semester, 'Spring 2020')
         self.assertEqual(two_instructors.semester, 'Spring 2020')
         # kinda dumb but this helps with coverage
-        self.assertEqual(str(one_instructor), 'Spring 2020 UDIST-3000-3')
+        self.assertEqual(str(one_instructor), 'Spring 2020 UDIST-3000-3 Instruments & Science Meets Art')
 
 
     def test_colocated_sections(self):

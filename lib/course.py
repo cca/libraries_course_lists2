@@ -10,7 +10,7 @@ class Course(SimpleNamespace):
 
 
     def __repr__(self):
-        return "{} {}".format(self.semester, self.section_code)
+        return "{} {} {}".format(self.semester, self.section_code, self.section_title)
 
     # some Workday fields have encoded entities (e.g. "&amp;") so we want to
     # unescape _all_ string attributes before returning them
