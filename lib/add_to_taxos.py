@@ -53,13 +53,14 @@ from config import logger
 
 def get_depts(course):
     """
-        Determine what departments a course should be filed under
+        Determine what departments a course should be filed under in VAULT
+        taxonomies.
 
         args:
             course (Course)
         returns:
-            departments (list): list of department code strings e.g.
-            ["SYLLABUS", "ANIMA"]
+            departments (set|None): set of department code strings e.g.
+            {"SYLLABUS", "ANIMA"} or None if there are no departments
     """
     arch_div = [ 'ARCHT', 'BARCH', 'INTER', 'MARCH' ]
     # find out what departmental taxos a course needs to be added to
@@ -67,6 +68,9 @@ def get_depts(course):
     depts = set(['SYLLABUS'])
     if course.owner in arch_div:
         depts.add('ARCH DIV')
+    elif course.owner == 'TESTS':
+        # don't add test courses to syllabus collection
+        return set(['TESTS'])
     elif course.owner  == 'CCA':
         # international exchange & other exceptions, skip them
         return None

@@ -17,7 +17,7 @@ class TestAddTaxos(unittest.TestCase):
             category=ResourceWarning,
             message="unclosed.*<socket.socket.*>"
         )
-        # get course data & set all academic units to TESTS
+        # get course data
         with open('test/courses-fixture.json', 'r') as file:
             data = json.load(file)
             self.courses = [Course(**c) for c in data]
@@ -33,20 +33,21 @@ class TestAddTaxos(unittest.TestCase):
     def testGetDepts(self):
         # architecture division
         inter = next(c for c in self.courses if c.owner == 'INTER')
-        self.assertEqual(get_depts(inter), set(['ARCH DIV']))
+        self.assertEqual(get_depts(inter), set(['ARCH DIV', 'SYLLABUS']))
         # CCA e.g. extension courses, other exceptions
         cca = next(c for c in self.courses if c.owner == 'CCA')
         self.assertEqual(get_depts(cca), None)
         # Fine Arts e.g. critique, FNART courses
         criti = next(c for c in self.courses if c.owner == 'FA' and c.subject == 'CRITI')
         fnart = next(c for c in self.courses if c.owner == 'FA' and c.subject == 'FNART')
-        self.assertEqual(get_depts(criti), set(['UDIST']))
+        self.assertEqual(get_depts(criti), set(['UDIST', 'SYLLABUS']))
         self.assertEqual(get_depts(fnart), None)
 
 
     def testCreateTerms(self):
         tests = next(t for t in self.taxos if t.name == 'TESTS')
         courselist = next(t for t in self.taxos if t.name == 'TESTS - COURSE LIST')
+
         unsuccessful = create_term("term", "taxo that doesn't exist", self.taxos)
         self.assertEqual(unsuccessful, None)
         # empty string means there's no taxo term to create
@@ -70,23 +71,23 @@ class TestAddTaxos(unittest.TestCase):
     def testAddToTaxos(self):
         courselist = next(t for t in self.taxos if t.name == 'TESTS - COURSE LIST')
         courselist.getRootTerms()
-        # set course owners to TESTS so we don't create terms in live taxos
+        # set course owners to TESTS so we don't create terms in live taxonomies
         for c in self.courses:
-            for au in c.academic_units:
-                au["refid"] = 'AU_TESTS'
+            for i in range(0, len(c.academic_units)):
+                c.academic_units[i]["refid"] = 'AU_TESTS'
 
-        # now we test the main add_to_taxos() method
+        # test the main add_to_taxos() method that adds to all taxos
         for c in sorted(self.courses, key=course_sort):
             add_to_taxos(c, self.taxos)
 
-        # test the top-level and leaf terms
+        # check that the top-level and leaf terms exist
         semester = self.courses[0].semester
         self.assertTrue(courselist.getTerm(semester))
         self.assertTrue(courselist.getTerm(self.courses[0].section_code))
-        courselist.remove(semester)
+        courselist.clear()
 
         for c in sorted(self.courses, key=course_sort):
-            # now we test adding to _all_ the taxonomies
+            # now we test adding to only the course list taxonomy
             add_to_taxos(c, self.taxos, True)
 
         # test two terms from each taxonomy, the set of taoxnomies is:

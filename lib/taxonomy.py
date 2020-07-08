@@ -1,5 +1,5 @@
 import json
-from urllib.parse import urlencode
+from urllib.parse import urlencode, quote
 
 from config import api_root, logger
 from .utilities import request_wrapper
@@ -136,8 +136,8 @@ class Taxonomy:
                 r = s.put(api_root + '/taxonomy/{uuid}/term/{termUuid}/data/{key}/{value}'.format(
                     uuid=self.uuid,
                     termUuid=term.uuid,
-                    key=key,
-                    value=value
+                    key=quote(key),
+                    value=quote(value),
                 ))
                 r.raise_for_status()
         logger.info('added data to {} term in {} taxonomy'.format(term, self))
@@ -145,17 +145,19 @@ class Taxonomy:
 
     def clear(self):
         """
-            delete all terms in the taxonomy
+            Delete all terms in the taxonomy. We only need to delete the root
+            terms, orphaned children are automatically erased.
         """
         for term in self.getRootTerms():
             self.remove(term)
+        self.terms.clear()
 
 
     def getTerm(self, search_term, attr="term"):
         """
             @TODO I want to get tests passing first but turns out I _hate_ this
-            API. `search_term` should always be a string and that gets wrapped
-            in a Term object—the fact that taxo.getTerm("term string", "term")
+            API. `search_term` should always be a string that gets wrapped in a
+            Term object—the fact that taxo.getTerm("term string", "term")
             behaves differently from taxo.getTerm("uuid string", "uuid") is a
             disaster that made me overlook a bug for weeks.
 
@@ -201,7 +203,9 @@ class Taxonomy:
                 logger.error('Trying to find the parent to duplicate child "{}" in taxonomy "{}" but unable to, will not be able to add this term.'.format(term, self))
                 raise Exception("cannot find parent of duplicate child term")
             s = request_wrapper()
-            r = s.get(api_root + '/taxonomy/{}/term?path={}'.format(self.uuid, parent.fullTerm))
+            r = s.get(api_root + '/taxonomy/{}/term?{}'.format(self.uuid, urlencode(
+                { 'path': parent.fullTerm } )
+            ))
             r.raise_for_status()
             # r.json is a list of sibling term dicts, find the duplicate one
             sibling = next((Term(t) for t in r.json() if t["term"] == term.term), None)
@@ -215,8 +219,8 @@ class Taxonomy:
 
     def getRootTerms(self):
         """
-            return list of terms in taxonomy root, you can then add them to the
-            taxonomy object like `for te in taxo.getRootTerms(): taxo.add(te)`
+            Obtains a list of terms at the root of the taxonomy from openEQUELLA
+            and adds them to the taxo.terms set.
             args: (none)
             returns:
                 root terms (list): list of Term objects
