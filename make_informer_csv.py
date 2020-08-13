@@ -3,13 +3,14 @@
 this project is complete and we can cease relying on the old libraries_course_lists
 project entirely.
 
-usage: python make_informer_csv.py data.json 2019FA
+usage: python make_informer_csv.py -c data.json -s 2020FA
 
-where "2019FA" is the current semester
+where "2020FA" is the current semester
 
 automatically names the output file "_informer.csv" per convention used in the
 original libraries_course_lists project
 """
+import argparse
 import csv
 import json
 import sys
@@ -17,7 +18,11 @@ import unicodedata
 
 from lib import Course
 
-semester = sys.argv[2]
+parser = argparse.ArgumentParser(description='Create VAULT taxonomies from JSON course data.')
+parser.add_argument('-s', '--semester', required=True, help='semester code like "2020FA"')
+parser.add_argument('file', help='course list JSON file')
+
+args = parser.parse_args()
 
 
 def asciize(s):
@@ -46,7 +51,7 @@ def make_course_row(course):
             # FNARTs internship, skip
             return None
     row = [
-        semester,
+        args.semester,
         dept,
         asciize(course.section_title),
         # cannot allow an empty instructor names field
@@ -58,7 +63,7 @@ def make_course_row(course):
     ]
     return row
 
-with open(sys.argv[1], 'r') as file:
+with open(args.file, 'r') as file:
     data = json.load(file)
     courses = [Course(**d) for d in data]
 
