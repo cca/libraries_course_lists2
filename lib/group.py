@@ -27,6 +27,7 @@ map = {
     "FURNT": {"group": "Furniture Faculty", "ldap": "fac_fn"},
     "GLASS": {"group": "Glass Faculty", "ldap": "fac_gl"},
     "GRAPH": {"group": "Graphic Design Faculty", "ldap": "fac_gr"},
+    "HAAVC": {"group": "History of Art and Visual Culture Faculty", "ldap": "fac_vi"},
     "ILLUS": {"group": "Illustration Faculty", "ldap": "fac_il"},
     "INDIV": {"group": "Individualized Faculty", "ldap": "fac_ind"},
     "INDUS": {"group": "Industrial Design Faculty", "ldap": "fac_in"},
