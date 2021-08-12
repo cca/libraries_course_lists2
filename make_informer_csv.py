@@ -13,7 +13,6 @@ original libraries_course_lists project
 import argparse
 import csv
 import json
-import sys
 import unicodedata
 
 from lib import Course
@@ -63,14 +62,16 @@ def make_course_row(course):
     ]
     return row
 
+
 with open(args.file, 'r') as file:
     data = json.load(file)
     courses = [Course(**d) for d in data]
 
 with open('_informer.csv', 'w') as file:
     writer = csv.writer(file)
-    header = ['semester','department','title','faculty','section','course','colocated courses','faculty usernames']
+    header = ['semester', 'department', 'title', 'faculty', 'section', 'course', 'colocated courses', 'faculty usernames']
     writer.writerow(header)
     for course in courses:
         row = make_course_row(course)
-        if row: writer.writerow(row)
+        if row:
+            writer.writerow(row)
