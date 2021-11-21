@@ -6,3 +6,5 @@ logs/*
 _informer.csv
 .coverage
 htmlcov/
+.tmp.*
+
