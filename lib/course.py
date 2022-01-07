@@ -71,6 +71,13 @@ class Course(SimpleNamespace):
     def owner(self):
         for au in self.academic_units:
             if au["course_owner"]:
+                # 2 exceptions: HAAVC use "AU_VISST" & ETHST/ETHSM use "AU_DIVST"
+                # both of these dept codes changed in 2020 but their corresponding
+                # Workday Academic Unit codes remained the same
+                if au["refid"] == "AU_VISST":
+                    return "HAAVC"
+                if au["refid"] == "AU_DIVST":
+                    return "ETHST"
                 return strip_prefix(au["refid"])
 
     @property

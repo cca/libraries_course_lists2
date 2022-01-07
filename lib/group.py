@@ -18,7 +18,7 @@ map = {
     "DESGN": {"group": "Design MFA Faculty", "ldap": "fac_de"},
     "DIVST": {"group": "Diversity Studies Faculty", "ldap": "fac_di"},
     "DSMBA": {"group": "Design MBA Faculty", "ldap": "fac_de"},
-    "ETHNC": {"group": "Critical Ethnic Studies Faculty", "ldap": "fac_di"},
+    "ETHST": {"group": "Critical Ethnic Studies Faculty", "ldap": "fac_di"},
     "EXTED": {"group": None, "ldap": None},
     "FA": {"group": None, "ldap": None},
     "FASHN": {"group": "Fashion Design Faculty", "ldap": "fac_fa"},
