@@ -20,7 +20,7 @@ Brand new, redesigned course list handling for VAULT courtesy of Workday Student
 
 The main app should work now but has yet to be used to create taxonomies in VAULT. Thus far only unit tests have been performed.
 
-```
+```sh
 usage: app.py [-h] [-c] [--course-lists] [-d] file
 
 Create VAULT taxonomies from JSON course data.
@@ -44,7 +44,7 @@ The taxonomies JSON is stored in data/taxonomies.json (not all their terms, just
 
 `python faculty_groups.py data/data.json` will create many text file lists of faculty usernames in the "data" directory. Each file is named after the LDAP group that the accounts belong to.
 
-`python make_informer_csv.py data/data.json -s 2019FA` will create an "\_informer.csv" spreadsheet of course information, where data.json is the Workday JSON course information and "2019FA" is the current semester's short code. We can deprecate this script once the main app is in use.
+`python make_informer_csv.py data/data.json` will create an "\_informer.csv" spreadsheet of course information, where data.json is the Workday JSON course information. This can then be used in the previous "libraries_course_lists" project.
 
 ## Testing
 
