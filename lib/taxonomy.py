@@ -1,4 +1,3 @@
-import json
 from urllib.parse import urlencode, quote
 
 from config import api_root, logger
