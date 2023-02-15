@@ -45,6 +45,7 @@ class TestTaxoData(unittest.TestCase):
         taxo.getRootTerms()
         # Ensure "Parent" term does not already exist
         try:
+            print('NOTE; we are removing a term that _should not_ exist so it is OK if you see a "Cannot find term...while deleting" error')
             taxo.remove("Parent")
         except:
             pass
@@ -120,6 +121,7 @@ class TestTaxoData(unittest.TestCase):
         taxo.add(Term({"term": string}))
         self.assertTrue(taxo.remove(string))
         self.assertEqual(starting_length, len(taxo.getRootTerms()))
+        print('NOTE: we are expecting taxo.remove() to fail to remove a term without a UUID, so we _expect_ to see a "Cannot find term...while deleting" error')
         self.assertFalse(taxo.remove(Term({"term": "term without UUID"})))
         self.assertEqual(starting_length, len(taxo.getRootTerms()))
 
