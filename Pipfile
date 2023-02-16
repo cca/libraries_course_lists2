@@ -9,6 +9,7 @@ verify_ssl = true
 requests = "~=2.28"
 coverage = "~=7.0"
 gsutil = "*"
+google-cloud-storage = "*"
 
 [requires]
 python_version = "3.7"

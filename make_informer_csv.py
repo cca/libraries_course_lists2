@@ -2,22 +2,48 @@
 (Informer report) CSV format that the original libraries_course_lists project
 utilizes.
 
-usage: python make_informer_csv.py data.json
+usage: python make_informer_csv.py
 
 automatically names the output file "_informer.csv" per convention used in the
 original libraries_course_lists project
 """
-import argparse
 import csv
+from datetime import datetime
 import json
 import unicodedata
 
+from google.cloud import storage
+
 from lib import Course
 
-parser = argparse.ArgumentParser(description='Create VAULT taxonomies from JSON course data.')
-parser.add_argument('file', help='course list JSON file')
+today = datetime.now().date()
 
-args = parser.parse_args()
+
+def what_term_is_it(date=today):
+    """ determine current term (e.g. "Fall 2023", "Spring 2023") from the date
+    """
+    season = None
+    year = date.year
+
+    if date.month >= 8:
+        season = 'Fall'
+    elif date.month >= 5:
+        season = 'Summer'
+    else:
+        season = 'Spring'
+
+    return f"{season}_{year}"
+
+
+def download_courses_file(term):
+    client = storage.Client()
+    file_name = f'course_section_data_AP_{term}.json'
+    print(f'Downloading {file_name} course data from Google Storage.')
+    bucket = client.get_bucket('int_files_source')
+    blob = bucket.blob(file_name)
+    local_file = f'data/{today.isoformat()}-{term}.json'
+    blob.download_to_filename(local_file)
+    return local_file
 
 
 def to_term_code(semester):
@@ -79,13 +105,18 @@ def make_course_row(course):
     ]
     return row
 
-
-with open(args.file, 'r') as file:
-    data = json.load(file)
+# dealing with three different forms of semester strings
+# 1. "Fall 2023" (Workday JSON)
+# 2. "2023FA" (EQUELLA taxonomy)
+# 3. "FA_2023" (Google Storage file name)
+file = download_courses_file(what_term_is_it())
+with open(file, 'r') as fh:
+    data = json.load(fh)
     courses = [Course(**d) for d in data]
 
 SEMESTER = to_term_code(courses[0].semester)
 
+print('Writing Informer CSV file to _informaer.csv')
 with open('_informer.csv', 'w') as file:
     writer = csv.writer(file)
     header = ['semester', 'department', 'title', 'faculty', 'section', 'course', 'colocated courses', 'faculty usernames']
