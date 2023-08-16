@@ -116,7 +116,7 @@ with open(file, 'r') as fh:
 
 SEMESTER = to_term_code(courses[0].semester)
 
-print('Writing Informer CSV file to _informaer.csv')
+print('Writing Informer CSV file to _informer.csv')
 with open('_informer.csv', 'w') as file:
     writer = csv.writer(file)
     header = ['semester', 'department', 'title', 'faculty', 'section', 'course', 'colocated courses', 'faculty usernames']
