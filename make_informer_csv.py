@@ -20,34 +20,33 @@ today = datetime.now().date()
 
 
 def what_term_is_it(date=today):
-    """ determine current term (e.g. "Fall 2023", "Spring 2023") from the date
-    """
+    """determine current term (e.g. "Fall 2023", "Spring 2023") from the date"""
     season = None
     year = date.year
 
     if date.month >= 8:
-        season = 'Fall'
+        season = "Fall"
     elif date.month >= 5:
-        season = 'Summer'
+        season = "Summer"
     else:
-        season = 'Spring'
+        season = "Spring"
 
     return f"{season}_{year}"
 
 
 def download_courses_file(term):
-    client = storage.Client()
-    file_name = f'course_section_data_AP_{term}.json'
-    print(f'Downloading {file_name} course data from Google Storage.')
-    bucket = client.get_bucket('int_files_source')
+    client = storage.Client(project="cca-integrations")
+    file_name = f"course_section_data_AP_{term}.json"
+    print(f"Downloading {file_name} course data from Google Storage.")
+    bucket = client.get_bucket("int_files_source")
     blob = bucket.blob(file_name)
-    local_file = f'data/{today.isoformat()}-{term}.json'
+    local_file = f"data/{today.isoformat()}-{term}.json"
     blob.download_to_filename(local_file)
     return local_file
 
 
 def to_term_code(semester):
-    """ convert a semester phrase like "Fall 2023" to a "2023FA" term code
+    """convert a semester phrase like "Fall 2023" to a "2023FA" term code
 
     Args:
         semester (str): semester string like "Fall 2023" e.g. "SEASON YEAR"
@@ -57,12 +56,12 @@ def to_term_code(semester):
     """
     [season, year] = semester.split(" ")
 
-    if season == 'Fall':
-        postfix = 'FA'
-    elif season == 'Spring':
-        postfix = 'SP'
-    elif season == 'Summer':
-        postfix = 'SU'
+    if season == "Fall":
+        postfix = "FA"
+    elif season == "Spring":
+        postfix = "SP"
+    elif season == "Summer":
+        postfix = "SU"
 
     return f"{year}{postfix}"
 
@@ -70,12 +69,12 @@ def to_term_code(semester):
 def asciize(s):
     # convert unicode string into ascii
     # we have to do this bc uptaxo script chokes on non-ascii chars
-    return unicodedata.normalize('NFKD', s).encode('ascii', 'ignore').decode()
+    return unicodedata.normalize("NFKD", s).encode("ascii", "ignore").decode()
 
 
 def make_course_row(course):
-    """ args: course object from Workday json
-        returns: list of data properties we're interested in
+    """args: course object from Workday json
+    returns: list of data properties we're interested in
     """
     # skip courses not in Portal course catalog
     if not course.on_portal:
@@ -83,12 +82,12 @@ def make_course_row(course):
     global courses
     dept = course.owner
     # skip the weird exceptions
-    if dept in ['CCA', 'PRECO']:
+    if dept in ["CCA", "PRECO"]:
         # intl exchg, skip
         return None
-    elif dept == 'FA':
-        if course.subject == 'CRITI':
-            dept = 'CRITI'
+    elif dept == "FA":
+        if course.subject == "CRITI":
+            dept = "CRITI"
         else:
             # FNARTs internship, skip
             return None
@@ -97,29 +96,39 @@ def make_course_row(course):
         dept,
         asciize(course.section_title),
         # cannot allow an empty instructor names field
-        asciize(course.instructor_names if course.instructor_names else 'Staff'),
+        asciize(course.instructor_names if course.instructor_names else "Staff"),
         course.section_code,
         course.course_code,
-        ', '.join([c.section_code for c in course.find_colocated_sections(courses)]),
+        ", ".join([c.section_code for c in course.find_colocated_sections(courses)]),
         asciize(course.instructor_usernames),
     ]
     return row
+
 
 # dealing with three different forms of semester strings
 # 1. "Fall 2023" (Workday JSON)
 # 2. "2023FA" (EQUELLA taxonomy)
 # 3. "FA_2023" (Google Storage file name)
 file = download_courses_file(what_term_is_it())
-with open(file, 'r') as fh:
+with open(file, "r") as fh:
     data = json.load(fh)
     courses = [Course(**d) for d in data]
 
 SEMESTER = to_term_code(courses[0].semester)
 
-print('Writing Informer CSV file to _informer.csv')
-with open('_informer.csv', 'w') as file:
+print("Writing Informer CSV file to _informer.csv")
+with open("_informer.csv", "w") as file:
     writer = csv.writer(file)
-    header = ['semester', 'department', 'title', 'faculty', 'section', 'course', 'colocated courses', 'faculty usernames']
+    header = [
+        "semester",
+        "department",
+        "title",
+        "faculty",
+        "section",
+        "course",
+        "colocated courses",
+        "faculty usernames",
+    ]
     writer.writerow(header)
     for course in courses:
         row = make_course_row(course)
