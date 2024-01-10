@@ -10,9 +10,8 @@ original libraries_course_lists project
 import csv
 from datetime import datetime
 import json
+import subprocess
 import unicodedata
-
-from google.cloud import storage
 
 from lib import Course
 
@@ -35,14 +34,13 @@ def what_term_is_it(date=today):
 
 
 def download_courses_file(term):
-    client = storage.Client(project="cca-integrations")
-    file_name = f"course_section_data_AP_{term}.json"
-    print(f"Downloading {file_name} course data from Google Storage.")
-    bucket = client.get_bucket("int_files_source")
-    blob = bucket.blob(file_name)
-    local_file = f"data/{today.isoformat()}-{term}.json"
-    blob.download_to_filename(local_file)
-    return local_file
+    # call out to `gsutil` to download the courses file from Google Storage
+    # using the google-cloud-storage library stopped working, some kind of auth problem
+    uri = f"gs://int_files_source/course_section_data_AP_{term}.json"
+    path = f"data/{today}_{term}.json"
+    cmd = f"gsutil cp {uri} {path}"
+    subprocess.call(cmd, shell=True)
+    return path
 
 
 def to_term_code(semester):
@@ -56,12 +54,12 @@ def to_term_code(semester):
     """
     [season, year] = semester.split(" ")
 
-    if season == "Fall":
-        postfix = "FA"
+    if season == "Summer":
+        postfix = "SU"
     elif season == "Spring":
         postfix = "SP"
-    elif season == "Summer":
-        postfix = "SU"
+    else:  # default to Fall
+        postfix = "FA"
 
     return f"{year}{postfix}"
 
