@@ -4,6 +4,7 @@ Brand new, redesigned course list handling for VAULT courtesy of Workday Student
 
 ## Setup
 
+1. [Install the Google Cloud CLI](https://cloud.google.com/sdk/docs/install) (needed for `gsutil`)
 1. Set up a python virtual environment & install dependencies `pipenv install`
 1. Obtain a VAULT OAuth token for API use, `cp example.config.py config.py`, add the token to it. You can also change the logging configuration here if you so choose.
 1. Obtain access to CCA Integrations data in Google Cloud (contact Integration Engineer). There should be JSON files present for employees, students, and courses for current semesters. With the integrations project active, running `gcloud auth application-default login` once will authenticate this project.

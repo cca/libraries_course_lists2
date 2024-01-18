@@ -8,7 +8,6 @@ verify_ssl = true
 [packages]
 requests = "~=2.28"
 coverage = "~=7.4"
-gsutil = "*"
 
 [requires]
 python_version = "3.9"
