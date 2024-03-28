@@ -1,18 +1,9 @@
 import unittest
-import warnings
 
 from lib import *
 
 
 class TestTaxoData(unittest.TestCase):
-
-    def setUp(self):
-        # make "unclosed socket" warnings stop, see this for instance
-        # https://github.com/boto/boto3/issues/454
-        warnings.filterwarnings(
-            "ignore", category=ResourceWarning, message="unclosed.*<socket.socket.*>"
-        )
-
     # helper function
     def verify_taxos(self, taxos):
         self.assertTrue(type(taxos) == list)

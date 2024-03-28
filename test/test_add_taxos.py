@@ -1,5 +1,4 @@
 import unittest
-import warnings
 
 from lib import *
 
@@ -9,11 +8,6 @@ class TestAddTaxos(unittest.TestCase):
     taxos = []
 
     def setUp(self):
-        # make "unclosed socket" warnings stop, see this for instance
-        # https://github.com/boto/boto3/issues/454
-        warnings.filterwarnings(
-            "ignore", category=ResourceWarning, message="unclosed.*<socket.socket.*>"
-        )
         # get course data
         with open("test/courses-fixture.json", "r") as file:
             data = json.load(file)
