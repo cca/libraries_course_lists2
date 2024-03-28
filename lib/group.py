@@ -61,23 +61,25 @@ class Group:
         self.users = []
         self._have_gotten_users = False
         # calculate these on init so repeat calls don't cost anything
-        self.au = next((key for key, val in map.items() if val["group"] == self.name), None)
+        self.au = next(
+            (key for key, val in map.items() if val["group"] == self.name), None
+        )
         self.academic_unit = self.au
-        self.ldap = next((val["ldap"] for val in map.values() if val["group"] == self.name), None)
+        self.ldap = next(
+            (val["ldap"] for val in map.values() if val["group"] == self.name), None
+        )
         self.ldap_name = self.ldap
-
 
     def __repr__(self):
         return self.name
 
-
     def add_users(self, new_users):
         """
-            add list of users to Group
+        add list of users to Group
 
-            args: new_users is a single username string or list of username strings
-            returns: Group (self)
-            throws: HTTP errors from requests
+        args: new_users is a single username string or list of username strings
+        returns: Group (self)
+        throws: HTTP errors from requests
         """
         # support group.add_users(username) usage
         if type(new_users) == str:
@@ -93,19 +95,24 @@ class Group:
             "users": all_users,
         }
         s = request_wrapper()
-        r = s.put(config.api_root + '/usermanagement/local/group/{}'.format(self.uuid), json=data)
+        r = s.put(
+            config.api_root + "/usermanagement/local/group/{}".format(self.uuid),
+            json=data,
+        )
         r.raise_for_status()
 
-        config.logger.info('added {} to {} group'.format(', '.join(new_users), self))
+        config.logger.info("added {} to {} group".format(", ".join(new_users), self))
         self.users = all_users
+        s.close()
         return self
 
-
     def get_users(self):
-        """ retrieve list of users in group from EQUELLA
-        this method populates the self.users list """
+        """retrieve list of users in group from EQUELLA
+        this method populates the self.users list"""
         s = request_wrapper()
-        r = s.get(config.api_root + '/usermanagement/local/group/{}/user'.format(self.uuid))
+        r = s.get(
+            config.api_root + "/usermanagement/local/group/{}/user".format(self.uuid)
+        )
         r.raise_for_status()
         """
         results is actually a list of hashes like
@@ -122,12 +129,12 @@ class Group:
         users = [p["id"] for p in r.json()["results"]]
         self.users = users
         self._have_gotten_users = True
-        config.logger.debug('Downloaded user list from API for group {}'.format(self))
+        config.logger.debug("Downloaded user list from API for group {}".format(self))
+        s.close()
         return users
 
-
     def remove_users(self, banlist):
-        """ remove list of users from Group
+        """remove list of users from Group
 
         args: banlist is a single username string or list of username strings
         returns: Group (self)
@@ -150,19 +157,24 @@ class Group:
             "users": new_users,
         }
         s = request_wrapper()
-        r = s.put(config.api_root + '/usermanagement/local/group/{}'.format(self.uuid), json=data)
+        r = s.put(
+            config.api_root + "/usermanagement/local/group/{}".format(self.uuid),
+            json=data,
+        )
         r.raise_for_status()
 
-        config.logger.info('removed {} from {} group'.format(', '.join(banlist), self))
+        config.logger.info("removed {} from {} group".format(", ".join(banlist), self))
         self.users = new_users
+        s.close()
         return self
-
 
     def write_ldap_file(self, path=None):
         if not path:
-            path = 'data/{}.txt'.format(self.ldap)
-        with open(path, 'w') as file:
+            path = "data/{}.txt".format(self.ldap)
+        with open(path, "w") as file:
             if not self._have_gotten_users:
                 self.get_users()
-            file.write('\n'.join(self.users))
-            config.logger.info('Wrote LDAP text file {} for group {}'.format(self.ldap, self))
+            file.write("\n".join(self.users))
+            config.logger.info(
+                "Wrote LDAP text file {} for group {}".format(self.ldap, self)
+            )
