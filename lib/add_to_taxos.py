@@ -47,71 +47,77 @@ We have some special logic in here for non-standard taxonomies, such as Archt
 (which has one division-level set of lists for 3 programs) and Syllabus course
 lists.
 """
+
 from .course import Course
 from .taxonomy import Term
 from config import logger
 
-def get_depts(course):
-    """
-        Determine what departments a course should be filed under in VAULT
-        taxonomies.
 
-        args:
-            course (Course)
-        returns:
-            departments (set|None): set of department code strings e.g.
-            {"SYLLABUS", "ANIMA"} or None if there are no departments
+def get_depts(course) -> set:
     """
-    arch_div = [ 'ARCHT', 'BARCH', 'INTER', 'MARCH' ]
+    Determine what departments a course should be filed under in VAULT
+    taxonomies.
+
+    args:
+        course (Course)
+    returns:
+        departments (set|None): set of department code strings e.g.
+        {"SYLLABUS", "ANIMA"} or None if there are no departments
+    """
+    arch_div = ["ARCHT", "BARCH", "INTER", "MARCH"]
     # find out what departmental taxos a course needs to be added to
     # everything will at least be added to Syllabus Collection taxos
-    depts = set(['SYLLABUS'])
+    depts = set(["SYLLABUS"])
     if course.owner in arch_div:
-        depts.add('ARCH DIV')
-    elif course.owner == 'TESTS':
+        depts.add("ARCH DIV")
+    elif course.owner == "TESTS":
         # don't add test courses to syllabus collection
-        return set(['TESTS'])
-    elif course.owner  == 'CCA':
+        return set(["TESTS"])
+    elif course.owner == "CCA":
         # international exchange & other exceptions, skip them
-        return None
-    elif course.owner  == 'FA':
+        return set()
+    elif course.owner == "FA":
         # file Interdisciplinary Critique under UDIST
-        if course.subject == 'CRITI':
-            depts.add('UDIST')
+        if course.subject == "CRITI":
+            depts.add("UDIST")
         # ignore Fine Arts internship courses
-        elif course.subject == 'FNART':
-            return None
+        elif course.subject == "FNART":
+            return set()
     else:
         depts.add(course.owner)
     return depts
 
 
-def course_list_term(term, taxo, dept_layer=False):
+def course_list_term(term, taxo, dept_layer=False) -> None:
     """
-        Add all the terms from a course to a taxonomy. This function is recursive,
-        passing a nested Term object which knows its parent/child Terms to itself
-        over and over until it finishes.
+    Add all the terms from a course to a taxonomy. This function is recursive,
+    passing a nested Term object which knows its parent/child Terms to itself
+    over and over until it finishes.
 
-        args:
-            term (Term|Course): the term to be added to the taxonomy, if it's a
-            Course object then it will be split into nested Term objects
+    args:
+        term (Term|Course): the term to be added to the taxonomy, if it's a
+        Course object then it will be split into nested Term objects
 
-            taxo (Taxonomy): course list taxonomy to add the course terms to
+        taxo (Taxonomy): course list taxonomy to add the course terms to
 
-            dept_layer (bool): whether or not to include a term for the academic
-            department e.g.
-            with dept_layer: Spring 2020\\ANIMA\\Animation 1\\John Doe\\ANIMA-1000-1
-            without dept_layer: Spring 2020\\Animation 1\\John Doe\\ANIMA-1000-1
+        dept_layer (bool): whether or not to include a term for the academic
+        department e.g.
+        with dept_layer: Spring 2020\\ANIMA\\Animation 1\\John Doe\\ANIMA-1000-1
+        without dept_layer: Spring 2020\\Animation 1\\John Doe\\ANIMA-1000-1
 
-        returns:
-            nothing
+    returns:
+        nothing
     """
     if type(term) == Course:
-        logger.debug('Course {} passed as taxonomy term, breaking it into nested terms.'.format(term))
+        logger.debug(
+            "Course {} passed as taxonomy term, breaking it into nested terms.".format(
+                term
+            )
+        )
         # term is actually a course object
         course = term
         # we need to create the root (semester-level) taxonomy term
-        term = Term({ "term": course.semester })
+        term = Term({"term": course.semester})
         # We build a tree of nested Terms inside the current Term's list of
         # children. Each term outlined in the sections below (nothing has been
         # added to the Taxo yet) has a parents list equal to the course itself
@@ -121,39 +127,47 @@ def course_list_term(term, taxo, dept_layer=False):
         makeParentsList = lambda t: [t] + [c for c in t.children]
 
         if dept_layer:
-            dept = Term({
-                "term": course.owner,
-                "parents": makeParentsList(term),
-            })
+            dept = Term(
+                {
+                    "term": course.owner,
+                    "parents": makeParentsList(term),
+                }
+            )
             term.children.append(dept)
 
-        title = Term({
-            "term": course.section_title,
-            "parents": makeParentsList(term),
-        })
+        title = Term(
+            {
+                "term": course.section_title,
+                "parents": makeParentsList(term),
+            }
+        )
         term.children.append(title)
 
-        instructors = Term({
-            "term": course.instructor_names,
-            "parents": makeParentsList(term),
-        })
+        instructors = Term(
+            {
+                "term": course.instructor_names,
+                "parents": makeParentsList(term),
+            }
+        )
         term.children.append(instructors)
 
         # final child contains additional data nodes
-        section = Term({
-            "data": {
-                "CrsName": course.course_code,
-                "facultyID": course.instructor_usernames,
-                # additional Workday data we may be interested in
-                "acad_level": course.acad_level,
-                "delivery_mode": course.delivery_mode,
-                "instructional_format": course.instructional_format,
-                "section_def_refid": course.section_def_refid, # true identifier
-                "subject_name": course.subject_name,
-            },
-            "parents": makeParentsList(term),
-            "term": course.section_code,
-        })
+        section = Term(
+            {
+                "data": {
+                    "CrsName": course.course_code,
+                    "facultyID": course.instructor_usernames,
+                    # additional Workday data we may be interested in
+                    "acad_level": course.acad_level,
+                    "delivery_mode": course.delivery_mode,
+                    "instructional_format": course.instructional_format,
+                    "section_def_refid": course.section_def_refid,  # true identifier
+                    "subject_name": course.subject_name,
+                },
+                "parents": makeParentsList(term),
+                "term": course.section_code,
+            }
+        )
         term.children.append(section)
 
     term.uuid = taxo.add(term)
@@ -165,71 +179,72 @@ def course_list_term(term, taxo, dept_layer=False):
         next_term.parentUuid = term.uuid
         course_list_term(next_term, taxo)
 
+
 # term can be either a Course object or a string
 def create_term(term, taxo_name, taxos):
     """
-        Adds a Term to a Taxonomy while handling Course terms—which require
-        multiple operations due to the way they are represented by a hierarchical
-        chain of terms.
+    Adds a Term to a Taxonomy while handling Course terms—which require
+    multiple operations due to the way they are represented by a hierarchical
+    chain of terms.
 
-        args:
-            term (str|Course): text of the term to be added at the root of the
-            taxonomy or a Course object to be converted into a nested set of
-            terms
+    args:
+        term (str|Course): text of the term to be added at the root of the
+        taxonomy or a Course object to be converted into a nested set of
+        terms
 
-            taxo_name (str): name of the Taxonomy to add the Term to
+        taxo_name (str): name of the Taxonomy to add the Term to
 
-            taxos (list): the set of all taxonomies which we will find `taxo_name`
-            in
+        taxos (list): the set of all taxonomies which we will find `taxo_name`
+        in
 
-        returns:
-            essentially nothing, do not use the output of this function
+    returns:
+        essentially nothing, do not use the output of this function
 
-            result (str|None): for a string term, returns the (also string) UUID
-            of the created taxonomy term, while for a Course returns nothing due
-            to the way nested terms are created (it wouldn't make much sense to
-            return the final term's UUID)
+        result (str|None): for a string term, returns the (also string) UUID
+        of the created taxonomy term, while for a Course returns nothing due
+        to the way nested terms are created (it wouldn't make much sense to
+        return the final term's UUID)
     """
     # find the appropriate named taxonomy, do a check in case we don't find one
     taxo = next((t for t in taxos if t.name.lower() == taxo_name.lower()), None)
     if not taxo:
-        logger.error('Unable to find {} in list of taxonomies.'.format(taxo_name))
+        logger.error("Unable to find {} in list of taxonomies.".format(taxo_name))
         return None
 
     if type(term) == str:
         if len(term) == 0 or term.isspace():
-            logger.debug('No term to be added to {} taxonomy'.format(taxo))
+            logger.debug("No term to be added to {} taxonomy".format(taxo))
             return None
-        return taxo.add(Term({ "term": term }))
+        return taxo.add(Term({"term": term}))
 
     # term is an object so it's a course list term
     # 2 course lists have an additional layer in hierarchy for department
-    has_dept_layer = 'SYLLABUS' in taxo_name or 'ARCH DIV' in taxo_name
+    has_dept_layer = "SYLLABUS" in taxo_name or "ARCH DIV" in taxo_name
     return course_list_term(term, taxo, dept_layer=has_dept_layer)
 
 
-def add_to_taxos(course, taxos, only_course_lists=False):
+def add_to_taxos(course, taxos, only_course_lists=False) -> None:
     """
-        Create all the related taxonomy terms for a given course.
+    Create all the related taxonomy terms for a given course.
 
-        args:
-            course (Course)
+    args:
+        course (Course)
 
-            taxos (list): list of _all_ VAULT taxonomies
+        taxos (list): list of _all_ VAULT taxonomies
 
-            only_course_lists (bool): whether to only add terms to course lists
-            as opposed to all taxonomies (e.g. course sections, faculty names).
-            The initial data population should be all taxonomies but repeat runs
-            use `only_course_lists=True`
+        only_course_lists (bool): whether to only add terms to course lists
+        as opposed to all taxonomies (e.g. course sections, faculty names).
+        The initial data population should be all taxonomies but repeat runs
+        use `only_course_lists=True`
 
-        returns:
-            nothing
+    returns:
+        nothing
     """
-    logger.debug('Processing taxonomies for course {}'.format(course))
+    logger.debug("Processing taxonomies for course {}".format(course))
     for dept in get_depts(course):
-        create_term(course, dept + ' - COURSE LIST', taxos)
+        create_term(course, dept + " - COURSE LIST", taxos)
         if not only_course_lists:
-            create_term(course.section_code, dept + ' - course sections', taxos)
-            create_term(course.course_refid, dept + ' - course names', taxos)
-            create_term(course.section_title, dept + ' - course titles', taxos)
-            create_term(course.instructor_names, dept + ' - faculty', taxos)
+            create_term(course.section_code, dept + " - course sections", taxos)
+            create_term(course.course_refid, dept + " - course names", taxos)
+            create_term(course.section_title, dept + " - course titles", taxos)
+            create_term(course.instructor_names, dept + " - faculty", taxos)

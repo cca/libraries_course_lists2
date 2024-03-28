@@ -1,4 +1,5 @@
 from html import unescape
+
 # https://docs.python.org/3/library/types.html#types.SimpleNamespace
 # let's us construct an object from a dict
 from types import SimpleNamespace
@@ -7,7 +8,6 @@ from .utilities import strip_prefix, PORTAL_STATUSES
 
 
 class Course(SimpleNamespace):
-
 
     def __repr__(self):
         return "{} {} {}".format(self.semester, self.section_code, self.section_title)
@@ -20,9 +20,8 @@ class Course(SimpleNamespace):
             return unescape(value)
         return value
 
-
     def find_colocated_sections(self, courses):
-        """ Return colocated/cross-listed sections
+        """Return colocated/cross-listed sections
 
         Parameters
         ----------
@@ -49,21 +48,25 @@ class Course(SimpleNamespace):
     def instructor_names(self):
         # print list of instructors as a comma-separated string of names
         if len(self.instructors) == 0:
-            return '[instructors to be determined]'
+            return "[instructors to be determined]"
         names = []
         for person in self.instructors:
-            names.append('{} {}'.format(person["first_name"], person["last_name"]))
-        return ', '.join(names)
+            names.append("{} {}".format(person["first_name"], person["last_name"]))
+        return ", ".join(names)
 
     @property
     def instructor_usernames(self):
         # print list of instructor usernames as comma-separated string
-        return ', '.join([i['username'] for i in self.instructors])
+        return ", ".join([i["username"] for i in self.instructors])
 
     @property
     def on_portal(self):
-        """ boolean for whether a course is included in Portal course catalog """
-        if self.hidden != "1" and self.status in PORTAL_STATUSES and self.owner != 'EXTED':
+        """boolean for whether a course is included in Portal course catalog"""
+        if (
+            self.hidden != "1"
+            and self.status in PORTAL_STATUSES
+            and self.owner != "EXTED"
+        ):
             return True
         return False
 
@@ -82,4 +85,4 @@ class Course(SimpleNamespace):
 
     @property
     def semester(self):
-        return strip_prefix(self.term).replace('_', ' ')
+        return strip_prefix(self.term).replace("_", " ")
