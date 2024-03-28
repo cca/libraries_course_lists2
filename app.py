@@ -24,7 +24,8 @@ parser.add_argument(
     help="only create terms in course list taxonomies, ignore others",
 )
 parser.add_argument(
-    "-nd, --no-delete",
+    "-nd",
+    "--no-delete",
     action="store_true",
     default=False,
     help="do not delete semester terms (useful for rerunning failed, partial imports)",
