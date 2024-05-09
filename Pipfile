@@ -10,7 +10,7 @@ requests = "==2.31"
 coverage = "~=7.4"
 
 [requires]
-python_version = "3.10"
+python_version = "3.11"
 
 [scripts]
 cover = 'coverage run -m unittest discover -v'
