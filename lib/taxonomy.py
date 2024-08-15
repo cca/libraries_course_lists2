@@ -1,15 +1,16 @@
 from urllib.parse import urlencode, quote
 
+import requests
+
 from config import api_root, logger
-from .utilities import request_wrapper
+from .utilities import get_headers
 
 
 class Term:
     def __init__(self, term):
-        # parents & children are lists of Term objects
-        self.children = term.get("children", [])
+        self.children: list[Term] = term.get("children", [])
         self.data = term.get("data", {})
-        self.parents = term.get("parents", [])
+        self.parents: list[Term] = term.get("parents", [])
         self.parentUuid = term.get("parentUuid", None)
         self.term = term.get("term", None)
         self.uuid = term.get("uuid", None)
@@ -79,9 +80,10 @@ class Taxonomy:
             logger.debug('Term "{}" is already in taxonomy "{}".'.format(self, term))
             return existing_term.uuid
 
-        s = request_wrapper()
-        r = s.post(
-            api_root + "/taxonomy/{}/term".format(self.uuid), json=term.asPOSTData()
+        r = requests.post(
+            api_root + "/taxonomy/{}/term".format(self.uuid),
+            json=term.asPOSTData(),
+            headers=get_headers(),
         )
         # if we successfully created a term, store its UUID
         if r.status_code == 200 or r.status_code == 201:
@@ -133,17 +135,17 @@ class Taxonomy:
                 )
             )
 
-        s = request_wrapper()
         for key, value in term.data.items():
             if value:
-                r = s.put(
+                r = requests.put(
                     api_root
                     + "/taxonomy/{uuid}/term/{termUuid}/data/{key}/{value}".format(
                         uuid=self.uuid,
                         termUuid=term.uuid,
                         key=quote(key),
                         value=quote(value),
-                    )
+                    ),
+                    headers=get_headers(),
                 )
                 r.raise_for_status()
         logger.info("added data to {} term in {} taxonomy".format(term, self))
@@ -153,13 +155,14 @@ class Taxonomy:
         Delete all terms in the taxonomy. We only need to delete the root
         terms, orphaned children are automatically erased.
         """
-        for term in self.getRootTerms():
+        terms = self.getRootTerms()
+        for term in terms:
             self.remove(term)
         self.terms.clear()
 
     def getTerm(self, search_term, attr="term"):
         """
-        @TODO I want to get tests passing first but turns out I _hate_ this
+        TODO I want to get tests passing first but turns out I _hate_ this
         API. `search_term` should always be a string that gets wrapped in a
         Term object—the fact that taxo.getTerm("term string", "term")
         behaves differently from taxo.getTerm("uuid string", "uuid") is a
@@ -209,12 +212,12 @@ class Taxonomy:
                     )
                 )
                 raise Exception("cannot find parent of duplicate child term")
-            s = request_wrapper()
-            r = s.get(
+            r = requests.get(
                 api_root
                 + "/taxonomy/{}/term?{}".format(
                     self.uuid, urlencode({"path": parent.fullTerm})
-                )
+                ),
+                headers=get_headers(),
             )
             r.raise_for_status()
             # r.json is a list of sibling term dicts, find the duplicate one
@@ -243,18 +246,23 @@ class Taxonomy:
             root terms (list): list of Term objects
         """
         logger.debug("Getting root-level taxonomy terms for {}".format(self))
-        s = request_wrapper()
-        r = s.get(api_root + "/taxonomy/{}/term".format(self.uuid))
+        r = requests.get(
+            api_root + "/taxonomy/{}/term".format(self.uuid), headers=get_headers()
+        )
         r.raise_for_status()
         terms = [Term(t) for t in r.json()]
         for term in terms:
             self.terms.add(term)
         return terms
 
-    def remove(self, term):
+    def remove(self, term) -> bool:
         """
         Remove a term from a taxonomy (primarily used to remove semester
         terms from course lists).
+
+        ! clear calls remove on all root terms and both call getRootTerms
+        ! which may be causing a memory leak
+
         args:
             term (str|Term): either a string ("Fall 2019") or Term object
         returns:
@@ -287,18 +295,19 @@ class Taxonomy:
             )
             return False
 
-        s = request_wrapper()
         logger.info('deleting "{}" term from "{}" taxonomy'.format(term, self))
-        r = s.delete(api_root + "/taxonomy/{}/term/{}".format(self.uuid, term.uuid))
+        r = requests.delete(
+            api_root + "/taxonomy/{}/term/{}".format(self.uuid, term.uuid),
+            headers=get_headers(),
+        )
         self.terms.discard(term)
         # will throw a 500 error if the taxonomy is locked by another user
         # r.json() = {'code': 500, 'error': 'Internal Server Error',
         # 'error_description': 'Taxonomy is locked by another user: {username}'}
         r.raise_for_status()
         # remove term's children (openEQUELLA API does this automatically)
-        if len(term.children) > 0:
-            for child in term.children:
-                self.terms.discard(child)
+        for child in term.children:
+            self.terms.discard(child)
         return True
 
     def search(self, query, options={}):
@@ -323,14 +332,15 @@ class Taxonomy:
                 self, query, options
             )
         )
-        s = request_wrapper()
-        r = s.get(
+        r = requests.get(
             api_root
             + "/taxonomy/{}/search?q={}&{}".format(
                 self.uuid,
                 query,
                 urlencode(options),
-            )
+            ),
+            headers=get_headers(),
         )
         r.raise_for_status()
-        return r.json()["results"]
+        results = r.json()["results"]
+        return results

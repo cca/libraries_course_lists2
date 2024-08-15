@@ -7,7 +7,9 @@ Direct copy of logic from get_taxos.py
 import json
 import os
 
-from .utilities import request_wrapper
+import requests
+
+from .utilities import get_headers
 from .group import Group
 import config
 
@@ -15,8 +17,10 @@ groups_file = os.path.join("data", "groups.json")
 
 
 def download_groups() -> list[Group]:
-    s = request_wrapper()
-    response = s.get(config.api_root + "/usermanagement/local/group?allParents=true")
+    response = requests.get(
+        config.api_root + "/usermanagement/local/group?allParents=true",
+        headers=get_headers(),
+    )
     response.raise_for_status()
     data = response.json()
     # create file
@@ -24,7 +28,6 @@ def download_groups() -> list[Group]:
         json.dump(data, fh)
 
     config.logger.info("Downloaded group JSON data from API.")
-    s.close()
     return [Group(g) for g in data["results"]]
 
 

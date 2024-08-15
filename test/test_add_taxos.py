@@ -1,6 +1,14 @@
+import logging
 import unittest
 
 from lib import *
+
+format = "%(asctime)s %(name)s %(levelname)s %(message)s"
+logging.basicConfig(
+    level=logging.DEBUG,
+    format=format,
+    datefmt="%Y-%m-%d %H:%M:%S",
+)
 
 
 class TestAddTaxos(unittest.TestCase):

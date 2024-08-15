@@ -1,5 +1,7 @@
+import requests
+
 import config
-from .utilities import request_wrapper
+from .utilities import get_headers
 
 # five-letter academic unit name => EQUELLA group name, ldap group name
 # good way to get a listing of all the unit codes:
@@ -94,24 +96,23 @@ class Group:
             "parentId": self.parentUuid,
             "users": all_users,
         }
-        s = request_wrapper()
-        r = s.put(
+        r = requests.put(
             config.api_root + "/usermanagement/local/group/{}".format(self.uuid),
             json=data,
+            headers=get_headers(),
         )
         r.raise_for_status()
 
         config.logger.info("added {} to {} group".format(", ".join(new_users), self))
         self.users = all_users
-        s.close()
         return self
 
     def get_users(self):
         """retrieve list of users in group from EQUELLA
         this method populates the self.users list"""
-        s = request_wrapper()
-        r = s.get(
-            config.api_root + "/usermanagement/local/group/{}/user".format(self.uuid)
+        r = requests.get(
+            config.api_root + "/usermanagement/local/group/{}/user".format(self.uuid),
+            headers=get_headers(),
         )
         r.raise_for_status()
         """
@@ -130,7 +131,6 @@ class Group:
         self.users = users
         self._have_gotten_users = True
         config.logger.debug("Downloaded user list from API for group {}".format(self))
-        s.close()
         return users
 
     def remove_users(self, banlist):
@@ -156,16 +156,15 @@ class Group:
             "parentId": self.parentUuid,
             "users": new_users,
         }
-        s = request_wrapper()
-        r = s.put(
+        r = requests.put(
             config.api_root + "/usermanagement/local/group/{}".format(self.uuid),
             json=data,
+            headers=get_headers(),
         )
         r.raise_for_status()
 
         config.logger.info("removed {} from {} group".format(", ".join(banlist), self))
         self.users = new_users
-        s.close()
         return self
 
     def write_ldap_file(self, path=None):

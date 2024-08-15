@@ -6,7 +6,9 @@ IF we don't, create such a list using the REST API.
 import json
 import os
 
-from .utilities import request_wrapper
+import requests
+
+from .utilities import get_headers
 from .taxonomy import Taxonomy
 import config
 
@@ -14,10 +16,9 @@ taxos_file = os.path.join("data", "taxonomies.json")
 
 
 def download_taxos() -> list[Taxonomy]:
-    s = request_wrapper()
     # with 2019.2 API defaults to length=10 if you don't specify it, we want
     # _all_ the taxonomies so just make this a very high number
-    r = s.get(config.api_root + "/taxonomy?length=5000")
+    r = requests.get(config.api_root + "/taxonomy?length=5000", headers=get_headers())
     r.raise_for_status()
     data = r.json()
     # create file
@@ -25,7 +26,6 @@ def download_taxos() -> list[Taxonomy]:
         json.dump(data, fh)
 
     config.logger.info("Downloaded taxonomy JSON data from API.")
-    s.close()
     return [Taxonomy(t) for t in data["results"]]
 
 

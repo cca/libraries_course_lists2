@@ -1,25 +1,21 @@
 import re
 
-from requests import Session
-
 import config
 
 
 PORTAL_STATUSES = ("Closed", "Open", "Waitlist")
 
 
-def request_wrapper() -> Session:
+def get_headers() -> dict[str, str]:
     if not config.token:
         raise Exception("I need an OAuth token in config.py to work.")
 
-    s = Session()
     headers = {
         "Accept": "application/json",
         "Content-Type": "application/json",
         "X-Authorization": "access_token=" + config.token,
     }
-    s.headers.update(headers)
-    return s
+    return headers
 
 
 def strip_prefix(string) -> str:
