@@ -7,9 +7,12 @@ usage: python make_informer_csv.py
 automatically names the output file "_informer.csv" per convention used in the
 original libraries_course_lists project
 """
+
+import argparse
 import csv
 from datetime import datetime
 import json
+import re
 import subprocess
 import unicodedata
 
@@ -70,14 +73,14 @@ def asciize(s):
     return unicodedata.normalize("NFKD", s).encode("ascii", "ignore").decode()
 
 
-def make_course_row(course):
+def make_course_row(course, courses):
     """args: course object from Workday json
     returns: list of data properties we're interested in
     """
     # skip courses not in Portal course catalog
     if not course.on_portal:
         return None
-    global courses
+
     dept = course.owner
     # skip the weird exceptions
     if dept in ["CCA", "PRECO"]:
@@ -90,7 +93,7 @@ def make_course_row(course):
             # FNARTs internship, skip
             return None
     row = [
-        SEMESTER,
+        to_term_code(course.semester),
         dept,
         asciize(course.section_title),
         # cannot allow an empty instructor names field
@@ -107,28 +110,43 @@ def make_course_row(course):
 # 1. "Fall 2023" (Workday JSON)
 # 2. "2023FA" (EQUELLA taxonomy)
 # 3. "FA_2023" (Google Storage file name)
-file = download_courses_file(what_term_is_it())
-with open(file, "r") as fh:
-    data = json.load(fh)
-    courses = [Course(**d) for d in data]
+def main(file=None, term=None):
+    if not file:
+        file = download_courses_file(term or what_term_is_it())
 
-SEMESTER = to_term_code(courses[0].semester)
+    with open(file, "r") as fh:
+        data = json.load(fh)
+        courses = [Course(**d) for d in data]
 
-print("Writing Informer CSV file to _informer.csv")
-with open("_informer.csv", "w") as file:
-    writer = csv.writer(file)
-    header = [
-        "semester",
-        "department",
-        "title",
-        "faculty",
-        "section",
-        "course",
-        "colocated courses",
-        "faculty usernames",
-    ]
-    writer.writerow(header)
-    for course in courses:
-        row = make_course_row(course)
-        if row:
-            writer.writerow(row)
+    print("Writing Informer CSV file to _informer.csv")
+    with open("_informer.csv", "w") as file:
+        writer = csv.writer(file)
+        header = [
+            "semester",
+            "department",
+            "title",
+            "faculty",
+            "section",
+            "course",
+            "colocated courses",
+            "faculty usernames",
+        ]
+        writer.writerow(header)
+        for course in courses:
+            row = make_course_row(course, courses)
+            if row:
+                writer.writerow(row)
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Create Informer-like CSV from Workday JSON. This script automatically downloads the JSON courses file for the current semester from Google Storage or you can specify a term or file to create a CSV for a semester other than the current one."
+    )
+    parser.add_argument("-f", "--file", help="path to JSON courses file")
+    parser.add_argument("-t", "--term", help="term code like 'Fall_2023'")
+    args = parser.parse_args()
+    if args.term and not re.match(r"(Spring|Summer|Fall)_\d{4}", args.term):
+        raise ValueError(
+            f"Cannot understand '{args.term}', the --term must be in the form of 'Fall_2023' e.g. a valid season, an underscore, and a 4-digit year"
+        )
+    main(args.file, args.term)
