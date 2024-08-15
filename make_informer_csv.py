@@ -10,7 +10,7 @@ original libraries_course_lists project
 
 import argparse
 import csv
-from datetime import datetime
+from datetime import date, datetime
 import json
 import re
 import subprocess
@@ -18,13 +18,12 @@ import unicodedata
 
 from lib import Course
 
-today = datetime.now().date()
+today: date = datetime.now().date()
 
 
-def what_term_is_it(date=today):
+def what_term_is_it(date: date = today) -> str:
     """determine current term (e.g. "Fall 2023", "Spring 2023") from the date"""
-    season = None
-    year = date.year
+    year: int = date.year
 
     if date.month >= 8:
         season = "Fall"
@@ -36,17 +35,17 @@ def what_term_is_it(date=today):
     return f"{season}_{year}"
 
 
-def download_courses_file(term):
+def download_courses_file(term: str) -> str:
     # call out to `gsutil` to download the courses file from Google Storage
     # using the google-cloud-storage library stopped working, some kind of auth problem
-    uri = f"gs://int_files_source/course_section_data_AP_{term}.json"
-    path = f"data/{today}_{term}.json"
-    cmd = f"gsutil cp {uri} {path}"
+    uri: str = f"gs://int_files_source/course_section_data_AP_{term}.json"
+    path: str = f"data/{today}_{term}.json"
+    cmd: str = f"gsutil cp {uri} {path}"
     subprocess.call(cmd, shell=True)
     return path
 
 
-def to_term_code(semester):
+def to_term_code(semester: str) -> str:
     """convert a semester phrase like "Fall 2023" to a "2023FA" term code
 
     Args:
@@ -67,13 +66,13 @@ def to_term_code(semester):
     return f"{year}{postfix}"
 
 
-def asciize(s):
+def asciize(s: str) -> str:
     # convert unicode string into ascii
     # we have to do this bc uptaxo script chokes on non-ascii chars
     return unicodedata.normalize("NFKD", s).encode("ascii", "ignore").decode()
 
 
-def make_course_row(course, courses):
+def make_course_row(course: Course, courses: list[Course]) -> list[str] | None:
     """args: course object from Workday json
     returns: list of data properties we're interested in
     """
@@ -81,9 +80,9 @@ def make_course_row(course, courses):
     if not course.on_portal:
         return None
 
-    dept = course.owner
+    dept: str | None = course.owner
     # skip the weird exceptions
-    if dept in ["CCA", "PRECO"]:
+    if not dept or dept in ["CCA", "PRECO"]:
         # intl exchg, skip
         return None
     elif dept == "FA":
@@ -92,7 +91,7 @@ def make_course_row(course, courses):
         else:
             # FNARTs internship, skip
             return None
-    row = [
+    row: list[str] = [
         to_term_code(course.semester),
         dept,
         asciize(course.section_title),
@@ -110,18 +109,18 @@ def make_course_row(course, courses):
 # 1. "Fall 2023" (Workday JSON)
 # 2. "2023FA" (EQUELLA taxonomy)
 # 3. "FA_2023" (Google Storage file name)
-def main(file=None, term=None):
+def main(file: str | None = None, term: str | None = None) -> None:
     if not file:
         file = download_courses_file(term or what_term_is_it())
 
     with open(file, "r") as fh:
         data = json.load(fh)
-        courses = [Course(**d) for d in data]
+        courses: list[Course] = [Course(**d) for d in data]
 
     print("Writing Informer CSV file to _informer.csv")
-    with open("_informer.csv", "w") as file:
-        writer = csv.writer(file)
-        header = [
+    with open("_informer.csv", "w") as outfile:
+        writer = csv.writer(outfile)
+        header: list[str] = [
             "semester",
             "department",
             "title",
@@ -133,7 +132,7 @@ def main(file=None, term=None):
         ]
         writer.writerow(header)
         for course in courses:
-            row = make_course_row(course, courses)
+            row: list[str] | None = make_course_row(course, courses)
             if row:
                 writer.writerow(row)
 
