@@ -5,7 +5,7 @@ Brand new, redesigned course list handling for VAULT courtesy of Workday Student
 ## Setup
 
 1. [Install the Google Cloud CLI](https://cloud.google.com/sdk/docs/install) (needed for `gsutil`)
-1. Set up a python virtual environment & install dependencies `pipenv install`
+1. Set up a python virtual environment & install dependencies `uv install`
 1. Obtain a VAULT OAuth token for API use, `cp example.config.py config.py`, add the token to it. You can also change the logging configuration here if you so choose.
 1. Obtain access to CCA Integrations data in Google Cloud (contact Integration Engineer). There should be JSON files present for employees, students, and courses for current semesters. With the integrations project active, running `gcloud auth application-default login` once will authenticate this project.
 
@@ -42,10 +42,10 @@ The taxonomies JSON is stored in data/taxonomies.json (not all their terms, just
 ## Testing
 
 ```sh
-> pipenv run cover # run tests
-> pipenv run report # coverage report
-> coverage html # generate HTML in htmlcov/ that shows which lines aren't tested
-> python -m unittest test.test_course # run a specific test suite
+> uv run coverage run -m unittest discover -v # run tests
+> uv run coverage report --include=lib/\* # coverage report
+> uv run coverage html # generate HTML in htmlcov/ that shows which lines aren't tested
+> uv run python -m unittest test.test_course # run a specific test suite
 ```
 
 Add tests to the "test" folder and name them like "test_FILENAME" where FILENAME is roughly the name of the module that's being tested. This ensures `unittest` can discover them and makes it easier to see what tests still need to be written. You may need to create fixtures in both VAULT and the local filesystem to write some tests. Prefer using a fake, created datum to testing against production data that naturally changes.
