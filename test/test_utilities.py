@@ -25,7 +25,7 @@ class TestCourseSort(unittest.TestCase):
     # strip_prefix is used in two contexts right now: for department codes but
     # also for academic periods (semesters)
     def test_course_sort(self):
-        c = self.courses  # just to save typing below
+        c = self.courses[:13]  # just to save typing below
         sorted_courses = sorted(c, key=course_sort)
         correct_sort = [
             c[1],

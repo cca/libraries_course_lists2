@@ -31,8 +31,12 @@ class TestCourseClass(unittest.TestCase):
         self.assertTrue(two_instructors.on_portal)
         self.assertFalse(next(c for c in self.courses if c.hidden == "1").on_portal)
         self.assertFalse(self.courses[11].on_portal)  # EXTED course
+        # test placeholder
+        self.assertTrue(self.courses[-1].placeholder)
+        self.assertFalse(self.courses[0].placeholder)
+        # test academic department owners
         # test a first year course rather than another UDIST one
-        self.assertEqual(self.courses[-1].owner, "CORES")
+        self.assertEqual(self.courses[-2].owner, "CORES")
         self.assertEqual(two_instructors.owner, "UDIST")
         self.assertEqual(one_instructor.semester, "Spring 2020")
         self.assertEqual(two_instructors.semester, "Spring 2020")

@@ -76,8 +76,8 @@ def make_course_row(course: Course, courses: list[Course]) -> list[str] | None:
     """args: course object from Workday json
     returns: list of data properties we're interested in
     """
-    # skip courses not in Portal course catalog
-    if not course.on_portal:
+    # skip ones not in Portal course catalog & placeholders
+    if not course.on_portal or course.placeholder:
         return None
 
     dept: str | None = course.owner

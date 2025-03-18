@@ -1,851 +1,894 @@
 [
-        {
-                "section_def_refid": "DEF_UDIST-300-03_2020SP",
-                "course_def_refid": "DEF_UDIST-300",
-                "section_refid": "UDIST-300-03_2020SP",
-                "course_refid": "UDIST-3000",
-                "section_calc_id": "UDIST-3000-3_AP_Spring_2020",
-                "section_code": "UDIST-3000-3",
-                "section_title": "Instruments &amp; Science Meets Art",
-                "course_number": "3000",
-                "section_number": "3",
-                "term": "AP_Spring_2020",
-                "status": "Preliminary",
-                "hidden": "0",
-                "course_code": "UDIST-3000",
-                "acad_level": "Undergraduate",
-                "course_title": "Upper Division Interdisciplinary Studio",
-                "course_desc": "&lt;p&gt;Upper Division Interdisciplinary Studios extend a student's cross-school experience from Core Studio up into their upper division years. 3 units of Interdisciplinary Studio are required of all majors and must be completed in the junior or senior year. This advanced level studio is thematic in nature. Technical demonstrations are paired with thoughtful readings, seminar discussions and ambitious projects. Collaboration, experimentation and presentation skills are developed in concert with critical thinking.&lt;/p&gt;",
-                "colocated_parent": "",
-                "colocated_sections": "",
-                "subject": "UDIST",
-                "subject_name": "Upper Level Interdisciplinary Studio",
-                "min_unit": "3",
-                "max_unit": "3",
-                "start_date": "2020-01-21-08:00",
-                "end_date": "2020-05-08-07:00",
-                "instructional_format": "Workshop",
-                "delivery_mode": "In-Person",
-                "grading_basic": "Graded",
-                "section_desc": "&lt;span&gt;Interdisciplinary Studios extend a student&amp;#39;s cross-school experience from Core Studio up into his or her upper division years. 3 units of Interdisciplinary Studio are required of all majors and must be completed in the junior or senior year. This advanced level studio is thematic in nature. Technical demonstrations are paired with thoughtful readings, seminar discussions and ambitious projects. Collaboration, experimentation and presentation skills are developed in concert with critical thinking.&lt;/span&gt;&lt;span&gt;&lt;b&gt;Section Description&lt;/b&gt;&lt;/span&gt;This course explores the fertile cross-disciplinary field of Art/Science. Scientists engage with the real world and filter vast amounts of potential information down to a comprehensible data set through the use of instruments. Many artists do the same thing by creating conceptual or physical instruments or &amp;#39;devices of constraint&amp;#39; to reduce subjectivity in the art-making process. We will take a close look at scientific practice in a range of fields, be exposed to artists who are delving into this territory and then be inspired to develop our own prototype instruments. The final project for the studio will be artist-developed instruments that encourage and enable a new perspective on the physical world around us. We will collaborate with the Exploratorium in San Francisco during this studio. &lt;span&gt;Additional materials fee of $50 will be charged. &lt;/span&gt;",
-                "capacity": "16",
-                "wait_list": "0",
-                "enrollment": "0",
-                "academic_units": [
-                        {
-                                "refid": "AU_INTER",
-                                "name": "Interior Design",
-                                "offering_percent": "100",
-                                "course_owner": true
-                        }
-                ],
-                "meetings": [
-                        {
-                                "refid": "Fri_09:00AM_03:00PM",
-                                "start_time": "09:00:00",
-                                "end_time": "15:00:00",
-                                "meeting_day": "Fri",
-                                "start_date": "",
-                                "end_date": "",
-                                "location": {
-                                        "refid": "SANF_N5",
-                                        "room": "San Francisco - Main Building - N5",
-                                        "building": "Montgomery Campus",
-                                        "building_id": "Montgomery_Campus",
-                                        "campus": "San Francisco",
-                                        "type": "Classroom - Academic - Multi use"
-                                }
-                        }
-                ],
-                "instructors": [
-                        {
-                                "first_name": "Donald",
-                                "last_name": "Fortescue",
-                                "username": "dfortescue"
-                        }
-                ]
-        },
-        {
-                "section_def_refid": "DEF_UDIST-300-02_2020SP",
-                "course_def_refid": "DEF_UDIST-300",
-                "section_refid": "UDIST-300-02_2020SP",
-                "course_refid": "UDIST-3000",
-                "section_calc_id": "UDIST-3000-2_AP_Spring_2020",
-                "section_code": "UDIST-3000-2",
-                "section_title": "The Peripatetic Wunderkammer",
-                "course_number": "3000",
-                "section_number": "2",
-                "term": "AP_Spring_2020",
-                "status": "Open",
-                "hidden": "0",
-                "course_code": "UDIST-3000",
-                "acad_level": "Undergraduate",
-                "course_title": "Upper Division Interdisciplinary Studio",
-                "course_desc": "&lt;p&gt;Upper Division Interdisciplinary Studios extend a student's cross-school experience from Core Studio up into their upper division years. 3 units of Interdisciplinary Studio are required of all majors and must be completed in the junior or senior year. This advanced level studio is thematic in nature. Technical demonstrations are paired with thoughtful readings, seminar discussions and ambitious projects. Collaboration, experimentation and presentation skills are developed in concert with critical thinking.&lt;/p&gt;",
-                "colocated_parent": "",
-                "colocated_sections": "",
-                "subject": "UDIST",
-                "subject_name": "Upper Level Interdisciplinary Studio",
-                "min_unit": "3",
-                "max_unit": "3",
-                "start_date": "2020-01-21-08:00",
-                "end_date": "2020-05-08-07:00",
-                "instructional_format": "Workshop",
-                "delivery_mode": "In-Person",
-                "grading_basic": "Graded",
-                "section_desc": "Interdisciplinary Studios extend a student&amp;#39;s cross-school experience from Core Studio up into his or her upper division years. 3 units of Interdisciplinary Studio are required of all majors and must be completed in the junior or senior year. This advanced level studio is thematic in nature. Technical demonstrations are paired with thoughtful readings, seminar discussions and ambitious projects. Collaboration, experimentation and presentation skills are developed in concert with critical thinking.&lt;b&gt;Section Description&lt;/b&gt;&lt;span&gt;Over the past decade, &amp;#34;Museums without Walls&amp;#34; have blossomed as means of extending the museum experience and collections to the greater city and allowing visitors to be co-curators. Museums such as the Museum of London, the Exploratorium, and the Cooper Hewitt have refined ways to place exhibits in non-traditional spaces, often with the help of mobile apps to guide audiences and interpret installations. The Peripatetic Wunderkammer will challenge students to extend a museum collection to real world spaces in San Francisco. &lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span&gt;Subject matter includes the history of museum collections (and their preceding Wunderkammer), oral histories, audio editing, scripting, Augmented Reality overlays. Speakers will include designers from museum media labs, experts in mobile interpretation, landscape historians, and curators of distributed museums. Field work will involve visits to untraditional local museums and significant time exploring and interpreting the neighborhood where the students&amp;#39; final mobile media projects will be experienced. &lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span&gt;NOTE: Many class sessions will meet in or around the museum we are working with (max 30 min bus ride from campus. Students will be given time to arrive to the site for the course but must cover their own transportation costs and some entrance fees to museums. Total cost for the course should not exceed $100.&lt;/span&gt;",
-                "capacity": "16",
-                "wait_list": "0",
-                "enrollment": "0",
-                "academic_units": [
-                        {
-                                "refid": "AU_CCA",
-                                "name": "CCA",
-                                "offering_percent": "100",
-                                "course_owner": true
-                        }
-                ],
-                "meetings": [
-                        {
-                                "refid": "Mon/Wed_12:00PM_03:00PM",
-                                "start_time": "12:00:00",
-                                "end_time": "15:00:00",
-                                "meeting_day": "Mon/Wed",
-                                "start_date": "",
-                                "end_date": "",
-                                "location": {
-                                        "refid": "SANF_W1",
-                                        "room": "San Francisco - Main Building - W1",
-                                        "building": "Montgomery Campus",
-                                        "building_id": "Montgomery_Campus",
-                                        "campus": "San Francisco",
-                                        "type": "Classroom - Academic - Seminar - Smart"
-                                }
-                        }
-                ],
-                "instructors": [
-                        {
-                                "first_name": "Michael",
-                                "last_name": "Epstein",
-                                "username": "mepstein2"
-                        }
-                ]
-        },
-        {
-                "section_def_refid": "DEF_UDIST-300-01_2020SP",
-                "course_def_refid": "DEF_UDIST-300",
-                "section_refid": "UDIST-300-01_2020SP",
-                "course_refid": "UDIST-3000",
-                "section_calc_id": "UDIST-3000-1_AP_Spring_2020",
-                "section_code": "UDIST-3000-1",
-                "section_title": "Darn It!",
-                "course_number": "3000",
-                "section_number": "1",
-                "term": "AP_Spring_2020",
-                "status": "Closed",
-                "hidden": "0",
-                "course_code": "UDIST-3000",
-                "acad_level": "Undergraduate",
-                "course_title": "Upper Division Interdisciplinary Studio",
-                "course_desc": "&lt;p&gt;Upper Division Interdisciplinary Studios extend a student's cross-school experience from Core Studio up into their upper division years. 3 units of Interdisciplinary Studio are required of all majors and must be completed in the junior or senior year. This advanced level studio is thematic in nature. Technical demonstrations are paired with thoughtful readings, seminar discussions and ambitious projects. Collaboration, experimentation and presentation skills are developed in concert with critical thinking.&lt;/p&gt;",
-                "colocated_parent": "",
-                "colocated_sections": "",
-                "subject": "CRITI",
-                "subject_name": "Upper Level Interdisciplinary Studio",
-                "min_unit": "3",
-                "max_unit": "3",
-                "start_date": "2020-01-21-08:00",
-                "end_date": "2020-05-08-07:00",
-                "instructional_format": "Workshop",
-                "delivery_mode": "In-Person",
-                "grading_basic": "Graded",
-                "section_desc": "&lt;span&gt;Interdisciplinary Studios extend a student&amp;#39;s cross-school experience from Core Studio up into his or her upper division years. 3 units of Interdisciplinary Studio are required of all majors and must be completed in the junior or senior year. This advanced level studio is thematic in nature. Technical demonstrations are paired with thoughtful readings, seminar discussions and ambitious projects. Collaboration, experimentation and presentation skills are developed in concert with critical thinking.&lt;/span&gt;&lt;span&gt;&lt;b&gt;Section Description&lt;/b&gt;&lt;/span&gt;&lt;span&gt;In an economic system that promotes perpetual newness over the time honored, an American household generates an average of 82 pounds of textile waste per year. As we find ourselves sinking into a sea of the discarded, what is the value of rescuing damaged or outdated objects? How can we employ techniques of mending to counter the unsustainable proposition of relentless disposability and poetically advance the aesthetic principles of ephemerality and imperfection? Holes, tears, broken threads, stains, and missing pieces offer potential for transformation through the careful work of darning, stitching, fusing, patching, and embellishing. They are also fertile sites for reflecting on the physical, emotional, spiritual, environmental, and economic benefits of repair and reuse. A $17 (estimate) course reader will be required, details on the first day of class. &lt;/span&gt;",
-                "capacity": "15",
-                "wait_list": "0",
-                "enrollment": "0",
-                "academic_units": [
-                        {
-                                "refid": "AU_FA",
-                                "name": "Fine Arts",
-                                "offering_percent": "100",
-                                "course_owner": true
-                        }
-                ],
-                "meetings": [
-                        {
-                                "refid": "Thu_09:00AM_03:00PM",
-                                "start_time": "09:00:00",
-                                "end_time": "15:00:00",
-                                "meeting_day": "Thu",
-                                "start_date": "",
-                                "end_date": "",
-                                "location": {
-                                        "refid": "LBLD_3",
-                                        "room": "Oakland - Textiles - 3: Seminar",
-                                        "building": "Textiles",
-                                        "building_id": "Textiles",
-                                        "campus": "Oakland",
-                                        "type": "Classroom - Academic - Multi use"
-                                }
-                        }
-                ],
-                "instructors": [
-                        {
-                                "first_name": "Anne",
-                                "last_name": "Wolf",
-                                "username": "awolf"
-                        }
-                ]
-        },
-        {
-                "section_def_refid": "DEF_UDIST-300-04_2020SP",
-                "course_def_refid": "DEF_UDIST-300",
-                "section_refid": "UDIST-300-04_2020SP",
-                "course_refid": "UDIST-3000",
-                "section_calc_id": "UDIST-3000-4_AP_Spring_2020",
-                "section_code": "UDIST-3000-4",
-                "section_title": "California Parklands",
-                "course_number": "3000",
-                "section_number": "4",
-                "term": "AP_Spring_2020",
-                "status": "Closed",
-                "hidden": "0",
-                "course_code": "UDIST-3000",
-                "acad_level": "Undergraduate",
-                "course_title": "Upper Division Interdisciplinary Studio",
-                "course_desc": "&lt;p&gt;Upper Division Interdisciplinary Studios extend a student's cross-school experience from Core Studio up into their upper division years. 3 units of Interdisciplinary Studio are required of all majors and must be completed in the junior or senior year. This advanced level studio is thematic in nature. Technical demonstrations are paired with thoughtful readings, seminar discussions and ambitious projects. Collaboration, experimentation and presentation skills are developed in concert with critical thinking.&lt;/p&gt;",
-                "colocated_parent": "",
-                "colocated_sections": "",
-                "subject": "FNART",
-                "subject_name": "Upper Level Interdisciplinary Studio",
-                "min_unit": "3",
-                "max_unit": "3",
-                "start_date": "2020-01-21-08:00",
-                "end_date": "2020-05-08-07:00",
-                "instructional_format": "Workshop",
-                "delivery_mode": "In-Person",
-                "grading_basic": "Graded",
-                "section_desc": "&lt;span&gt;Interdisciplinary Studios extend a student&amp;#39;s cross-school experience from Core Studio up into his or her upper division years. 3 units of Interdisciplinary Studio are required of all majors and must be completed in the junior or senior year. This advanced level studio is thematic in nature. Technical demonstrations are paired with thoughtful readings, seminar discussions and ambitious projects. Collaboration, experimentation and presentation skills are developed in concert with critical thinking.&lt;/span&gt;&lt;span&gt;&lt;b&gt;Section Description&lt;/b&gt;&lt;/span&gt;&lt;span&gt;This course is a creative interdisciplinary investigation in the art, design, history, social conflicts, and aesthetics of California Parks. How do we make sense of historical decisions as we reflect now on the consequences of climate change? What role can art and design play in a redefinition of human interaction in wilderness and urban parks? How can we protect the fragility rivers and creeks in the face of environmental challenges to water? What do relational human pathways look like? What decisions can we make? Each of these areas mitigate complex histories as natural celebrations, catharsis, and memorials. We will visit areas such as Yosemite Park, Fresno Underground Gardens, Angel Island, China Camp, Rush Ranch Preserve, and the Albany Bulb. The Park is an adaptation of desire for both history and nature in close proximities. Parks are also sites for social contradictions. Interdisciplinary projects will respond to these parks. Additional materials fee of $100 will be charged. &lt;/span&gt;",
-                "capacity": "16",
-                "wait_list": "0",
-                "enrollment": "0",
-                "academic_units": [
-                        {
-                                "refid": "AU_FA",
-                                "name": "Fine Arts",
-                                "offering_percent": "100",
-                                "course_owner": true
-                        }
-                ],
-                "meetings": [
-                        {
-                                "refid": "Fri_09:00AM_03:00PM",
-                                "start_time": "09:00:00",
-                                "end_time": "15:00:00",
-                                "meeting_day": "Fri",
-                                "start_date": "",
-                                "end_date": "",
-                                "location": {
-                                        "refid": "RALLS_203_RALLS_203",
-                                        "room": "Oakland - Ralls - 203",
-                                        "building": "Ralls",
-                                        "building_id": "Ralls",
-                                        "campus": "Oakland",
-                                        "type": "Classroom - Academic - Multi use"
-                                }
-                        }
-                ],
-                "instructors": [
-                        {
-                                "first_name": "Kim",
-                                "last_name": "Anno",
-                                "username": "kanno"
-                        }
-                ]
-        },
-        {
-                "section_def_refid": "DEF_UDIST-300-06_2020SP",
-                "course_def_refid": "DEF_UDIST-300",
-                "section_refid": "UDIST-300-06_2020SP",
-                "course_refid": "UDIST-3000",
-                "section_calc_id": "UDIST-3000-6_AP_Spring_2020",
-                "section_code": "UDIST-3000-6",
-                "section_title": "Site Glass",
-                "course_number": "3000",
-                "section_number": "6",
-                "term": "AP_Spring_2020",
-                "status": "Closed",
-                "hidden": "0",
-                "course_code": "UDIST-3000",
-                "acad_level": "Undergraduate",
-                "course_title": "Upper Division Interdisciplinary Studio",
-                "course_desc": "&lt;p&gt;Upper Division Interdisciplinary Studios extend a student's cross-school experience from Core Studio up into their upper division years. 3 units of Interdisciplinary Studio are required of all majors and must be completed in the junior or senior year. This advanced level studio is thematic in nature. Technical demonstrations are paired with thoughtful readings, seminar discussions and ambitious projects. Collaboration, experimentation and presentation skills are developed in concert with critical thinking.&lt;/p&gt;",
-                "colocated_parent": "",
-                "colocated_sections": "",
-                "subject": "UDIST",
-                "subject_name": "Upper Level Interdisciplinary Studio",
-                "min_unit": "3",
-                "max_unit": "3",
-                "start_date": "2020-01-21-08:00",
-                "end_date": "2020-05-08-07:00",
-                "instructional_format": "Workshop",
-                "delivery_mode": "In-Person",
-                "grading_basic": "Graded",
-                "section_desc": "&lt;span&gt;Interdisciplinary Studios extend a student&amp;#39;s cross-school experience from Core Studio up into his or her upper division years. 3 units of Interdisciplinary Studio are required of all majors and must be completed in the junior or senior year. This advanced level studio is thematic in nature. Technical demonstrations are paired with thoughtful readings, seminar discussions and ambitious projects. Collaboration, experimentation and presentation skills are developed in concert with critical thinking.&lt;/span&gt;&lt;span&gt;&lt;b&gt;Section Description&lt;/b&gt;&lt;/span&gt;Site Glass : Materiality at the Water&amp;#39;s Edge | Through an investigation of traditional glass fabrication and assembly techniques and the design opportunities afforded by new production and fabrication technologies, we will locate the potential of hybridizing the analog and digital to produce a spatial intervention at the water&amp;#39;s edge. Full scale installations and visual perceptions will be generated by scaling up through material, visual aggregation and atmospheric spatial effect. The immediacy of glass exploration and access to the SF bay will engage the studio in the poetics of light and space in the context of issues brought about by climate change that our local region faces today. Students will start by creating a site analysis catalog of the SF Bay comprised of iterative 2 and 3D plate glass manipulations, exploring materiality and the climate change conditions specific to the site. The studio will culminate in group installation projects sited on the shoreline. Additional materials fee of $200 will be charged. ",
-                "capacity": "15",
-                "wait_list": "0",
-                "enrollment": "0",
-                "academic_units": [
-                        {
-                                "refid": "AU_UDIST",
-                                "name": "Upper Division Interdisciplinary Studio",
-                                "offering_percent": "100",
-                                "course_owner": true
-                        }
-                ],
-                "meetings": [
-                        {
-                                "refid": "Wed_09:00AM_03:00PM",
-                                "start_time": "09:00:00",
-                                "end_time": "15:00:00",
-                                "meeting_day": "Wed",
-                                "start_date": "",
-                                "end_date": "",
-                                "location": {
-                                        "refid": "SHAK_105_SHAK_2",
-                                        "room": "Oakland - Shaklee - 2: Glass Studio",
-                                        "building": "Shaklee",
-                                        "building_id": "Shaklee",
-                                        "campus": "Oakland",
-                                        "type": "Classroom - Academic - Specialty"
-                                }
-                        }
-                ],
-                "instructors": [
-                        {
-                                "first_name": "Megan",
-                                "last_name": "Werner",
-                                "username": "mwerner"
-                        },
-                        {
-                                "first_name": "Elin",
-                                "last_name": "Christopherson",
-                                "username": "echristopherson"
-                        }
-                ]
-        },
-        {
-                "section_def_refid": "DEF_UDIST-300-07_2020SP",
-                "course_def_refid": "DEF_UDIST-300",
-                "section_refid": "UDIST-300-07_2020SP",
-                "course_refid": "UDIST-3000",
-                "section_calc_id": "UDIST-3000-7_AP_Spring_2020",
-                "section_code": "UDIST-3000-7",
-                "section_title": "Insights in Site: Performative Activations in Public Space",
-                "course_number": "3000",
-                "section_number": "7",
-                "term": "AP_Spring_2020",
-                "status": "Open",
-                "hidden": "0",
-                "course_code": "UDIST-3000",
-                "acad_level": "Undergraduate",
-                "course_title": "Upper Division Interdisciplinary Studio",
-                "course_desc": "&lt;p&gt;Upper Division Interdisciplinary Studios extend a student's cross-school experience from Core Studio up into their upper division years. 3 units of Interdisciplinary Studio are required of all majors and must be completed in the junior or senior year. This advanced level studio is thematic in nature. Technical demonstrations are paired with thoughtful readings, seminar discussions and ambitious projects. Collaboration, experimentation and presentation skills are developed in concert with critical thinking.&lt;/p&gt;",
-                "colocated_parent": "",
-                "colocated_sections": "",
-                "subject": "UDIST",
-                "subject_name": "Upper Level Interdisciplinary Studio",
-                "min_unit": "3",
-                "max_unit": "3",
-                "start_date": "2020-01-21-08:00",
-                "end_date": "2020-05-08-07:00",
-                "instructional_format": "Workshop",
-                "delivery_mode": "In-Person",
-                "grading_basic": "Graded",
-                "section_desc": "DescriptionInterdisciplinary Studios extend a student's cross-school experience from Core Studio up into his or her upper division years. 3 units of Interdisciplinary Studio are required of all majors and must be completed in the junior or senior year. This advanced level studio is thematic in nature. Technical demonstrations are paired with thoughtful readings, seminar discussions and ambitious projects. Collaboration, experimentation and presentation skills are developed in concert with critical thinking.&lt;b&gt;Section Description&lt;/b&gt;&lt;span&gt;Insights in Site examines how we shift from interloper to belonging through performative interactions with each other, our communities, and broader society. By charting site analysis from intersectional experiences to multi-disciplinary activations, students will evaluate and activate public space through manifestations of creative practices. Taking cues from site, this class will consider race, gender and ecology to (re)define common ground for accessible public space. How might we upend traditional practices of site design methodologies towards an integrative understanding urban public space? And, how might we center equity-based responses to reimagine accessible public space? Using theatre as metaphor, and performance as a conduit of exploration and expression, students will conduct integrative site analysis through a series of site visits that have been settings for performances by theatre company WePlayers. Students will develop sensory and somatic analysis, understand the permitting processes, and develop alternative methodologies to create equitable site-specific interventions.&lt;/span&gt;",
-                "capacity": "16",
-                "wait_list": "0",
-                "enrollment": "0",
-                "academic_units": [
-                        {
-                                "refid": "AU_UDIST",
-                                "name": "Upper Division Interdisciplinary Studio",
-                                "offering_percent": "100",
-                                "course_owner": true
-                        }
-                ],
-                "meetings": [
-                        {
-                                "refid": "Tue/Thu_04:00PM_07:00PM",
-                                "start_time": "16:00:00",
-                                "end_time": "19:00:00",
-                                "meeting_day": "Tue/Thu",
-                                "start_date": "",
-                                "end_date": "",
-                                "location": {
-                                        "refid": "SANF_N5",
-                                        "room": "San Francisco - Main Building - N5",
-                                        "building": "Montgomery Campus",
-                                        "building_id": "Montgomery_Campus",
-                                        "campus": "San Francisco",
-                                        "type": "Classroom - Academic - Multi use"
-                                }
-                        }
-                ],
-                "instructors": [
-                        {
-                                "first_name": "Ava",
-                                "last_name": "Roy",
-                                "username": "agentava"
-                        },
-                        {
-                                "first_name": "Shalini",
-                                "last_name": "Agrawal",
-                                "username": "sagrawal"
-                        }
-                ]
-        },
-        {
-                "section_def_refid": "DEF_UDIST-300-08_2020SP",
-                "course_def_refid": "DEF_UDIST-300",
-                "section_refid": "UDIST-300-08_2020SP",
-                "course_refid": "UDIST-3000",
-                "section_calc_id": "UDIST-3000-8_AP_Spring_2020",
-                "section_code": "UDIST-3000-8",
-                "section_title": "Post-Disciplinary Design",
-                "course_number": "3000",
-                "section_number": "8",
-                "term": "AP_Spring_2020",
-                "status": "Closed",
-                "hidden": "0",
-                "course_code": "UDIST-3000",
-                "acad_level": "Undergraduate",
-                "course_title": "Upper Division Interdisciplinary Studio",
-                "course_desc": "&lt;p&gt;Upper Division Interdisciplinary Studios extend a student's cross-school experience from Core Studio up into their upper division years. 3 units of Interdisciplinary Studio are required of all majors and must be completed in the junior or senior year. This advanced level studio is thematic in nature. Technical demonstrations are paired with thoughtful readings, seminar discussions and ambitious projects. Collaboration, experimentation and presentation skills are developed in concert with critical thinking.&lt;/p&gt;",
-                "colocated_parent": "",
-                "colocated_sections": "",
-                "subject": "UDIST",
-                "subject_name": "Upper Level Interdisciplinary Studio",
-                "min_unit": "3",
-                "max_unit": "3",
-                "start_date": "2020-01-21-08:00",
-                "end_date": "2020-05-08-07:00",
-                "instructional_format": "Workshop",
-                "delivery_mode": "In-Person",
-                "grading_basic": "Graded",
-                "section_desc": "&lt;span&gt;Description&lt;/span&gt;&lt;span&gt;Interdisciplinary Studios extend a student's cross-school experience from Core Studio up into his or her upper division years. 3 units of Interdisciplinary Studio are required of all majors and must be completed in the junior or senior year. This advanced level studio is thematic in nature. Technical demonstrations are paired with thoughtful readings, seminar discussions and ambitious projects. Collaboration, experimentation and presentation skills are developed in concert with critical thinking.&lt;/span&gt;&lt;span&gt;&lt;b&gt;Section Description&lt;/b&gt;&lt;/span&gt;&lt;span&gt;\"Post-Disciplinary Design at the Edges of Tomorrow - This Upper Division Interdisciplinary Studio will be designed for and from a Maker perspective in order for students to envision and design for Future Public Outcomes. As the complexity and problems of the world proliferate so does the making of things that matter. Designers have become more sought after than ever and the decisions related to creation and making need to be increasingly explicit in order to produce meaningful products, experiences, and places. For the best way to invent the future is to make it. And the best way to predict the future is to create it. Post-disciplinarity is more and more becoming the norm in today's marketplace. Post-disciplinarity means our voices are disparate and unique incorporating multiples and futures, speculations and actualities, accounting for the varied people, places, and settings we have come from and will become. What is the future of practice that makes disciplinary boundaries archaic? We will examine and study the history of futures: other visionary architects, artists, and designers who imagined the future of the city in order for us to understand the past and to begin to create the future. We will be envisioning the future of cities: environments, space, and the public realm. Probing cities and how they evolve and function.We will watch films, prototype and develop tangible experiences informed by researching the past and envisioning possible futures. Can we shape the future of the city by thinking and making things in more critical ways? What does your future look like, the city you move in, the environments you interact with? What is a citizen centered public realm that brings you outside onto the street, into a community?&lt;/span&gt;&lt;span&gt;\"&lt;/span&gt;",
-                "capacity": "16",
-                "wait_list": "0",
-                "enrollment": "0",
-                "academic_units": [
-                        {
-                                "refid": "AU_UDIST",
-                                "name": "Upper Division Interdisciplinary Studio",
-                                "offering_percent": "100",
-                                "course_owner": true
-                        }
-                ],
-                "meetings": [
-                        {
-                                "refid": "Tue/Thu_12:00PM_03:00PM",
-                                "start_time": "12:00:00",
-                                "end_time": "15:00:00",
-                                "meeting_day": "Tue/Thu",
-                                "start_date": "",
-                                "end_date": "",
-                                "location": {
-                                        "refid": "SANF_N11",
-                                        "room": "San Francisco - Main Building - N11",
-                                        "building": "Montgomery Campus",
-                                        "building_id": "Montgomery_Campus",
-                                        "campus": "San Francisco",
-                                        "type": "Classroom - Academic - Multi use"
-                                }
-                        }
-                ],
-                "instructors": [
-                        {
-                                "first_name": "Gregory",
-                                "last_name": "Hurcomb",
-                                "username": "ghurcomb"
-                        }
-                ]
-        },
-        {
-                "section_def_refid": "DEF_UDIST-300-09_2020SP",
-                "course_def_refid": "DEF_UDIST-300",
-                "section_refid": "UDIST-300-09_2020SP",
-                "course_refid": "UDIST-3000",
-                "section_calc_id": "UDIST-3000-9_AP_Spring_2020",
-                "section_code": "UDIST-3000-9",
-                "section_title": "CANCEL",
-                "course_number": "3000",
-                "section_number": "9",
-                "term": "AP_Spring_2020",
-                "status": "Closed",
-                "hidden": "1",
-                "course_code": "UDIST-3000",
-                "acad_level": "Undergraduate",
-                "course_title": "Upper Division Interdisciplinary Studio",
-                "course_desc": "&lt;p&gt;Upper Division Interdisciplinary Studios extend a student's cross-school experience from Core Studio up into their upper division years. 3 units of Interdisciplinary Studio are required of all majors and must be completed in the junior or senior year. This advanced level studio is thematic in nature. Technical demonstrations are paired with thoughtful readings, seminar discussions and ambitious projects. Collaboration, experimentation and presentation skills are developed in concert with critical thinking.&lt;/p&gt;",
-                "colocated_parent": "",
-                "colocated_sections": "",
-                "subject": "UDIST",
-                "subject_name": "Upper Level Interdisciplinary Studio",
-                "min_unit": "3",
-                "max_unit": "3",
-                "start_date": "2020-01-21-08:00",
-                "end_date": "2020-05-08-07:00",
-                "instructional_format": "Workshop",
-                "delivery_mode": "In-Person",
-                "grading_basic": "Graded",
-                "section_desc": "Description&lt;br&gt;Interdisciplinary Studios extend a student's cross-school experience from Core Studio up into his or her upper division years. 3 units of Interdisciplinary Studio are required of all majors and must be completed in the junior or senior year. This advanced level studio is thematic in nature. Technical demonstrations are paired with thoughtful readings, seminar discussions and ambitious projects. Collaboration, experimentation and presentation skills are developed in concert with critical thinking.&lt;b&gt;Section Description&lt;/b&gt;The discipline of creating with computational media, often called \"computer science\" or \"software engineering\", enables students to create new tools and reprogram others to further new thinking in their own major disciplines. Students in the Computational Practices minor develop a competency in creating with computational media; this course integrates that disciplinary competency with students’ own studio practice discipline. Intended to be a capstone for the minor, students are supported as they explore the possibilities and consequences of applying their skills in creating new technology to their work as artists and designers. Understanding and situating computational practice in the broader context of a particular artistic or design discipline is critical for producing work that eloquently blends the technological and the traditional. Case studies will examine how and why particular computational methods are chosen to create particular works and question established orthodoxies. Students will complete a final project that represents the culmination of their work in the minor, demonstrating technical sophistication as well as a deep understanding of the role and context of technology in their discipline. Assignments include a \"literature review\" that collects articles, prior works, etc., with research into what's been done and what are the opportunities and the pitfalls. The final project should take this research into substantial consideration to produce a novel piece. NB: Instructors may offer different versions of this course to provide additional focus on the integration of particular studio disciplines.&amp;nbsp;",
-                "capacity": "0",
-                "wait_list": "0",
-                "enrollment": "0",
-                "academic_units": [
-                        {
-                                "refid": "AU_UDIST",
-                                "name": "Upper Division Interdisciplinary Studio",
-                                "offering_percent": "100",
-                                "course_owner": true
-                        }
-                ],
-                "meetings": [],
-                "instructors": []
-        },
-        {
-                "section_def_refid": "DEF_UDIST-300-10_2020SP",
-                "course_def_refid": "DEF_UDIST-300",
-                "section_refid": "UDIST-300-10_2020SP",
-                "course_refid": "UDIST-3000",
-                "section_calc_id": "UDIST-3000-10_AP_Spring_2020",
-                "section_code": "UDIST-3000-10",
-                "section_title": "Diachronic",
-                "course_number": "3000",
-                "section_number": "10",
-                "term": "AP_Spring_2020",
-                "status": "Open",
-                "hidden": "0",
-                "course_code": "UDIST-3000",
-                "acad_level": "Undergraduate",
-                "course_title": "Upper Division Interdisciplinary Studio",
-                "course_desc": "&lt;p&gt;Upper Division Interdisciplinary Studios extend a student's cross-school experience from Core Studio up into their upper division years. 3 units of Interdisciplinary Studio are required of all majors and must be completed in the junior or senior year. This advanced level studio is thematic in nature. Technical demonstrations are paired with thoughtful readings, seminar discussions and ambitious projects. Collaboration, experimentation and presentation skills are developed in concert with critical thinking.&lt;/p&gt;",
-                "colocated_parent": "",
-                "colocated_sections": "",
-                "subject": "UDIST",
-                "subject_name": "Upper Level Interdisciplinary Studio",
-                "min_unit": "3",
-                "max_unit": "3",
-                "start_date": "2020-01-21-08:00",
-                "end_date": "2020-05-08-07:00",
-                "instructional_format": "Workshop",
-                "delivery_mode": "In-Person",
-                "grading_basic": "Graded",
-                "section_desc": "&lt;span&gt;Description&lt;/span&gt;&lt;span&gt;Interdisciplinary Studios extend a student&amp;#39;s cross-school experience from Core Studio up into his or her upper division years. 3 units of Interdisciplinary Studio are required of all majors and must be completed in the junior or senior year. This advanced level studio is thematic in nature. Technical demonstrations are paired with thoughtful readings, seminar discussions and ambitious projects. Collaboration, experimentation and presentation skills are developed in concert with critical thinking.&lt;/span&gt;&lt;span&gt;&lt;b&gt;Section Description&lt;/b&gt;&lt;/span&gt;&lt;span&gt;&lt;span&gt;Diachronic is about our visual relationship to the past in any medium of choice. Across ceramics, architecture, fashion design and fiber arts, sculpture, furniture, metalwork, jewelery and more, students will apply their skills across multiple studio disciplines to explore their relationship to two or more time periods in history at a time. Purely visual, unmediated by production of text as authors, the students will &amp;#34;write&amp;#34; new interactive art histories in mixed media. Beyond Art History, this course will take theories and methods from Visual Studies, Anthropology, Sociology, Archaeology, and History more broadly to think and publish in new materials. Digital media as well as analogue tactile forms produce new modes not only of understanding the visual past but also of critiquing history and historiography as never before.&lt;/span&gt;&lt;/span&gt;&lt;span&gt;&lt;span&gt;&lt;b&gt;This section has three class meetings in San Francisco. &lt;/b&gt;&lt;/span&gt;&lt;/span&gt;",
-                "capacity": "16",
-                "wait_list": "0",
-                "enrollment": "0",
-                "academic_units": [
-                        {
-                                "refid": "AU_UDIST",
-                                "name": "Upper Division Interdisciplinary Studio",
-                                "offering_percent": "100",
-                                "course_owner": true
-                        }
-                ],
-                "meetings": [
-                        {
-                                "refid": "Fri_09:00AM_03:00PM",
-                                "start_time": "09:00:00",
-                                "end_time": "15:00:00",
-                                "meeting_day": "Fri",
-                                "start_date": "",
-                                "end_date": "",
-                                "location": {
-                                        "refid": "TRED_101_TRED_1",
-                                        "room": "Oakland - Treadwell - 1: Glaze",
-                                        "building": "Treadwell",
-                                        "building_id": "Treadwell",
-                                        "campus": "Oakland",
-                                        "type": "Classroom - Academic - Specialty"
-                                }
-                        }
-                ],
-                "instructors": [
-                        {
-                                "first_name": "Deborah",
-                                "last_name": "Stein",
-                                "username": "deborahstein"
-                        }
-                ]
-        },
-        {
-                "section_def_refid": "DEF_CORES-100-01_2020SP",
-                "course_def_refid": "DEF_CORES-100",
-                "section_refid": "CORES-100-01_2020SP",
-                "course_refid": "FYCST-1000",
-                "section_calc_id": "FYCST-1000-1_AP_Spring_2020",
-                "section_code": "FYCST-1000-1",
-                "section_title": "D1: Real to the Imagined",
-                "course_number": "1000",
-                "section_number": "1",
-                "term": "AP_Spring_2020",
-                "status": "Open",
-                "hidden": "0",
-                "course_code": "FYCST-1000",
-                "acad_level": "Undergraduate",
-                "course_title": "Drawing Studio",
-                "course_desc": "Drawing is a fundamental skill and a practice that is integral in art, design, and architecture practices and relevant to all programs at the College. Drawing 1 courses are designed to increase competency through the development of observational skills. These courses will introduce how drawing connects to multiple disciplines and is informed by diverse cultural contributions. Through developmental, weekly assignments, students practice the craft and precision of drawing, while coordinating fine motor skills with visual communication. Attention is given to building professional time management skills. Students choose one drawing course from the selection offered. Each Drawing 1 course emphasizes a focused approach and select materials to develop and strengthen drawing skills. Formal properties include: line, contour, volume, value, shadow, composition, negative/positive space, figure/ground relationship, perspective, planar analysis, focal points, and proportion.",
-                "colocated_parent": "",
-                "colocated_sections": "",
-                "subject": "FYCST",
-                "subject_name": "First Year Core Studio (FYCST)",
-                "min_unit": "3",
-                "max_unit": "3",
-                "start_date": "2020-01-21-08:00",
-                "end_date": "2020-05-08-07:00",
-                "instructional_format": "Studio",
-                "delivery_mode": "In-Person",
-                "grading_basic": "Graded",
-                "section_desc": "This course works from observational drawing using external objects, including manufactured and organic forms, and emphasizes making imaginary forms believable on paper. Utilizing rendering, gesture, perspective, and abstraction, participants will be introduced to iteration using tracing paper and working with improvisational methods using graphite, charcoal, and ink with pen and brush. Though not the primary emphasis, drawing from a nude model may occur.",
-                "capacity": "16",
-                "wait_list": "0",
-                "enrollment": "0",
-                "academic_units": [
-                        {
-                                "refid": "AU_CORES",
-                                "name": "First Year Core Studio",
-                                "offering_percent": "100",
-                                "course_owner": true
-                        }
-                ],
-                "meetings": [
-                        {
-                                "refid": "Tue/Thu_12:00PM_03:00PM",
-                                "start_time": "12:00:00",
-                                "end_time": "15:00:00",
-                                "meeting_day": "Tue/Thu",
-                                "start_date": "",
-                                "end_date": "",
-                                "location": {
-                                        "refid": "GCC_GC23",
-                                        "room": "San Francisco - Grad Center - GC23",
-                                        "building": "Graduate Center 1-2",
-                                        "building_id": "Graduate_Center_1-2",
-                                        "campus": "San Francisco",
-                                        "type": "Classroom - Academic - Multi use"
-                                }
-                        }
-                ],
-                "instructors": [
-                        {
-                                "first_name": "Modesto",
-                                "last_name": "Covarrubias",
-                                "username": "mcovarrubias"
-                        }
-                ]
-        },
-        {
-                "section_def_refid": "DEF_GLASS-2320-2_2020SP",
-                "course_def_refid": "DEF_GLASS-232",
-                "section_refid": "GLASS-2320-2_2020SP",
-                "course_refid": "GLASS-2320",
-                "section_calc_id": "GLASS-2320-2_AP_Spring_2020",
-                "section_code": "GLASS-2320-2",
-                "section_title": "Glass Product Design",
-                "course_number": "2320",
-                "section_number": "2",
-                "term": "AP_Spring_2020",
-                "status": "Closed",
-                "hidden": "0",
-                "course_code": "GLASS-2320",
-                "acad_level": "Undergraduate",
-                "course_title": "Glass Product Design",
-                "course_desc": "",
-                "colocated_parent": "",
-                "colocated_sections": [
-                        "DEF_INDUS-2320-2_2020SP"
-                ],
-                "subject": "GLASS",
-                "subject_name": "Glass",
-                "min_unit": "3",
-                "max_unit": "3",
-                "start_date": "2020-01-21-08:00",
-                "end_date": "2020-05-08-07:00",
-                "instructional_format": "Studio",
-                "delivery_mode": "In-Person",
-                "grading_basic": "Graded",
-                "section_desc": "Glass is a dynamic and challenging medium to work in, with properties that are unlike any other material. It is embraced for its function and beauty, but has something of a split personality. As a material, it is both regarded as precious, or relegated to the recycle bin depending on its application. Throughout the semester students will explore the media of glass and its unique material characteristics. We will be exposed to the many challenges of creating objects in glass and finding ways to design to its strengths and exploit its inherent beauty and optic properties. We will simultaneously evolve our skills in form development through sketches, models and CAD, while we are learning fundamental skills needed to create objects in glass. With forms developed, and new skills in hand we will focus on creating our objects in glass with an attention to generating multiples and short run production with the use of molds, repeatable processes and established manufacturing practices. We will take designs from initial inspiration all the way through the production process, creating a short edition run of objects. *Mandatory Glass Department Meeting, Friday January 20th 6pm. In order to receive a Blow Slot for the Spring Semester, all students must attend department meeting.*",
-                "capacity": "2",
-                "wait_list": "0",
-                "enrollment": "0",
-                "academic_units": [
-                        {
-                                "refid": "AU_GLASS",
-                                "name": "Glass",
-                                "offering_percent": "100",
-                                "course_owner": true
-                        }
-                ],
-                "meetings": [
-                        {
-                                "refid": "Mon_09:00AM_03:00PM",
-                                "start_time": "09:00:00",
-                                "end_time": "15:00:00",
-                                "meeting_day": "Mon",
-                                "start_date": "",
-                                "end_date": "",
-                                "location": {
-                                        "refid": "SHAK_105_SHAK_2",
-                                        "room": "Oakland - Shaklee - 2: Glass Studio",
-                                        "building": "Shaklee",
-                                        "building_id": "Shaklee",
-                                        "campus": "Oakland",
-                                        "type": "Classroom - Academic - Specialty"
-                                }
-                        }
-                ],
-                "instructors": [
-                        {
-                                "first_name": "Minami",
-                                "last_name": "Oya",
-                                "username": "minami.oya"
-                        }
-                ]
-        },
-        {
-                "section_def_refid": "DEF_INDUS-2320-2_2020SP",
-                "course_def_refid": "DEF_INDUS-232",
-                "section_refid": "INDUS-2320-2_2020SP",
-                "course_refid": "INDUS-2320",
-                "section_calc_id": "INDUS-2320-2_AP_Spring_2020",
-                "section_code": "INDUS-2320-2",
-                "section_title": "IS: Glass Product Design",
-                "course_number": "2320",
-                "section_number": "2",
-                "term": "AP_Spring_2020",
-                "status": "Open",
-                "hidden": "0",
-                "course_code": "INDUS-2320",
-                "acad_level": "Undergraduate",
-                "course_title": "Investigative Studio",
-                "course_desc": "&lt;p&gt;Investigative Studios are required studios within the Industrial Design Program that are also open to students in other majors. Investigative studios are taken in any order. Content, structure, and focus of these studios varies from semester to semester. Students can sign up for the studios that best fit their schedules and interests.&lt;/p&gt;",
-                "colocated_parent": "DEF_GLASS-2320-2_2020SP",
-                "colocated_sections": [
-                        "DEF_GLASS-2320-2_2020SP"
-                ],
-                "subject": "INDUS",
-                "subject_name": "Industrial Design",
-                "min_unit": "3",
-                "max_unit": "3",
-                "start_date": "2020-01-21-08:00",
-                "end_date": "2020-05-08-07:00",
-                "instructional_format": "Studio",
-                "delivery_mode": "In-Person",
-                "grading_basic": "Graded",
-                "section_desc": "Glass is a dynamic and challenging media to work in, with properties that are unlike any other material. It is embraced for its function and beauty, but has something of a split personality. As a material, it is both regarded as precious, or relegated to the recycle bin depending on its application. Throughout the semester students will explore the media of glass and its unique material characteristics. We will be exposed to the many challenges of creating objects in glass and finding ways to design to its strengths and exploit its inherent beauty and optic properties. We will simultaneously evolve our skills in form development through sketches, models and CAD, while we are learning fundamental skills needed to create objects in glass. With forms developed, and new skills in hand we will focus on creating our objects in glass with an attention to generating multiples and short run production with the use of molds, repeatable processes and established manufacturing practices. We will take designs from initial inspiration all the way through the production process, creating a short edition run of objects. An additional materials fee will be charged.",
-                "capacity": "12",
-                "wait_list": "0",
-                "enrollment": "0",
-                "academic_units": [
-                        {
-                                "refid": "AU_EXTED",
-                                "name": "Industrial Design",
-                                "offering_percent": "100",
-                                "course_owner": true
-                        }
-                ],
-                "meetings": [
-                        {
-                                "refid": "Mon_09:00AM_03:00PM",
-                                "start_time": "09:00:00",
-                                "end_time": "15:00:00",
-                                "meeting_day": "Mon",
-                                "start_date": "",
-                                "end_date": "",
-                                "location": {
-                                        "refid": "SHAK_105_SHAK_2",
-                                        "room": "Oakland - Shaklee - 2: Glass Studio",
-                                        "building": "Shaklee",
-                                        "building_id": "Shaklee",
-                                        "campus": "Oakland",
-                                        "type": "Classroom - Academic - Specialty"
-                                }
-                        }
-                ],
-                "instructors": []
-        },
-        {
-                "section_def_refid": "DEF_CORES-100-04_2020SP",
-                "course_def_refid": "DEF_CORES-100",
-                "section_refid": "CORES-100-04_2020SP",
-                "course_refid": "FYCST-1000",
-                "section_calc_id": "FYCST-1000-4_AP_Spring_2020",
-                "section_code": "FYCST-1000-4",
-                "section_title": "D1: Real to the Imagined",
-                "course_number": "1000",
-                "section_number": "4",
-                "term": "AP_Spring_2020",
-                "status": "Closed",
-                "hidden": "0",
-                "course_code": "FYCST-1000",
-                "acad_level": "Undergraduate",
-                "course_title": "Drawing Studio",
-                "course_desc": "Drawing is a fundamental skill and a practice that is integral in art, design, and architecture practices and relevant to all programs at the College. Drawing 1 courses are designed to increase competency through the development of observational skills. These courses will introduce how drawing connects to multiple disciplines and is informed by diverse cultural contributions. Through developmental, weekly assignments, students practice the craft and precision of drawing, while coordinating fine motor skills with visual communication. Attention is given to building professional time management skills. Students choose one drawing course from the selection offered. Each Drawing 1 course emphasizes a focused approach and select materials to develop and strengthen drawing skills. Formal properties include: line, contour, volume, value, shadow, composition, negative/positive space, figure/ground relationship, perspective, planar analysis, focal points, and proportion.",
-                "colocated_parent": "",
-                "colocated_sections": "",
-                "subject": "FYCST",
-                "subject_name": "First Year Core Studio (FYCST)",
-                "min_unit": "3",
-                "max_unit": "3",
-                "start_date": "2020-01-21-08:00",
-                "end_date": "2020-05-08-07:00",
-                "instructional_format": "Studio",
-                "delivery_mode": "In-Person",
-                "grading_basic": "Graded",
-                "section_desc": "An introduction to seeing specifically and drawing expressively. Students will increase their manual dexterity through the practice of observational drawing. Working from natural and manufactured objects, organic forms, and the nude human figure, students create the illusion of three-dimensional forms on the two-dimensional plane. Utilizing contour line, mass drawing, value, and diagrammatic drawing, students will explore realism and abstraction. Tools include graphite pencil, charcoal, conte crayon, ink, and brushes. This course includes drawing from the nude model, no exceptions will be considered. If this is a concern, consider the course D1: Measured Drawing, which does not have drawing from the nude model.",
-                "capacity": "16",
-                "wait_list": "0",
-                "enrollment": "0",
-                "academic_units": [
-                        {
-                                "refid": "AU_CORES",
-                                "name": "First Year Core Studio",
-                                "offering_percent": "50",
-                                "course_owner": true
-                        },
-                        {
-                                "refid": "AU_INDUS",
-                                "name": "Industrial Design",
-                                "offering_percent": "50",
-                                "course_owner": false
-                        }
-                ],
-                "meetings": [
-                        {
-                                "refid": "Mon/Wed_12:00PM_03:00PM",
-                                "start_time": "12:00:00",
-                                "end_time": "15:00:00",
-                                "meeting_day": "Mon/Wed",
-                                "start_date": "",
-                                "end_date": "",
-                                "location": {
-                                        "refid": "CAR_101_C_1",
-                                        "room": "Oakland - Carriage House - 1st Floor Drawing Studio",
-                                        "building": "Carriage House",
-                                        "building_id": "Carriage_House_",
-                                        "campus": "Oakland",
-                                        "type": "Classroom - Academic - Specialty"
-                                }
-                        }
-                ],
-                "instructors": [
-                        {
-                                "first_name": "Elizabeth",
-                                "last_name": "Leger",
-                                "username": "eleger"
-                        }
-                ]
-        }
+    {
+        "section_def_refid": "DEF_UDIST-300-03_2020SP",
+        "course_def_refid": "DEF_UDIST-300",
+        "section_refid": "UDIST-300-03_2020SP",
+        "course_refid": "UDIST-3000",
+        "section_calc_id": "UDIST-3000-3_AP_Spring_2020",
+        "section_code": "UDIST-3000-3",
+        "section_title": "Instruments &amp; Science Meets Art",
+        "course_number": "3000",
+        "section_number": "3",
+        "term": "AP_Spring_2020",
+        "status": "Preliminary",
+        "hidden": "0",
+        "course_code": "UDIST-3000",
+        "acad_level": "Undergraduate",
+        "course_title": "Upper Division Interdisciplinary Studio",
+        "course_desc": "&lt;p&gt;Upper Division Interdisciplinary Studios extend a student's cross-school experience from Core Studio up into their upper division years. 3 units of Interdisciplinary Studio are required of all majors and must be completed in the junior or senior year. This advanced level studio is thematic in nature. Technical demonstrations are paired with thoughtful readings, seminar discussions and ambitious projects. Collaboration, experimentation and presentation skills are developed in concert with critical thinking.&lt;/p&gt;",
+        "colocated_parent": "",
+        "colocated_sections": "",
+        "subject": "UDIST",
+        "subject_name": "Upper Level Interdisciplinary Studio",
+        "min_unit": "3",
+        "max_unit": "3",
+        "start_date": "2020-01-21-08:00",
+        "end_date": "2020-05-08-07:00",
+        "instructional_format": "Workshop",
+        "delivery_mode": "In-Person",
+        "grading_basic": "Graded",
+        "section_desc": "&lt;span&gt;Interdisciplinary Studios extend a student&amp;#39;s cross-school experience from Core Studio up into his or her upper division years. 3 units of Interdisciplinary Studio are required of all majors and must be completed in the junior or senior year. This advanced level studio is thematic in nature. Technical demonstrations are paired with thoughtful readings, seminar discussions and ambitious projects. Collaboration, experimentation and presentation skills are developed in concert with critical thinking.&lt;/span&gt;&lt;span&gt;&lt;b&gt;Section Description&lt;/b&gt;&lt;/span&gt;This course explores the fertile cross-disciplinary field of Art/Science. Scientists engage with the real world and filter vast amounts of potential information down to a comprehensible data set through the use of instruments. Many artists do the same thing by creating conceptual or physical instruments or &amp;#39;devices of constraint&amp;#39; to reduce subjectivity in the art-making process. We will take a close look at scientific practice in a range of fields, be exposed to artists who are delving into this territory and then be inspired to develop our own prototype instruments. The final project for the studio will be artist-developed instruments that encourage and enable a new perspective on the physical world around us. We will collaborate with the Exploratorium in San Francisco during this studio. &lt;span&gt;Additional materials fee of $50 will be charged. &lt;/span&gt;",
+        "capacity": "16",
+        "wait_list": "0",
+        "enrollment": "0",
+        "academic_units": [
+            {
+                "refid": "AU_INTER",
+                "name": "Interior Design",
+                "offering_percent": "100",
+                "course_owner": true
+            }
+        ],
+        "meetings": [
+            {
+                "refid": "Fri_09:00AM_03:00PM",
+                "start_time": "09:00:00",
+                "end_time": "15:00:00",
+                "meeting_day": "Fri",
+                "start_date": "",
+                "end_date": "",
+                "location": {
+                    "refid": "SANF_N5",
+                    "room": "San Francisco - Main Building - N5",
+                    "building": "Montgomery Campus",
+                    "building_id": "Montgomery_Campus",
+                    "campus": "San Francisco",
+                    "type": "Classroom - Academic - Multi use"
+                }
+            }
+        ],
+        "instructors": [
+            {
+                "first_name": "Donald",
+                "last_name": "Fortescue",
+                "username": "dfortescue"
+            }
+        ]
+    },
+    {
+        "section_def_refid": "DEF_UDIST-300-02_2020SP",
+        "course_def_refid": "DEF_UDIST-300",
+        "section_refid": "UDIST-300-02_2020SP",
+        "course_refid": "UDIST-3000",
+        "section_calc_id": "UDIST-3000-2_AP_Spring_2020",
+        "section_code": "UDIST-3000-2",
+        "section_title": "The Peripatetic Wunderkammer",
+        "course_number": "3000",
+        "section_number": "2",
+        "term": "AP_Spring_2020",
+        "status": "Open",
+        "hidden": "0",
+        "course_code": "UDIST-3000",
+        "acad_level": "Undergraduate",
+        "course_title": "Upper Division Interdisciplinary Studio",
+        "course_desc": "&lt;p&gt;Upper Division Interdisciplinary Studios extend a student's cross-school experience from Core Studio up into their upper division years. 3 units of Interdisciplinary Studio are required of all majors and must be completed in the junior or senior year. This advanced level studio is thematic in nature. Technical demonstrations are paired with thoughtful readings, seminar discussions and ambitious projects. Collaboration, experimentation and presentation skills are developed in concert with critical thinking.&lt;/p&gt;",
+        "colocated_parent": "",
+        "colocated_sections": "",
+        "subject": "UDIST",
+        "subject_name": "Upper Level Interdisciplinary Studio",
+        "min_unit": "3",
+        "max_unit": "3",
+        "start_date": "2020-01-21-08:00",
+        "end_date": "2020-05-08-07:00",
+        "instructional_format": "Workshop",
+        "delivery_mode": "In-Person",
+        "grading_basic": "Graded",
+        "section_desc": "Interdisciplinary Studios extend a student&amp;#39;s cross-school experience from Core Studio up into his or her upper division years. 3 units of Interdisciplinary Studio are required of all majors and must be completed in the junior or senior year. This advanced level studio is thematic in nature. Technical demonstrations are paired with thoughtful readings, seminar discussions and ambitious projects. Collaboration, experimentation and presentation skills are developed in concert with critical thinking.&lt;b&gt;Section Description&lt;/b&gt;&lt;span&gt;Over the past decade, &amp;#34;Museums without Walls&amp;#34; have blossomed as means of extending the museum experience and collections to the greater city and allowing visitors to be co-curators. Museums such as the Museum of London, the Exploratorium, and the Cooper Hewitt have refined ways to place exhibits in non-traditional spaces, often with the help of mobile apps to guide audiences and interpret installations. The Peripatetic Wunderkammer will challenge students to extend a museum collection to real world spaces in San Francisco. &lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span&gt;Subject matter includes the history of museum collections (and their preceding Wunderkammer), oral histories, audio editing, scripting, Augmented Reality overlays. Speakers will include designers from museum media labs, experts in mobile interpretation, landscape historians, and curators of distributed museums. Field work will involve visits to untraditional local museums and significant time exploring and interpreting the neighborhood where the students&amp;#39; final mobile media projects will be experienced. &lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span&gt;NOTE: Many class sessions will meet in or around the museum we are working with (max 30 min bus ride from campus. Students will be given time to arrive to the site for the course but must cover their own transportation costs and some entrance fees to museums. Total cost for the course should not exceed $100.&lt;/span&gt;",
+        "capacity": "16",
+        "wait_list": "0",
+        "enrollment": "0",
+        "academic_units": [
+            {
+                "refid": "AU_CCA",
+                "name": "CCA",
+                "offering_percent": "100",
+                "course_owner": true
+            }
+        ],
+        "meetings": [
+            {
+                "refid": "Mon/Wed_12:00PM_03:00PM",
+                "start_time": "12:00:00",
+                "end_time": "15:00:00",
+                "meeting_day": "Mon/Wed",
+                "start_date": "",
+                "end_date": "",
+                "location": {
+                    "refid": "SANF_W1",
+                    "room": "San Francisco - Main Building - W1",
+                    "building": "Montgomery Campus",
+                    "building_id": "Montgomery_Campus",
+                    "campus": "San Francisco",
+                    "type": "Classroom - Academic - Seminar - Smart"
+                }
+            }
+        ],
+        "instructors": [
+            {
+                "first_name": "Michael",
+                "last_name": "Epstein",
+                "username": "mepstein2"
+            }
+        ]
+    },
+    {
+        "section_def_refid": "DEF_UDIST-300-01_2020SP",
+        "course_def_refid": "DEF_UDIST-300",
+        "section_refid": "UDIST-300-01_2020SP",
+        "course_refid": "UDIST-3000",
+        "section_calc_id": "UDIST-3000-1_AP_Spring_2020",
+        "section_code": "UDIST-3000-1",
+        "section_title": "Darn It!",
+        "course_number": "3000",
+        "section_number": "1",
+        "term": "AP_Spring_2020",
+        "status": "Closed",
+        "hidden": "0",
+        "course_code": "UDIST-3000",
+        "acad_level": "Undergraduate",
+        "course_title": "Upper Division Interdisciplinary Studio",
+        "course_desc": "&lt;p&gt;Upper Division Interdisciplinary Studios extend a student's cross-school experience from Core Studio up into their upper division years. 3 units of Interdisciplinary Studio are required of all majors and must be completed in the junior or senior year. This advanced level studio is thematic in nature. Technical demonstrations are paired with thoughtful readings, seminar discussions and ambitious projects. Collaboration, experimentation and presentation skills are developed in concert with critical thinking.&lt;/p&gt;",
+        "colocated_parent": "",
+        "colocated_sections": "",
+        "subject": "CRITI",
+        "subject_name": "Upper Level Interdisciplinary Studio",
+        "min_unit": "3",
+        "max_unit": "3",
+        "start_date": "2020-01-21-08:00",
+        "end_date": "2020-05-08-07:00",
+        "instructional_format": "Workshop",
+        "delivery_mode": "In-Person",
+        "grading_basic": "Graded",
+        "section_desc": "&lt;span&gt;Interdisciplinary Studios extend a student&amp;#39;s cross-school experience from Core Studio up into his or her upper division years. 3 units of Interdisciplinary Studio are required of all majors and must be completed in the junior or senior year. This advanced level studio is thematic in nature. Technical demonstrations are paired with thoughtful readings, seminar discussions and ambitious projects. Collaboration, experimentation and presentation skills are developed in concert with critical thinking.&lt;/span&gt;&lt;span&gt;&lt;b&gt;Section Description&lt;/b&gt;&lt;/span&gt;&lt;span&gt;In an economic system that promotes perpetual newness over the time honored, an American household generates an average of 82 pounds of textile waste per year. As we find ourselves sinking into a sea of the discarded, what is the value of rescuing damaged or outdated objects? How can we employ techniques of mending to counter the unsustainable proposition of relentless disposability and poetically advance the aesthetic principles of ephemerality and imperfection? Holes, tears, broken threads, stains, and missing pieces offer potential for transformation through the careful work of darning, stitching, fusing, patching, and embellishing. They are also fertile sites for reflecting on the physical, emotional, spiritual, environmental, and economic benefits of repair and reuse. A $17 (estimate) course reader will be required, details on the first day of class. &lt;/span&gt;",
+        "capacity": "15",
+        "wait_list": "0",
+        "enrollment": "0",
+        "academic_units": [
+            {
+                "refid": "AU_FA",
+                "name": "Fine Arts",
+                "offering_percent": "100",
+                "course_owner": true
+            }
+        ],
+        "meetings": [
+            {
+                "refid": "Thu_09:00AM_03:00PM",
+                "start_time": "09:00:00",
+                "end_time": "15:00:00",
+                "meeting_day": "Thu",
+                "start_date": "",
+                "end_date": "",
+                "location": {
+                    "refid": "LBLD_3",
+                    "room": "Oakland - Textiles - 3: Seminar",
+                    "building": "Textiles",
+                    "building_id": "Textiles",
+                    "campus": "Oakland",
+                    "type": "Classroom - Academic - Multi use"
+                }
+            }
+        ],
+        "instructors": [
+            {
+                "first_name": "Anne",
+                "last_name": "Wolf",
+                "username": "awolf"
+            }
+        ]
+    },
+    {
+        "section_def_refid": "DEF_UDIST-300-04_2020SP",
+        "course_def_refid": "DEF_UDIST-300",
+        "section_refid": "UDIST-300-04_2020SP",
+        "course_refid": "UDIST-3000",
+        "section_calc_id": "UDIST-3000-4_AP_Spring_2020",
+        "section_code": "UDIST-3000-4",
+        "section_title": "California Parklands",
+        "course_number": "3000",
+        "section_number": "4",
+        "term": "AP_Spring_2020",
+        "status": "Closed",
+        "hidden": "0",
+        "course_code": "UDIST-3000",
+        "acad_level": "Undergraduate",
+        "course_title": "Upper Division Interdisciplinary Studio",
+        "course_desc": "&lt;p&gt;Upper Division Interdisciplinary Studios extend a student's cross-school experience from Core Studio up into their upper division years. 3 units of Interdisciplinary Studio are required of all majors and must be completed in the junior or senior year. This advanced level studio is thematic in nature. Technical demonstrations are paired with thoughtful readings, seminar discussions and ambitious projects. Collaboration, experimentation and presentation skills are developed in concert with critical thinking.&lt;/p&gt;",
+        "colocated_parent": "",
+        "colocated_sections": "",
+        "subject": "FNART",
+        "subject_name": "Upper Level Interdisciplinary Studio",
+        "min_unit": "3",
+        "max_unit": "3",
+        "start_date": "2020-01-21-08:00",
+        "end_date": "2020-05-08-07:00",
+        "instructional_format": "Workshop",
+        "delivery_mode": "In-Person",
+        "grading_basic": "Graded",
+        "section_desc": "&lt;span&gt;Interdisciplinary Studios extend a student&amp;#39;s cross-school experience from Core Studio up into his or her upper division years. 3 units of Interdisciplinary Studio are required of all majors and must be completed in the junior or senior year. This advanced level studio is thematic in nature. Technical demonstrations are paired with thoughtful readings, seminar discussions and ambitious projects. Collaboration, experimentation and presentation skills are developed in concert with critical thinking.&lt;/span&gt;&lt;span&gt;&lt;b&gt;Section Description&lt;/b&gt;&lt;/span&gt;&lt;span&gt;This course is a creative interdisciplinary investigation in the art, design, history, social conflicts, and aesthetics of California Parks. How do we make sense of historical decisions as we reflect now on the consequences of climate change? What role can art and design play in a redefinition of human interaction in wilderness and urban parks? How can we protect the fragility rivers and creeks in the face of environmental challenges to water? What do relational human pathways look like? What decisions can we make? Each of these areas mitigate complex histories as natural celebrations, catharsis, and memorials. We will visit areas such as Yosemite Park, Fresno Underground Gardens, Angel Island, China Camp, Rush Ranch Preserve, and the Albany Bulb. The Park is an adaptation of desire for both history and nature in close proximities. Parks are also sites for social contradictions. Interdisciplinary projects will respond to these parks. Additional materials fee of $100 will be charged. &lt;/span&gt;",
+        "capacity": "16",
+        "wait_list": "0",
+        "enrollment": "0",
+        "academic_units": [
+            {
+                "refid": "AU_FA",
+                "name": "Fine Arts",
+                "offering_percent": "100",
+                "course_owner": true
+            }
+        ],
+        "meetings": [
+            {
+                "refid": "Fri_09:00AM_03:00PM",
+                "start_time": "09:00:00",
+                "end_time": "15:00:00",
+                "meeting_day": "Fri",
+                "start_date": "",
+                "end_date": "",
+                "location": {
+                    "refid": "RALLS_203_RALLS_203",
+                    "room": "Oakland - Ralls - 203",
+                    "building": "Ralls",
+                    "building_id": "Ralls",
+                    "campus": "Oakland",
+                    "type": "Classroom - Academic - Multi use"
+                }
+            }
+        ],
+        "instructors": [
+            {
+                "first_name": "Kim",
+                "last_name": "Anno",
+                "username": "kanno"
+            }
+        ]
+    },
+    {
+        "section_def_refid": "DEF_UDIST-300-06_2020SP",
+        "course_def_refid": "DEF_UDIST-300",
+        "section_refid": "UDIST-300-06_2020SP",
+        "course_refid": "UDIST-3000",
+        "section_calc_id": "UDIST-3000-6_AP_Spring_2020",
+        "section_code": "UDIST-3000-6",
+        "section_title": "Site Glass",
+        "course_number": "3000",
+        "section_number": "6",
+        "term": "AP_Spring_2020",
+        "status": "Closed",
+        "hidden": "0",
+        "course_code": "UDIST-3000",
+        "acad_level": "Undergraduate",
+        "course_title": "Upper Division Interdisciplinary Studio",
+        "course_desc": "&lt;p&gt;Upper Division Interdisciplinary Studios extend a student's cross-school experience from Core Studio up into their upper division years. 3 units of Interdisciplinary Studio are required of all majors and must be completed in the junior or senior year. This advanced level studio is thematic in nature. Technical demonstrations are paired with thoughtful readings, seminar discussions and ambitious projects. Collaboration, experimentation and presentation skills are developed in concert with critical thinking.&lt;/p&gt;",
+        "colocated_parent": "",
+        "colocated_sections": "",
+        "subject": "UDIST",
+        "subject_name": "Upper Level Interdisciplinary Studio",
+        "min_unit": "3",
+        "max_unit": "3",
+        "start_date": "2020-01-21-08:00",
+        "end_date": "2020-05-08-07:00",
+        "instructional_format": "Workshop",
+        "delivery_mode": "In-Person",
+        "grading_basic": "Graded",
+        "section_desc": "&lt;span&gt;Interdisciplinary Studios extend a student&amp;#39;s cross-school experience from Core Studio up into his or her upper division years. 3 units of Interdisciplinary Studio are required of all majors and must be completed in the junior or senior year. This advanced level studio is thematic in nature. Technical demonstrations are paired with thoughtful readings, seminar discussions and ambitious projects. Collaboration, experimentation and presentation skills are developed in concert with critical thinking.&lt;/span&gt;&lt;span&gt;&lt;b&gt;Section Description&lt;/b&gt;&lt;/span&gt;Site Glass : Materiality at the Water&amp;#39;s Edge | Through an investigation of traditional glass fabrication and assembly techniques and the design opportunities afforded by new production and fabrication technologies, we will locate the potential of hybridizing the analog and digital to produce a spatial intervention at the water&amp;#39;s edge. Full scale installations and visual perceptions will be generated by scaling up through material, visual aggregation and atmospheric spatial effect. The immediacy of glass exploration and access to the SF bay will engage the studio in the poetics of light and space in the context of issues brought about by climate change that our local region faces today. Students will start by creating a site analysis catalog of the SF Bay comprised of iterative 2 and 3D plate glass manipulations, exploring materiality and the climate change conditions specific to the site. The studio will culminate in group installation projects sited on the shoreline. Additional materials fee of $200 will be charged. ",
+        "capacity": "15",
+        "wait_list": "0",
+        "enrollment": "0",
+        "academic_units": [
+            {
+                "refid": "AU_UDIST",
+                "name": "Upper Division Interdisciplinary Studio",
+                "offering_percent": "100",
+                "course_owner": true
+            }
+        ],
+        "meetings": [
+            {
+                "refid": "Wed_09:00AM_03:00PM",
+                "start_time": "09:00:00",
+                "end_time": "15:00:00",
+                "meeting_day": "Wed",
+                "start_date": "",
+                "end_date": "",
+                "location": {
+                    "refid": "SHAK_105_SHAK_2",
+                    "room": "Oakland - Shaklee - 2: Glass Studio",
+                    "building": "Shaklee",
+                    "building_id": "Shaklee",
+                    "campus": "Oakland",
+                    "type": "Classroom - Academic - Specialty"
+                }
+            }
+        ],
+        "instructors": [
+            {
+                "first_name": "Megan",
+                "last_name": "Werner",
+                "username": "mwerner"
+            },
+            {
+                "first_name": "Elin",
+                "last_name": "Christopherson",
+                "username": "echristopherson"
+            }
+        ]
+    },
+    {
+        "section_def_refid": "DEF_UDIST-300-07_2020SP",
+        "course_def_refid": "DEF_UDIST-300",
+        "section_refid": "UDIST-300-07_2020SP",
+        "course_refid": "UDIST-3000",
+        "section_calc_id": "UDIST-3000-7_AP_Spring_2020",
+        "section_code": "UDIST-3000-7",
+        "section_title": "Insights in Site: Performative Activations in Public Space",
+        "course_number": "3000",
+        "section_number": "7",
+        "term": "AP_Spring_2020",
+        "status": "Open",
+        "hidden": "0",
+        "course_code": "UDIST-3000",
+        "acad_level": "Undergraduate",
+        "course_title": "Upper Division Interdisciplinary Studio",
+        "course_desc": "&lt;p&gt;Upper Division Interdisciplinary Studios extend a student's cross-school experience from Core Studio up into their upper division years. 3 units of Interdisciplinary Studio are required of all majors and must be completed in the junior or senior year. This advanced level studio is thematic in nature. Technical demonstrations are paired with thoughtful readings, seminar discussions and ambitious projects. Collaboration, experimentation and presentation skills are developed in concert with critical thinking.&lt;/p&gt;",
+        "colocated_parent": "",
+        "colocated_sections": "",
+        "subject": "UDIST",
+        "subject_name": "Upper Level Interdisciplinary Studio",
+        "min_unit": "3",
+        "max_unit": "3",
+        "start_date": "2020-01-21-08:00",
+        "end_date": "2020-05-08-07:00",
+        "instructional_format": "Workshop",
+        "delivery_mode": "In-Person",
+        "grading_basic": "Graded",
+        "section_desc": "DescriptionInterdisciplinary Studios extend a student's cross-school experience from Core Studio up into his or her upper division years. 3 units of Interdisciplinary Studio are required of all majors and must be completed in the junior or senior year. This advanced level studio is thematic in nature. Technical demonstrations are paired with thoughtful readings, seminar discussions and ambitious projects. Collaboration, experimentation and presentation skills are developed in concert with critical thinking.&lt;b&gt;Section Description&lt;/b&gt;&lt;span&gt;Insights in Site examines how we shift from interloper to belonging through performative interactions with each other, our communities, and broader society. By charting site analysis from intersectional experiences to multi-disciplinary activations, students will evaluate and activate public space through manifestations of creative practices. Taking cues from site, this class will consider race, gender and ecology to (re)define common ground for accessible public space. How might we upend traditional practices of site design methodologies towards an integrative understanding urban public space? And, how might we center equity-based responses to reimagine accessible public space? Using theatre as metaphor, and performance as a conduit of exploration and expression, students will conduct integrative site analysis through a series of site visits that have been settings for performances by theatre company WePlayers. Students will develop sensory and somatic analysis, understand the permitting processes, and develop alternative methodologies to create equitable site-specific interventions.&lt;/span&gt;",
+        "capacity": "16",
+        "wait_list": "0",
+        "enrollment": "0",
+        "academic_units": [
+            {
+                "refid": "AU_UDIST",
+                "name": "Upper Division Interdisciplinary Studio",
+                "offering_percent": "100",
+                "course_owner": true
+            }
+        ],
+        "meetings": [
+            {
+                "refid": "Tue/Thu_04:00PM_07:00PM",
+                "start_time": "16:00:00",
+                "end_time": "19:00:00",
+                "meeting_day": "Tue/Thu",
+                "start_date": "",
+                "end_date": "",
+                "location": {
+                    "refid": "SANF_N5",
+                    "room": "San Francisco - Main Building - N5",
+                    "building": "Montgomery Campus",
+                    "building_id": "Montgomery_Campus",
+                    "campus": "San Francisco",
+                    "type": "Classroom - Academic - Multi use"
+                }
+            }
+        ],
+        "instructors": [
+            {
+                "first_name": "Ava",
+                "last_name": "Roy",
+                "username": "agentava"
+            },
+            {
+                "first_name": "Shalini",
+                "last_name": "Agrawal",
+                "username": "sagrawal"
+            }
+        ]
+    },
+    {
+        "section_def_refid": "DEF_UDIST-300-08_2020SP",
+        "course_def_refid": "DEF_UDIST-300",
+        "section_refid": "UDIST-300-08_2020SP",
+        "course_refid": "UDIST-3000",
+        "section_calc_id": "UDIST-3000-8_AP_Spring_2020",
+        "section_code": "UDIST-3000-8",
+        "section_title": "Post-Disciplinary Design",
+        "course_number": "3000",
+        "section_number": "8",
+        "term": "AP_Spring_2020",
+        "status": "Closed",
+        "hidden": "0",
+        "course_code": "UDIST-3000",
+        "acad_level": "Undergraduate",
+        "course_title": "Upper Division Interdisciplinary Studio",
+        "course_desc": "&lt;p&gt;Upper Division Interdisciplinary Studios extend a student's cross-school experience from Core Studio up into their upper division years. 3 units of Interdisciplinary Studio are required of all majors and must be completed in the junior or senior year. This advanced level studio is thematic in nature. Technical demonstrations are paired with thoughtful readings, seminar discussions and ambitious projects. Collaboration, experimentation and presentation skills are developed in concert with critical thinking.&lt;/p&gt;",
+        "colocated_parent": "",
+        "colocated_sections": "",
+        "subject": "UDIST",
+        "subject_name": "Upper Level Interdisciplinary Studio",
+        "min_unit": "3",
+        "max_unit": "3",
+        "start_date": "2020-01-21-08:00",
+        "end_date": "2020-05-08-07:00",
+        "instructional_format": "Workshop",
+        "delivery_mode": "In-Person",
+        "grading_basic": "Graded",
+        "section_desc": "&lt;span&gt;Description&lt;/span&gt;&lt;span&gt;Interdisciplinary Studios extend a student's cross-school experience from Core Studio up into his or her upper division years. 3 units of Interdisciplinary Studio are required of all majors and must be completed in the junior or senior year. This advanced level studio is thematic in nature. Technical demonstrations are paired with thoughtful readings, seminar discussions and ambitious projects. Collaboration, experimentation and presentation skills are developed in concert with critical thinking.&lt;/span&gt;&lt;span&gt;&lt;b&gt;Section Description&lt;/b&gt;&lt;/span&gt;&lt;span&gt;\"Post-Disciplinary Design at the Edges of Tomorrow - This Upper Division Interdisciplinary Studio will be designed for and from a Maker perspective in order for students to envision and design for Future Public Outcomes. As the complexity and problems of the world proliferate so does the making of things that matter. Designers have become more sought after than ever and the decisions related to creation and making need to be increasingly explicit in order to produce meaningful products, experiences, and places. For the best way to invent the future is to make it. And the best way to predict the future is to create it. Post-disciplinarity is more and more becoming the norm in today's marketplace. Post-disciplinarity means our voices are disparate and unique incorporating multiples and futures, speculations and actualities, accounting for the varied people, places, and settings we have come from and will become. What is the future of practice that makes disciplinary boundaries archaic? We will examine and study the history of futures: other visionary architects, artists, and designers who imagined the future of the city in order for us to understand the past and to begin to create the future. We will be envisioning the future of cities: environments, space, and the public realm. Probing cities and how they evolve and function.We will watch films, prototype and develop tangible experiences informed by researching the past and envisioning possible futures. Can we shape the future of the city by thinking and making things in more critical ways? What does your future look like, the city you move in, the environments you interact with? What is a citizen centered public realm that brings you outside onto the street, into a community?&lt;/span&gt;&lt;span&gt;\"&lt;/span&gt;",
+        "capacity": "16",
+        "wait_list": "0",
+        "enrollment": "0",
+        "academic_units": [
+            {
+                "refid": "AU_UDIST",
+                "name": "Upper Division Interdisciplinary Studio",
+                "offering_percent": "100",
+                "course_owner": true
+            }
+        ],
+        "meetings": [
+            {
+                "refid": "Tue/Thu_12:00PM_03:00PM",
+                "start_time": "12:00:00",
+                "end_time": "15:00:00",
+                "meeting_day": "Tue/Thu",
+                "start_date": "",
+                "end_date": "",
+                "location": {
+                    "refid": "SANF_N11",
+                    "room": "San Francisco - Main Building - N11",
+                    "building": "Montgomery Campus",
+                    "building_id": "Montgomery_Campus",
+                    "campus": "San Francisco",
+                    "type": "Classroom - Academic - Multi use"
+                }
+            }
+        ],
+        "instructors": [
+            {
+                "first_name": "Gregory",
+                "last_name": "Hurcomb",
+                "username": "ghurcomb"
+            }
+        ]
+    },
+    {
+        "section_def_refid": "DEF_UDIST-300-09_2020SP",
+        "course_def_refid": "DEF_UDIST-300",
+        "section_refid": "UDIST-300-09_2020SP",
+        "course_refid": "UDIST-3000",
+        "section_calc_id": "UDIST-3000-9_AP_Spring_2020",
+        "section_code": "UDIST-3000-9",
+        "section_title": "CANCEL",
+        "course_number": "3000",
+        "section_number": "9",
+        "term": "AP_Spring_2020",
+        "status": "Closed",
+        "hidden": "1",
+        "course_code": "UDIST-3000",
+        "acad_level": "Undergraduate",
+        "course_title": "Upper Division Interdisciplinary Studio",
+        "course_desc": "&lt;p&gt;Upper Division Interdisciplinary Studios extend a student's cross-school experience from Core Studio up into their upper division years. 3 units of Interdisciplinary Studio are required of all majors and must be completed in the junior or senior year. This advanced level studio is thematic in nature. Technical demonstrations are paired with thoughtful readings, seminar discussions and ambitious projects. Collaboration, experimentation and presentation skills are developed in concert with critical thinking.&lt;/p&gt;",
+        "colocated_parent": "",
+        "colocated_sections": "",
+        "subject": "UDIST",
+        "subject_name": "Upper Level Interdisciplinary Studio",
+        "min_unit": "3",
+        "max_unit": "3",
+        "start_date": "2020-01-21-08:00",
+        "end_date": "2020-05-08-07:00",
+        "instructional_format": "Workshop",
+        "delivery_mode": "In-Person",
+        "grading_basic": "Graded",
+        "section_desc": "Description&lt;br&gt;Interdisciplinary Studios extend a student's cross-school experience from Core Studio up into his or her upper division years. 3 units of Interdisciplinary Studio are required of all majors and must be completed in the junior or senior year. This advanced level studio is thematic in nature. Technical demonstrations are paired with thoughtful readings, seminar discussions and ambitious projects. Collaboration, experimentation and presentation skills are developed in concert with critical thinking.&lt;b&gt;Section Description&lt;/b&gt;The discipline of creating with computational media, often called \"computer science\" or \"software engineering\", enables students to create new tools and reprogram others to further new thinking in their own major disciplines. Students in the Computational Practices minor develop a competency in creating with computational media; this course integrates that disciplinary competency with students’ own studio practice discipline. Intended to be a capstone for the minor, students are supported as they explore the possibilities and consequences of applying their skills in creating new technology to their work as artists and designers. Understanding and situating computational practice in the broader context of a particular artistic or design discipline is critical for producing work that eloquently blends the technological and the traditional. Case studies will examine how and why particular computational methods are chosen to create particular works and question established orthodoxies. Students will complete a final project that represents the culmination of their work in the minor, demonstrating technical sophistication as well as a deep understanding of the role and context of technology in their discipline. Assignments include a \"literature review\" that collects articles, prior works, etc., with research into what's been done and what are the opportunities and the pitfalls. The final project should take this research into substantial consideration to produce a novel piece. NB: Instructors may offer different versions of this course to provide additional focus on the integration of particular studio disciplines.&amp;nbsp;",
+        "capacity": "0",
+        "wait_list": "0",
+        "enrollment": "0",
+        "academic_units": [
+            {
+                "refid": "AU_UDIST",
+                "name": "Upper Division Interdisciplinary Studio",
+                "offering_percent": "100",
+                "course_owner": true
+            }
+        ],
+        "meetings": [],
+        "instructors": []
+    },
+    {
+        "section_def_refid": "DEF_UDIST-300-10_2020SP",
+        "course_def_refid": "DEF_UDIST-300",
+        "section_refid": "UDIST-300-10_2020SP",
+        "course_refid": "UDIST-3000",
+        "section_calc_id": "UDIST-3000-10_AP_Spring_2020",
+        "section_code": "UDIST-3000-10",
+        "section_title": "Diachronic",
+        "course_number": "3000",
+        "section_number": "10",
+        "term": "AP_Spring_2020",
+        "status": "Open",
+        "hidden": "0",
+        "course_code": "UDIST-3000",
+        "acad_level": "Undergraduate",
+        "course_title": "Upper Division Interdisciplinary Studio",
+        "course_desc": "&lt;p&gt;Upper Division Interdisciplinary Studios extend a student's cross-school experience from Core Studio up into their upper division years. 3 units of Interdisciplinary Studio are required of all majors and must be completed in the junior or senior year. This advanced level studio is thematic in nature. Technical demonstrations are paired with thoughtful readings, seminar discussions and ambitious projects. Collaboration, experimentation and presentation skills are developed in concert with critical thinking.&lt;/p&gt;",
+        "colocated_parent": "",
+        "colocated_sections": "",
+        "subject": "UDIST",
+        "subject_name": "Upper Level Interdisciplinary Studio",
+        "min_unit": "3",
+        "max_unit": "3",
+        "start_date": "2020-01-21-08:00",
+        "end_date": "2020-05-08-07:00",
+        "instructional_format": "Workshop",
+        "delivery_mode": "In-Person",
+        "grading_basic": "Graded",
+        "section_desc": "&lt;span&gt;Description&lt;/span&gt;&lt;span&gt;Interdisciplinary Studios extend a student&amp;#39;s cross-school experience from Core Studio up into his or her upper division years. 3 units of Interdisciplinary Studio are required of all majors and must be completed in the junior or senior year. This advanced level studio is thematic in nature. Technical demonstrations are paired with thoughtful readings, seminar discussions and ambitious projects. Collaboration, experimentation and presentation skills are developed in concert with critical thinking.&lt;/span&gt;&lt;span&gt;&lt;b&gt;Section Description&lt;/b&gt;&lt;/span&gt;&lt;span&gt;&lt;span&gt;Diachronic is about our visual relationship to the past in any medium of choice. Across ceramics, architecture, fashion design and fiber arts, sculpture, furniture, metalwork, jewelery and more, students will apply their skills across multiple studio disciplines to explore their relationship to two or more time periods in history at a time. Purely visual, unmediated by production of text as authors, the students will &amp;#34;write&amp;#34; new interactive art histories in mixed media. Beyond Art History, this course will take theories and methods from Visual Studies, Anthropology, Sociology, Archaeology, and History more broadly to think and publish in new materials. Digital media as well as analogue tactile forms produce new modes not only of understanding the visual past but also of critiquing history and historiography as never before.&lt;/span&gt;&lt;/span&gt;&lt;span&gt;&lt;span&gt;&lt;b&gt;This section has three class meetings in San Francisco. &lt;/b&gt;&lt;/span&gt;&lt;/span&gt;",
+        "capacity": "16",
+        "wait_list": "0",
+        "enrollment": "0",
+        "academic_units": [
+            {
+                "refid": "AU_UDIST",
+                "name": "Upper Division Interdisciplinary Studio",
+                "offering_percent": "100",
+                "course_owner": true
+            }
+        ],
+        "meetings": [
+            {
+                "refid": "Fri_09:00AM_03:00PM",
+                "start_time": "09:00:00",
+                "end_time": "15:00:00",
+                "meeting_day": "Fri",
+                "start_date": "",
+                "end_date": "",
+                "location": {
+                    "refid": "TRED_101_TRED_1",
+                    "room": "Oakland - Treadwell - 1: Glaze",
+                    "building": "Treadwell",
+                    "building_id": "Treadwell",
+                    "campus": "Oakland",
+                    "type": "Classroom - Academic - Specialty"
+                }
+            }
+        ],
+        "instructors": [
+            {
+                "first_name": "Deborah",
+                "last_name": "Stein",
+                "username": "deborahstein"
+            }
+        ]
+    },
+    {
+        "section_def_refid": "DEF_CORES-100-01_2020SP",
+        "course_def_refid": "DEF_CORES-100",
+        "section_refid": "CORES-100-01_2020SP",
+        "course_refid": "FYCST-1000",
+        "section_calc_id": "FYCST-1000-1_AP_Spring_2020",
+        "section_code": "FYCST-1000-1",
+        "section_title": "D1: Real to the Imagined",
+        "course_number": "1000",
+        "section_number": "1",
+        "term": "AP_Spring_2020",
+        "status": "Open",
+        "hidden": "0",
+        "course_code": "FYCST-1000",
+        "acad_level": "Undergraduate",
+        "course_title": "Drawing Studio",
+        "course_desc": "Drawing is a fundamental skill and a practice that is integral in art, design, and architecture practices and relevant to all programs at the College. Drawing 1 courses are designed to increase competency through the development of observational skills. These courses will introduce how drawing connects to multiple disciplines and is informed by diverse cultural contributions. Through developmental, weekly assignments, students practice the craft and precision of drawing, while coordinating fine motor skills with visual communication. Attention is given to building professional time management skills. Students choose one drawing course from the selection offered. Each Drawing 1 course emphasizes a focused approach and select materials to develop and strengthen drawing skills. Formal properties include: line, contour, volume, value, shadow, composition, negative/positive space, figure/ground relationship, perspective, planar analysis, focal points, and proportion.",
+        "colocated_parent": "",
+        "colocated_sections": "",
+        "subject": "FYCST",
+        "subject_name": "First Year Core Studio (FYCST)",
+        "min_unit": "3",
+        "max_unit": "3",
+        "start_date": "2020-01-21-08:00",
+        "end_date": "2020-05-08-07:00",
+        "instructional_format": "Studio",
+        "delivery_mode": "In-Person",
+        "grading_basic": "Graded",
+        "section_desc": "This course works from observational drawing using external objects, including manufactured and organic forms, and emphasizes making imaginary forms believable on paper. Utilizing rendering, gesture, perspective, and abstraction, participants will be introduced to iteration using tracing paper and working with improvisational methods using graphite, charcoal, and ink with pen and brush. Though not the primary emphasis, drawing from a nude model may occur.",
+        "capacity": "16",
+        "wait_list": "0",
+        "enrollment": "0",
+        "academic_units": [
+            {
+                "refid": "AU_CORES",
+                "name": "First Year Core Studio",
+                "offering_percent": "100",
+                "course_owner": true
+            }
+        ],
+        "meetings": [
+            {
+                "refid": "Tue/Thu_12:00PM_03:00PM",
+                "start_time": "12:00:00",
+                "end_time": "15:00:00",
+                "meeting_day": "Tue/Thu",
+                "start_date": "",
+                "end_date": "",
+                "location": {
+                    "refid": "GCC_GC23",
+                    "room": "San Francisco - Grad Center - GC23",
+                    "building": "Graduate Center 1-2",
+                    "building_id": "Graduate_Center_1-2",
+                    "campus": "San Francisco",
+                    "type": "Classroom - Academic - Multi use"
+                }
+            }
+        ],
+        "instructors": [
+            {
+                "first_name": "Modesto",
+                "last_name": "Covarrubias",
+                "username": "mcovarrubias"
+            }
+        ]
+    },
+    {
+        "section_def_refid": "DEF_GLASS-2320-2_2020SP",
+        "course_def_refid": "DEF_GLASS-232",
+        "section_refid": "GLASS-2320-2_2020SP",
+        "course_refid": "GLASS-2320",
+        "section_calc_id": "GLASS-2320-2_AP_Spring_2020",
+        "section_code": "GLASS-2320-2",
+        "section_title": "Glass Product Design",
+        "course_number": "2320",
+        "section_number": "2",
+        "term": "AP_Spring_2020",
+        "status": "Closed",
+        "hidden": "0",
+        "course_code": "GLASS-2320",
+        "acad_level": "Undergraduate",
+        "course_title": "Glass Product Design",
+        "course_desc": "",
+        "colocated_parent": "",
+        "colocated_sections": [
+            "DEF_INDUS-2320-2_2020SP"
+        ],
+        "subject": "GLASS",
+        "subject_name": "Glass",
+        "min_unit": "3",
+        "max_unit": "3",
+        "start_date": "2020-01-21-08:00",
+        "end_date": "2020-05-08-07:00",
+        "instructional_format": "Studio",
+        "delivery_mode": "In-Person",
+        "grading_basic": "Graded",
+        "section_desc": "Glass is a dynamic and challenging medium to work in, with properties that are unlike any other material. It is embraced for its function and beauty, but has something of a split personality. As a material, it is both regarded as precious, or relegated to the recycle bin depending on its application. Throughout the semester students will explore the media of glass and its unique material characteristics. We will be exposed to the many challenges of creating objects in glass and finding ways to design to its strengths and exploit its inherent beauty and optic properties. We will simultaneously evolve our skills in form development through sketches, models and CAD, while we are learning fundamental skills needed to create objects in glass. With forms developed, and new skills in hand we will focus on creating our objects in glass with an attention to generating multiples and short run production with the use of molds, repeatable processes and established manufacturing practices. We will take designs from initial inspiration all the way through the production process, creating a short edition run of objects. *Mandatory Glass Department Meeting, Friday January 20th 6pm. In order to receive a Blow Slot for the Spring Semester, all students must attend department meeting.*",
+        "capacity": "2",
+        "wait_list": "0",
+        "enrollment": "0",
+        "academic_units": [
+            {
+                "refid": "AU_GLASS",
+                "name": "Glass",
+                "offering_percent": "100",
+                "course_owner": true
+            }
+        ],
+        "meetings": [
+            {
+                "refid": "Mon_09:00AM_03:00PM",
+                "start_time": "09:00:00",
+                "end_time": "15:00:00",
+                "meeting_day": "Mon",
+                "start_date": "",
+                "end_date": "",
+                "location": {
+                    "refid": "SHAK_105_SHAK_2",
+                    "room": "Oakland - Shaklee - 2: Glass Studio",
+                    "building": "Shaklee",
+                    "building_id": "Shaklee",
+                    "campus": "Oakland",
+                    "type": "Classroom - Academic - Specialty"
+                }
+            }
+        ],
+        "instructors": [
+            {
+                "first_name": "Minami",
+                "last_name": "Oya",
+                "username": "minami.oya"
+            }
+        ]
+    },
+    {
+        "section_def_refid": "DEF_INDUS-2320-2_2020SP",
+        "course_def_refid": "DEF_INDUS-232",
+        "section_refid": "INDUS-2320-2_2020SP",
+        "course_refid": "INDUS-2320",
+        "section_calc_id": "INDUS-2320-2_AP_Spring_2020",
+        "section_code": "INDUS-2320-2",
+        "section_title": "IS: Glass Product Design",
+        "course_number": "2320",
+        "section_number": "2",
+        "term": "AP_Spring_2020",
+        "status": "Open",
+        "hidden": "0",
+        "course_code": "INDUS-2320",
+        "acad_level": "Undergraduate",
+        "course_title": "Investigative Studio",
+        "course_desc": "&lt;p&gt;Investigative Studios are required studios within the Industrial Design Program that are also open to students in other majors. Investigative studios are taken in any order. Content, structure, and focus of these studios varies from semester to semester. Students can sign up for the studios that best fit their schedules and interests.&lt;/p&gt;",
+        "colocated_parent": "DEF_GLASS-2320-2_2020SP",
+        "colocated_sections": [
+            "DEF_GLASS-2320-2_2020SP"
+        ],
+        "subject": "INDUS",
+        "subject_name": "Industrial Design",
+        "min_unit": "3",
+        "max_unit": "3",
+        "start_date": "2020-01-21-08:00",
+        "end_date": "2020-05-08-07:00",
+        "instructional_format": "Studio",
+        "delivery_mode": "In-Person",
+        "grading_basic": "Graded",
+        "section_desc": "Glass is a dynamic and challenging media to work in, with properties that are unlike any other material. It is embraced for its function and beauty, but has something of a split personality. As a material, it is both regarded as precious, or relegated to the recycle bin depending on its application. Throughout the semester students will explore the media of glass and its unique material characteristics. We will be exposed to the many challenges of creating objects in glass and finding ways to design to its strengths and exploit its inherent beauty and optic properties. We will simultaneously evolve our skills in form development through sketches, models and CAD, while we are learning fundamental skills needed to create objects in glass. With forms developed, and new skills in hand we will focus on creating our objects in glass with an attention to generating multiples and short run production with the use of molds, repeatable processes and established manufacturing practices. We will take designs from initial inspiration all the way through the production process, creating a short edition run of objects. An additional materials fee will be charged.",
+        "capacity": "12",
+        "wait_list": "0",
+        "enrollment": "0",
+        "academic_units": [
+            {
+                "refid": "AU_EXTED",
+                "name": "Industrial Design",
+                "offering_percent": "100",
+                "course_owner": true
+            }
+        ],
+        "meetings": [
+            {
+                "refid": "Mon_09:00AM_03:00PM",
+                "start_time": "09:00:00",
+                "end_time": "15:00:00",
+                "meeting_day": "Mon",
+                "start_date": "",
+                "end_date": "",
+                "location": {
+                    "refid": "SHAK_105_SHAK_2",
+                    "room": "Oakland - Shaklee - 2: Glass Studio",
+                    "building": "Shaklee",
+                    "building_id": "Shaklee",
+                    "campus": "Oakland",
+                    "type": "Classroom - Academic - Specialty"
+                }
+            }
+        ],
+        "instructors": []
+    },
+    {
+        "section_def_refid": "DEF_CORES-100-04_2020SP",
+        "course_def_refid": "DEF_CORES-100",
+        "section_refid": "CORES-100-04_2020SP",
+        "course_refid": "FYCST-1000",
+        "section_calc_id": "FYCST-1000-4_AP_Spring_2020",
+        "section_code": "FYCST-1000-4",
+        "section_title": "D1: Real to the Imagined",
+        "course_number": "1000",
+        "section_number": "4",
+        "term": "AP_Spring_2020",
+        "status": "Closed",
+        "hidden": "0",
+        "course_code": "FYCST-1000",
+        "acad_level": "Undergraduate",
+        "course_title": "Drawing Studio",
+        "course_desc": "Drawing is a fundamental skill and a practice that is integral in art, design, and architecture practices and relevant to all programs at the College. Drawing 1 courses are designed to increase competency through the development of observational skills. These courses will introduce how drawing connects to multiple disciplines and is informed by diverse cultural contributions. Through developmental, weekly assignments, students practice the craft and precision of drawing, while coordinating fine motor skills with visual communication. Attention is given to building professional time management skills. Students choose one drawing course from the selection offered. Each Drawing 1 course emphasizes a focused approach and select materials to develop and strengthen drawing skills. Formal properties include: line, contour, volume, value, shadow, composition, negative/positive space, figure/ground relationship, perspective, planar analysis, focal points, and proportion.",
+        "colocated_parent": "",
+        "colocated_sections": "",
+        "subject": "FYCST",
+        "subject_name": "First Year Core Studio (FYCST)",
+        "min_unit": "3",
+        "max_unit": "3",
+        "start_date": "2020-01-21-08:00",
+        "end_date": "2020-05-08-07:00",
+        "instructional_format": "Studio",
+        "delivery_mode": "In-Person",
+        "grading_basic": "Graded",
+        "section_desc": "An introduction to seeing specifically and drawing expressively. Students will increase their manual dexterity through the practice of observational drawing. Working from natural and manufactured objects, organic forms, and the nude human figure, students create the illusion of three-dimensional forms on the two-dimensional plane. Utilizing contour line, mass drawing, value, and diagrammatic drawing, students will explore realism and abstraction. Tools include graphite pencil, charcoal, conte crayon, ink, and brushes. This course includes drawing from the nude model, no exceptions will be considered. If this is a concern, consider the course D1: Measured Drawing, which does not have drawing from the nude model.",
+        "capacity": "16",
+        "wait_list": "0",
+        "enrollment": "0",
+        "academic_units": [
+            {
+                "refid": "AU_CORES",
+                "name": "First Year Core Studio",
+                "offering_percent": "50",
+                "course_owner": true
+            },
+            {
+                "refid": "AU_INDUS",
+                "name": "Industrial Design",
+                "offering_percent": "50",
+                "course_owner": false
+            }
+        ],
+        "meetings": [
+            {
+                "refid": "Mon/Wed_12:00PM_03:00PM",
+                "start_time": "12:00:00",
+                "end_time": "15:00:00",
+                "meeting_day": "Mon/Wed",
+                "start_date": "",
+                "end_date": "",
+                "location": {
+                    "refid": "CAR_101_C_1",
+                    "room": "Oakland - Carriage House - 1st Floor Drawing Studio",
+                    "building": "Carriage House",
+                    "building_id": "Carriage_House_",
+                    "campus": "Oakland",
+                    "type": "Classroom - Academic - Specialty"
+                }
+            }
+        ],
+        "instructors": [
+            {
+                "first_name": "Elizabeth",
+                "last_name": "Leger",
+                "username": "eleger"
+            }
+        ]
+    },
+    {
+        "section_def_refid": "COURSE_SECTION_DEFINITION-3-42879",
+        "course_def_refid": "DEF_FINAR-660",
+        "section_refid": "COURSE_SECTION-3-42880",
+        "course_refid": "FINAR-6600",
+        "section_calc_id": "FINAR-6600-1_AP_Spring_2025",
+        "section_code": "FINAR-6600-1",
+        "section_title": "Individual Studio Critique: Placeholder",
+        "course_number": "6600",
+        "section_number": "1",
+        "term": "AP_Spring_2025",
+        "status": "Open",
+        "hidden": "0",
+        "course_code": "FINAR-6600",
+        "acad_level": "Graduate",
+        "course_title": "Individual Studio Critique",
+        "course_desc": "<div></div><div><div><div><div><p>Individual Studio Critique (ISC) is a flexible course of one-on-one critique and mentorship intended to promote the development and refinement of students&#39; work. ISC is a forum for individualized critical feedback, professional guidance, and/or development of technical or theoretical skills. The student is responsible for communicating their specific goals and defining the preferred working relationship. Together, the student and Advisor should agree to the terms and timing of their exchange and meetings. Advisor meeting availability will be communicated to students in advance of the semester start date</p></div></div></div></div>",
+        "colocated_parent": "",
+        "colocated_sections": "",
+        "subject": "FINAR",
+        "subject_name": "Graduate Fine Arts",
+        "min_unit": "1",
+        "max_unit": "9",
+        "start_date": "2025-01-21-08:00",
+        "end_date": "2025-05-12-07:00",
+        "instructional_format": "Research",
+        "delivery_mode": "In-Person",
+        "grading_basic": "Pass/Fail",
+        "section_desc": "Individual Studio Critique (ISC––formerly known as Graduate Studio Practice) is a course of individualized study that typically takes place within the student's studio. Through this experience, students gather diverse opinions about the efficacy of their working methods and formal vocabulary and gather new resources that inform their research and practice. MFA students take six units of ISC per semester––totaling 24 of the 60 units needed to graduate. One unit of advising equals three contact hours over the course of the semester. Students enroll in five sections of ISC per semester, with five different faculty, one of whom is a Main Advisor.",
+        "capacity": "50",
+        "wait_list": "0",
+        "enrollment": "0",
+        "academic_units": [
+            {
+                "refid": "AU_FINAR",
+                "name": "Graduate Fine Arts",
+                "offering_percent": "100",
+                "course_owner": true
+            }
+        ],
+        "meetings": [],
+        "instructors": []
+    }
 ]

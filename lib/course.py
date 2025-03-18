@@ -84,5 +84,13 @@ class Course(SimpleNamespace):
                 return strip_prefix(au["refid"])
 
     @property
+    def placeholder(self) -> bool:
+        """Boolean property for whether a course is a placeholder or not.
+        A placeholder course has no instructors and "placeholder" in its name."""
+        if not len(self.instructors) and "placeholder" in self.section_title.lower():
+            return True
+        return False
+
+    @property
     def semester(self):
         return strip_prefix(self.term).replace("_", " ")
