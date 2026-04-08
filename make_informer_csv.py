@@ -36,11 +36,11 @@ def what_term_is_it(date: date = today) -> str:
 
 
 def download_courses_file(term: str) -> str:
-    # call out to `gsutil` to download the courses file from Google Storage
+    # call out to `gcloud storage` to download the courses file from Google Storage
     # using the google-cloud-storage library stopped working, some kind of auth problem
     uri: str = f"gs://int_files_source/course_section_data_AP_{term}.json"
     path: str = f"data/{today}_{term}.json"
-    cmd: str = f"gsutil cp {uri} {path}"
+    cmd: str = f"gcloud storage cp {uri} {path}"
     subprocess.call(cmd, shell=True)
     return path
 
